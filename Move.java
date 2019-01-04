@@ -1,4 +1,4 @@
-public class Move extends Location{
+public class Move{
   private Location place;
   private String name;
 
