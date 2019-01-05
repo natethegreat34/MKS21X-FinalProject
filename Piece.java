@@ -4,4 +4,5 @@ public interface Piece{
   public int getY();
   public int setX();
   public int setY();
+  public String getLocation();
 }
