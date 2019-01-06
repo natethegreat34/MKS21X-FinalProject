@@ -26,7 +26,7 @@ public class Piece{
     return oldVal;
   }
   public boolean move(String piece, int x, int y){
-
+    
   }
   public String getLocation(){
     String ans = "";
