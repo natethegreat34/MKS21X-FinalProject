@@ -1,18 +1,44 @@
 public class Chessboard{
-  private Square[][] data;
-  public boolean canMove(int x1, int y1, int[][] possibleMoves){
-    for (int x = 0; x < possibleMoves.length; x++){
-      if (x == x1){
-        if (possiblemoves[x][1] == y1){
-          if (data[x1][y1].isEmpty() || 
-        }
-      }
-    }
-  }
-  public boolean move(int x1, int y1, int x2, int y2){
-    Piece movePiece = data[x1][y1].getPiece();
-    int[][] possibleMoves = movePiece.getMoveList();
-    for (int x = 0; x < possibleMove.length; x++){
-	
-  }
+  // private Square[][] data;
+  // public boolean canMove(Piece noob, int x, int y){
+  //   for (int x = 0; x < possibleMoves.length; x++){
+  //     if (x == x1){
+  //       if (possiblemoves[x][1] == y1){
+  //         if (data[x1][y1].isEmpty() ||
+  //       }
+  //     }
+  //   }
+  // }
+  // public boolean move(int x1, int y1, int x2, int y2){
+  //   Piece movePiece = data[x1][y1].getPiece();
+  //   int[][] possibleMoves = movePiece.getMoveList();
+  //   for (int x = 0; x < possibleMove.length; x++){
+  //
+  // }
+
+
+//Pawn
+//y + 1
+// y+1, x+1
+
+  //Knight
+  //x + 2, y + 1
+  //x - 2, y + 1
+  //x + 1, y + 2
+  //x - 1, y + 2
+  //x + 2, y - 1
+  //x - 2, y - 1
+  //x + 1, y - 2
+  //x - 1, y - 2
+  //Bishop
+  //for going / x - y = z; (x+-i)-(y+-i) = z
+  // for going \ x + y = z; (x+-i)+(y+-i) = z
+  //Rook
+  //8 > x+i
+  //0<=x-i
+  //8 > y+i
+  //0<=y-i
+
+  //make string Chessboard as save and then read it through
+
 }
