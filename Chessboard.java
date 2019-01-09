@@ -3,13 +3,12 @@ public class Chessboard{
   private Square[][] data;
   public ArrayList<String> possibleMoves(String[][] moveList){
     ArrayList<String> ans = new ArrayList<String>();
+    int greatestX = 0;
+    int greatestY = 0;
     for (int x = 0; x < moveList.length; x++){
       for (int y = 0; y < moveList[x].length; y++){
         if (moveList[x][y].equals("o")){
-          String coordinate = "";
-          coordinate += x;
-          coordinate += y;
-          ans.add(coordinate);
+
         }
       }
     }
@@ -31,6 +30,8 @@ public class Chessboard{
   //
   // }
 
+//for the possibleMoves method, it will use the loops from the classes and just perform them all and then check the first instances of
+//blocking pieces and pieces to be taken
 
 //Pawn
 //y + 1
