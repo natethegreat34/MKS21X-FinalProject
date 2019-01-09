@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 public class Chessboard{
   private Square[][] data;
-  public ArrayList<String> possibleMoves(String[][] moveList){
-    ArrayList<String> ans = new ArrayList<String>();
+  public String[][] possibleMoves(int x, int y, String[][] moveList){
+    String[][] ans = new String[8][8];
     int greatestX = 0;
     int greatestY = 0;
-    for (int x = 0; x < moveList.length; x++){
-      for (int y = 0; y < moveList[x].length; y++){
+    for (int x1 = x; x < moveList.length; x++){
+      for (int y1 = y; y < moveList[x].length; y++){
         if (moveList[x][y].equals("o")){
 
         }
@@ -23,12 +23,14 @@ public class Chessboard{
   //     }
   //   }
   // }
-  // public boolean move(int x1, int y1, int x2, int y2){
-  //   Piece movePiece = data[x1][y1].getPiece();
-  //   int[][] possibleMoves = movePiece.getMoveList();
-  //   for (int x = 0; x < possibleMove.length; x++){
-  //
-  // }
+  public boolean move(int x1, int y1, int x2, int y2){
+    Piece movePiece = data[x1][y1].getPiece();
+    String[][] allMoves = movePiece.getMoveList();
+    String[][] possibleMovesList = possibleMoves(x1, y1, allMoves);
+    if(possibleMovesList[x2][y2].equals("o")){
+      data[x1][y1].removePiece();
+    }
+  }
 
 //for the possibleMoves method, it will use the loops from the classes and just perform them all and then check the first instances of
 //blocking pieces and pieces to be taken
