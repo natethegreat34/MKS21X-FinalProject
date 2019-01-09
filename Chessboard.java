@@ -1,8 +1,8 @@
-import java.util.io.Arraylists;
+import java.util.ArrayList;
 public class Chessboard{
   private Square[][] data;
-  public String[] possibleMoves(String[][] moveList){
-    Arraylist ans = Arraylist(String);
+  public ArrayList<String> possibleMoves(String[][] moveList){
+    ArrayList<String> ans = new ArrayList<String>();
     for (int x = 0; x < moveList.length; x++){
       for (int y = 0; y < moveList[x].length; y++){
         if (moveList[x][y].equals("o")){
