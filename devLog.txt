@@ -24,9 +24,20 @@ subclass of a class named Piece. We developed questions to ask Mr. K: "Should we
 have an array of pieces or an array of Strings?" and "How do we edit/save files"
 
 --------------------------------------------------------------------------------
+January 8, 2017
+Connor:
+Worked on began to code the Chessboard class with the UML diagram as a template
 
+Nathan:
+Worked on and finished the Square class as seen in the UML diagram
 
-
-
-
+Both:
+We went to the CSDojo to get more face to face planning and we came up with how
+the pieces will make their possible move lists and decided that it will generate
+its own 2D array of Strings that will hold the places where the piece can curre-
+ntly move. It will then send it to the chessboard class and the chessboard will
+look at the actual chessboard and give the actuall possible moves. The making of
+the 2d array strings will be done by for loops that will loop based on the dire-
+ction the pieces can move. We also decided that the save file will just save a
+chessboard in it with the pieces in it. 
 --------------------------------------------------------------------------------
