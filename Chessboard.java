@@ -1,5 +1,20 @@
+import java.util.io.Arraylists;
 public class Chessboard{
-  // private Square[][] data;
+  private Square[][] data;
+  public String[] possibleMoves(String[][] moveList){
+    Arraylist ans = Arraylist(String);
+    for (int x = 0; x < moveList.length; x++){
+      for (int y = 0; y < moveList[x].length; y++){
+        if (moveList[x][y].equals("o")){
+          String coordinate = "";
+          coordinate += x;
+          coordinate += y;
+          ans.add(coordinate);
+        }
+      }
+    }
+    return ans;
+  }
   // public boolean canMove(Piece noob, int x, int y){
   //   for (int x = 0; x < possibleMoves.length; x++){
   //     if (x == x1){
