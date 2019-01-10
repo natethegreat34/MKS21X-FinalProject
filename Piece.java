@@ -3,7 +3,7 @@ public class Piece{
   private int yCor;
   private String color;
   private String type;
-  
+
   public int getX(){
     return xCor;
   }
@@ -31,6 +31,18 @@ public class Piece{
     String letters = "abcdefgh";
     ans += letters.substring(xCor,xCor+1);
     ans += yCor;
+    return ans;
+  }
+  public static String movesString(String[][] inpt){
+    String ans = "";
+    for (int x = 0; x < inpt.length; x++){
+      String line = "";
+      for (int y = 0; y < inpt[x].length; y++){
+        line += inpt[x][y] + " ";
+      }
+      line += "\n";
+      ans += line;
+    }
     return ans;
   }
 }

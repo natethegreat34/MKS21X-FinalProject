@@ -1,4 +1,4 @@
-public class Bishop{
+public class Bishop extends Piece{
     private int xCor;
     private int yCor;
     private String color;
@@ -18,25 +18,25 @@ public class Bishop{
       return type;
     }
     //Bishop
-    //for going / x - y = z; (x+-i)-(y+-i) = z
-    // for going \ x + y = z; (x+-i)+(y+-i) = z
-    public String [][] possiblemoves(int x, int y){
+    //for going / xCor- yCor= z; (x+-i)-(y+-i) = z
+    // for going \ xCor+ yCor= z; (x+-i)+(y+-i) = z
+    public String [][] possiblemoves(){
         String [][] bpm = new String [8][8];
         //  >/
-        for (int i = 0; x + i < 8 && y + i < 8; i ++){
-            bpm [x + i] [y + i] = "o";
+        for (int i = 0; xCor + i < 8 && yCor- i >= 0; i ++){
+            bpm [xCor+ i] [yCor- i] = "o";
         }
         // <\
-        for (int i = 0; x - i < 8 && y + i < 8; i ++){
-            bpm [x - i] [y + i] = "o";
+        for (int i = 0; xCor- i >= 0 && yCor- i >= 0; i ++){
+            bpm [xCor- i] [yCor- i] = "o";
         }
         // >\
-        for (int i = 0; x + i < 8 && y - i < 8; i ++){
-            bpm [x + i] [y - i] = "o";
+        for (int i = 0; xCor+ i < 8 && yCor+ i < 8; i ++){
+            bpm [xCor+ i] [yCor+ i] = "o";
         }
         // </
-        for (int i = 0; x - i < 8 && y - i < 8; i ++){
-            bpm [x - i] [y - i] = "o";
+        for (int i = 0; xCor- i >= 0 && yCor+ i < 8; i ++){
+            bpm [xCor- i] [yCor+ i] = "o";
         }
         return bpm;
 
