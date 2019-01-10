@@ -3,7 +3,7 @@ public class Pawn extends Piece{
   private int yCor;
   private String color;
   private String type;
-  public Pawn(String colorWB){
+  public Pawn(int x, int y, String colorWB){
     color = colorWB;
     if (color.equals("black")){
       type = "bp";
@@ -11,6 +11,8 @@ public class Pawn extends Piece{
     if (color.equals("white")){
       type = "wp";
     }
+    xCor = x;
+    yCor = y;
   }
   public String getType(){
     return type;
