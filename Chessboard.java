@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Chessboard{
   private Square[][] data;
   public Chessboard(String filename) throws FileNotFoundException{
-    data = Square[8][8];
+    data = new Square[8][8];
     File f = new File(filename);
     Scanner in = new Scanner(f);
     for (int x = 0; x < data.length; x++){
