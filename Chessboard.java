@@ -99,6 +99,7 @@ public class Chessboard{
       }
     }
   }
+  /*
   public String[][] possibleMoves(int x, int y, String[][] moveList){
     String[][] ans = new String[8][8];
     int greatestX = 0;
@@ -129,7 +130,7 @@ public class Chessboard{
       data[x1][y1].removePiece();
     }
   }
-
+*/
   public String toString(){
     String ans = "";
     for (int x = 0; x < data.length; x++){
