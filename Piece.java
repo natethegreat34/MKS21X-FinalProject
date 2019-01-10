@@ -3,7 +3,7 @@ public class Piece{
   private int yCor;
   private String color;
   private String type;
-  public Piece(String colorWB) {
+  public Piece(int x, int y, String colorWB) {
     color = colorWB;
     if (color.equals("black")){
       type = "blackpiece";
@@ -11,6 +11,8 @@ public class Piece{
     if (color.equals("white")){
       type = "blackpiece";
     }
+    xCor = x;
+    yCor = y;
   }
   public int getX(){
     return xCor;
