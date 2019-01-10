@@ -1,4 +1,4 @@
-public class King{
+public class King extends Piece{
   private int xCor;
   private int yCor;
   private String color;

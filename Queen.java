@@ -1,4 +1,4 @@
-public class Queen extends Chess{
+public class Queen extends Piece{
   private int xCor;
   private int yCor;
   private String color;

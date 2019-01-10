@@ -1,5 +1,5 @@
 
-public class Rook {
+public class Rook extends Piece {
   private int xCor;
   private int yCor;
   private String color;
