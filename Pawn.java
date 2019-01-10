@@ -1,4 +1,4 @@
-public class Pawn {
+public class Pawn extends Piece {
   private int xCor;
   private int yCor;
   private String color;
