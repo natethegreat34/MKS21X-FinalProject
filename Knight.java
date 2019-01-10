@@ -18,9 +18,6 @@ public class Knight extends Chess{
     yCor = y;
     return oldVal;
   }
-  public boolean move(int x, int y){
-        ;
-  }
   public String getLocation(){
     String ans = "";
     String letters = "abcdefgh";
