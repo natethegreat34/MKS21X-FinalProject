@@ -1,5 +1,23 @@
 
 public class Rook {
+  private int xCor;
+  private int yCor;
+  private String color;
+  private String type;
+  public Rook(int x, int y, String colorWB){
+    color = colorWB;
+    if (color.equals("black")){
+      type = "br";
+    }
+    if (color.equals("white")){
+      type = "wr";
+    }
+    xCor = x;
+    yCor = y;
+  }
+  public String getType(){
+    return type;
+  }
   public String [][] possiblemoves(int x, int y){
       String [][] rpm = new String [8][8];
       //  >
