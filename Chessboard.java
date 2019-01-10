@@ -19,6 +19,7 @@ public class Chessboard{
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
+        /*
         //if it is a black Bishop
         if (piece.equals("bb")){
           Square slot = new Square();
@@ -54,6 +55,7 @@ public class Chessboard{
           slot.setPiece(king);
           data[x][y] = slot;
         }
+        */
         //if it is a white pawn
         if (piece.equals("wp")){
           Square slot = new Square();
@@ -61,6 +63,7 @@ public class Chessboard{
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
+        /*
         //if it is a white Bishop
         if (piece.equals("wb")){
           Square slot = new Square();
@@ -96,6 +99,7 @@ public class Chessboard{
           slot.setPiece(king);
           data[x][y] = slot;
         }
+        */
       }
     }
   }
