@@ -1,4 +1,22 @@
 public class Bishop{
+    private int xCor;
+    private int yCor;
+    private String color;
+    private String type;
+    public Bishop(int x, int y, String colorWB){
+      color = colorWB;
+      if (color.equals("black")){
+        type = "bb";
+      }
+      if (color.equals("white")){
+        type = "wb";
+      }
+      xCor = x;
+      yCor = y;
+    }
+    public String getType(){
+      return type;
+    }
     //Bishop
     //for going / x - y = z; (x+-i)-(y+-i) = z
     // for going \ x + y = z; (x+-i)+(y+-i) = z
