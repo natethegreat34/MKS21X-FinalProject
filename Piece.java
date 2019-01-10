@@ -1,8 +1,17 @@
-public class Piece extends Chess{
+public class Piece{
   private int xCor;
   private int yCor;
-  private int moveNumber;
   private String color;
+  private String type;
+  public Piece(String colorWB) {
+    color = colorWB;
+    if (color.equals("black")){
+      type = "blackpiece";
+    }
+    if (color.equals("white")){
+      type = "blackpiece";
+    }
+  }
   public int getX(){
     return xCor;
   }
@@ -21,6 +30,9 @@ public class Piece extends Chess{
   }
   public String getColor(){
     return color;
+  }
+  public String getType(){
+    return type;
   }
   public String getLocation(){
     String ans = "";
