@@ -38,6 +38,7 @@ public class Bishop extends Piece{
         for (int i = 0; xCor- i >= 0 && yCor+ i < 8; i ++){
             bpm [xCor- i] [yCor+ i] = "o";
         }
+        bpm [xCor] [yCor] = "*";
         return bpm;
 
         }
