@@ -1,4 +1,22 @@
 public class King{
+  private int xCor;
+  private int yCor;
+  private String color;
+  private String type;
+  public King(int x, int y, String colorWB){
+    color = colorWB;
+    if (color.equals("black")){
+      type = "bk";
+    }
+    if (color.equals("white")){
+      type = "wk";
+    }
+    xCor = x;
+    yCor = y;
+  }
+  public String getType(){
+    return type;
+  }
 
     public String [][] possiblemoves(int x, int y){
         String [][] kpm = new String [8][8];
