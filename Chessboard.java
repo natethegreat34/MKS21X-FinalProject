@@ -15,7 +15,7 @@ public class Chessboard{
         //if it is a black Pawn
         if (piece.equals("bp")){
           Square slot = new Square();
-          Piece pawn = new Pawn(x, y, "black");
+          Pawn pawn = new Pawn(x, y, "black");
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
