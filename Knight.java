@@ -1,28 +1,20 @@
-public class Knight extends Chess{
+public class Knight extends Piece{
   private int xCor;
   private int yCor;
-  private int moveNumber;
-  public int getX(){
-    return xCor;
-  }
-  public int getY(){
-    return yCor;
-  }
-  public int setX(int x){
-    int oldVal = xCor;
+  private String color;
+  private String type;
+  public Knight(int x, int y, String colorWB){
+    color = colorWB;
+    if (color.equals("black")){
+      type = "bn";
+    }
+    if (color.equals("white")){
+      type = "wn";
+    }
     xCor = x;
-    return oldVal;
-  }
-  public int setY(int y){
-    int oldVal = yCor;
     yCor = y;
-    return oldVal;
   }
-  public String getLocation(){
-    String ans = "";
-    String letters = "abcdefgh";
-    ans += letters.substring(xCor,xCor+1);
-    ans += yCor;
-    return ans;
+  public String getType(){
+    return type;
   }
 }
