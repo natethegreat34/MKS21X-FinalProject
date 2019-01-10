@@ -18,9 +18,6 @@ public class Queen extends Chess{
     yCor = y;
     return oldVal;
   }
-  public boolean move(int x, int y){
-        ;
-  }
   public String getLocation(){
     String ans = "";
     String letters = "abcdefgh";
