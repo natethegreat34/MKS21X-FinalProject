@@ -130,6 +130,19 @@ public class Chessboard{
     }
   }
 
+  public String toString(){
+    String ans = "";
+    for (int x = 0; x < data.length; x++){
+      String line = "";
+      for (int y = 0; y < data[x].length; y++){
+        line += data[x][y].getPiece().getType() + " ";
+      }
+      line += "\n";
+      ans += line;
+    }
+    return ans;
+  }
+
 //for the possibleMoves method, it will use the loops from the classes and just perform them all and then check the first instances of
 //blocking pieces and pieces to be taken
 
