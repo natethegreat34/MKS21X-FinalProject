@@ -60,7 +60,7 @@ public class King extends Piece{
         // </
         kpm [yCor - 1] [xCor - 1] = "o";
       }
-      if (xCor - 1 <= 0){
+      if (xCor - 1 >= 0){
         // <
         kpm [yCor] [xCor - 1] = "o";
       }
