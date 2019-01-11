@@ -9,7 +9,7 @@ public Square (){
     stored = null;
     taken = false;
 }
-public boolean isEmpty (){
+public boolean isEmpty(){
     return !taken;
 }
 
@@ -19,11 +19,13 @@ public Piece getPiece(){
 
 public void setPiece(Piece noob){
     stored = noob;
+    taken = true;
 }
 
 public Piece removePiece(){
     Piece bye = stored;
     stored = null;
+    taken = false;
     return bye;
 }
 }
