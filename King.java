@@ -47,6 +47,7 @@ public class King extends Piece{
       if (yCor+ 1 < 8 && xCor+ 1 < 8){
         // />
         kpm [yCor+ 1] [xCor+ 1] = "o";
+      }
       if (xCor + 1 < 8){
         // >
         kpm [yCor] [xCor + 1] = "o";
@@ -79,4 +80,3 @@ public class King extends Piece{
       data = kpm;
     }
   }
-}
