@@ -9,5 +9,7 @@ public class ChessDriver{
     System.out.println(chess);
     System.out.println(chess.move(1, 0, 1, 1));
     System.out.println(chess);
+    System.out.println(chess.move(1, 1, 2, 3));
+    System.out.println(chess);
   }
 }

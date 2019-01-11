@@ -137,7 +137,7 @@ public class Chessboard{
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
-    if (!(possibleMoves[y][x].equals(null))){
+    if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
