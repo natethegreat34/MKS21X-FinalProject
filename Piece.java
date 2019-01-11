@@ -52,10 +52,15 @@ public class Piece{
   //prints the String of the moveArray made by the pieces possibleMoves methods
   public static String movesString(String[][] inpt){
     String ans = "";
-    for (int x = 0; x < inpt.length; x++){
+    for (int y = 0; y < inpt.length; y++){
       String line = "";
-      for (int y = 0; y < inpt[x].length; y++){
-        line += inpt[x][y] + " ";
+      for (int x = 0; x < inpt[y].length; x++){
+        if(inpt[y][x] == null){
+          line += "_ ";
+        }
+        else{
+          line += inpt[y][x] + " ";
+        }
       }
       line += "\n";
       ans += line;
