@@ -4,12 +4,20 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Chessboard{
   private Square[][] data;
-  public Chessboard(String filename) throws FileNotFoundException{
+  public Chessboard(){
     data = new Square[8][8];
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+        Square empty = new Square (x,y);
+        data[y][x] = empty;
+      }
+    }
+  }
+  public void fillBoard(String filename) throws FileNotFoundException{
     File f = new File(filename);
     Scanner in = new Scanner(f);
-    for (int x = 0; x < data.length; x++){
-      for (int y = 0; y < data[x].length; y++){
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
         //read the next letter from the file
         String piece = in.next();
         //if it is a black Pawn
@@ -17,35 +25,35 @@ public class Chessboard{
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "black", 0);
           slot.setPiece(pawn);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a black Bishop
         if (piece.equals("bb")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "black");
           slot.setPiece(bishop);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a black Knight
         if (piece.equals("bn")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "black");
           slot.setPiece(knight);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a black Rook
         if (piece.equals("br")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "black");
           slot.setPiece(rook);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a black Queen
         if (piece.equals("bq")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "black");
           slot.setPiece(queen);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a black King
         if (piece.equals("bk")){
@@ -53,49 +61,49 @@ public class Chessboard{
           King king = new King(x, y, "black");
           limitKing(king);
           slot.setPiece(king);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a white pawn
         if (piece.equals("wp")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "white", 1);
           slot.setPiece(pawn);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a white Bishop
         if (piece.equals("wb")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "white");
           slot.setPiece(bishop);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a white Knight
         if (piece.equals("wn")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "white");
           slot.setPiece(knight);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a white Rook
         if (piece.equals("wr")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "white");
           slot.setPiece(rook);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a white Queen
         if (piece.equals("wq")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "white");
           slot.setPiece(queen);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
         //if it is a white King
         if (piece.equals("wk")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "white");
           slot.setPiece(king);
-          data[x][y] = slot;
+          data[y][x] = slot;
         }
       }
     }
@@ -111,7 +119,7 @@ public class Chessboard{
               ans[y][x] = "x";
             }
             else{
-              ans[y][x] = "null";
+              ans[y][x] = null;
             }
           }
         }
@@ -173,7 +181,7 @@ public class Chessboard{
           line += "_ ";
         }
         else{
-          line += data[x][y].getPiece().getType() + " ";
+          line += data[y][x].getPiece().getType() + " ";
         }
       }
       line += "\n";

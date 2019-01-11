@@ -4,7 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class ChessDriver{
   public static void main(String[] args) throws FileNotFoundException{
-    Chessboard chess = new Chessboard("file1.txt");
+    Chessboard chess = new Chessboard();
+    chess.fillBoard("file1.txt");
     System.out.println(chess);
   }
 }
