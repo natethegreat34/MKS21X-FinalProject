@@ -15,11 +15,10 @@ public class Chessboard{
         //if it is a black Pawn
         if (piece.equals("bp")){
           Square slot = new Square();
-          Pawn pawn = new Pawn(x, y, "black");
+          Pawn pawn = new Pawn(x, y, "black", 0);
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
-        /*
         //if it is a black Bishop
         if (piece.equals("bb")){
           Square slot = new Square();
@@ -55,15 +54,13 @@ public class Chessboard{
           slot.setPiece(king);
           data[x][y] = slot;
         }
-        */
         //if it is a white pawn
         if (piece.equals("wp")){
           Square slot = new Square();
-          Piece pawn = new Pawn(x, y, "white");
+          Piece pawn = new Pawn(x, y, "white", 1);
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
-        /*
         //if it is a white Bishop
         if (piece.equals("wb")){
           Square slot = new Square();
@@ -99,9 +96,12 @@ public class Chessboard{
           slot.setPiece(king);
           data[x][y] = slot;
         }
-        */
       }
     }
+  }
+  public String[][] limitPawn(Pawn pawn){
+    //takes the possible moves list from the piece
+    String[][] inpt = pawn.getData();
   }
   /*
   public String[][] possibleMoves(int x, int y, String[][] moveList){
