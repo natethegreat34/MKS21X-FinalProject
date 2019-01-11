@@ -43,7 +43,8 @@ chessboard in it with the pieces in it.
 --------------------------------------------------------------------------------
 January 9, 2018
 Connor:
-Designing how the chess board will work with Lanturna
+Designing chessboard methods and how the chess board will work with Lanturna.
+Also fixed class pieces.
 
 Nathan:
 Continued making the possible moves list for all of the pieces.
