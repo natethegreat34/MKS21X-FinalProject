@@ -62,7 +62,7 @@ public class King extends Piece{
         //Castle Queenside
         kpm [yCor] [xCor - 2] = "o";
       }
-      kpm[xCor][yCor] = "*";
+      kpm[yCor][xCor] = "*";
       return kpm;
     }
 }
