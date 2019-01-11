@@ -30,6 +30,7 @@ public class Knight extends Piece{
   }
 
   private void possibleMoves(){
+    data = new String[8][8];
     if (yCor + 1 < 8){
       if (xCor + 2 < 8){
        data[yCor + 1][xCor + 2] = "o";
