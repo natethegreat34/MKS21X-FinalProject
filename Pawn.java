@@ -17,18 +17,18 @@ public class Pawn extends Piece {
   public String getType(){
     return type;
   }
-    public String [][] possiblemoves(int x, int y){
-        String [][] ppm = new String [8][8];
-        if (y + 2 < 8){
-            // ^^ first time moving import junit.framework.TestCase;
-            ppm [x] [y + 2] = "o";
-        }
-            // ^
-        if (y + 1 < 8){
-            // ^^ anytime moving import junit.framework.TestCase;
-                ppm [x] [y + 1] = "o";
-            }
-            ppm [x][y] = "*";
-            return ppm;
-}
+  public String [][] possiblemoves(){
+      String [][] ppm = new String [8][8];
+      if (yCor + 2 < 8){
+          // ^^ first time moving import junit.framework.TestCase;
+          ppm [yCor + 2] [xCor] = "o";
+      }
+          // ^
+      if (yCor + 1 < 8){
+          // ^^ anytime moving import junit.framework.TestCase;
+              ppm [yCor + 1] [xCor] = "o";
+          }
+      ppm [yCor][xCor] = "*";
+      return ppm;
+  }
 }
