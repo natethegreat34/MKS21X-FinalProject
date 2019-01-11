@@ -24,11 +24,11 @@ public class Rook extends Piece {
           rpm [xCor + i] [yCor] = "o";
       }
       // <
-      for (int i = 0; xCor- i < 8 ; i ++){
+      for (int i = 0; xCor - i >= 0 ; i ++){
           rpm [xCor - i] [yCor] = "o";
       }
       // v
-      for (int i = 0; yCor- i < 8; i ++){
+      for (int i = 0; yCor - i >= 0; i ++){
           rpm [xCor] [yCor - i] = "o";
       }
       // ^
