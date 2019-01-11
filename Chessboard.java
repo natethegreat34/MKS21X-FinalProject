@@ -108,7 +108,7 @@ public class Chessboard{
       }
     }
   }
-  
+
   //limits the possible moves of all pieces based on situation
   public void limitPiece(Piece inpt){
     String[][] ans = inpt.getData();
@@ -196,6 +196,89 @@ public class Chessboard{
       }
       else{
         ans[yCor][xCor + i] = null;
+      }
+    }
+    delete = false;
+    for (int i = 0; xCor + i < 8 && yCor- i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor - i][xCor + i] != null){
+          if (!(data[yCor - i][xCor + i].isEmpty())){
+            if (data[yCor - i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - i][xCor + i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor - i][xCor + i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor - i][xCor + i] = null;
+      }
+    }
+    delete = false;
+    // <\
+    for (int i = 0; xCor- i >= 0 && yCor- i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor][xCor - i] != null){
+          if (!(data[yCor - i][xCor - i].isEmpty())){
+            if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - i][xCor - i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor - i][xCor - i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor - i][xCor - i] = null;
+      }
+    }
+    delete = false;
+    // >\
+    for (int i = 0; xCor+ i < 8 && yCor+ i < 8; i ++){
+      if(!delete){
+        if (ans[yCor + i][xCor + i] != null){
+          if (!(data[yCor + i][xCor + i].isEmpty())){
+            if (data[yCor + i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + i][xCor + i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor + i][xCor + i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor + i][xCor + i] = null;
+      }
+    }
+    delete = false;
+    // </
+    for (int i = 0; xCor- i >= 0 && yCor+ i < 8; i ++){
+      if(!delete){
+        if (ans[yCor + i][xCor - i] != null){
+          if (!(data[yCor + i][xCor - i].isEmpty())){
+            if (data[yCor + i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + i][xCor - i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor + i][xCor - i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor + i][xCor - i] = null;
       }
     }
     delete = false;
