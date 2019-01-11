@@ -6,7 +6,7 @@ public class pieceDriver{
       Rook rook = new Rook(1, 7, "white");
       System.out.println(Piece.movesString(rook.getData()));
       System.out.println("wr".equals(rook.getType()));
-      King king = new King(4, 7, "white");
+      King king = new King(1, 1, "white");
       System.out.println(Piece.movesString(king.getData()));
       System.out.println("wk".equals(king.getType()));
       Pawn pawn = new Pawn(3, 6, "white", 1);
