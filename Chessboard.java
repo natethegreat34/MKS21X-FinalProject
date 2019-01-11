@@ -116,7 +116,7 @@ public class Chessboard{
     int yCor = inpt.getY();
     // v
     boolean delete = false;
-    for (int i = 0; yCor+ i < 8; i ++){
+    for (int i = 0; yCor + i < 8; i ++){
       if(!delete){
         if (ans[yCor + i][xCor] != null){
           if (!(data[yCor + i][xCor].isEmpty())){
