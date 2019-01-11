@@ -1,4 +1,3 @@
-
 public class Rook extends Piece {
   private int xCor;
   private int yCor;
@@ -18,25 +17,25 @@ public class Rook extends Piece {
   public String getType(){
     return type;
   }
-  public String [][] possiblemoves(int x, int y){
+  public String [][] possiblemoves(){
       String [][] rpm = new String [8][8];
       //  >
-      for (int i = 0; x + i < 8; i ++){
-          rpm [x + i] [y] = "o";
+      for (int i = 0; xCor+ i < 8; i ++){
+          rpm [xCor + i] [yCor] = "o";
       }
       // <
-      for (int i = 0; x - i < 8 ; i ++){
-          rpm [x - i] [y] = "o";
+      for (int i = 0; xCor- i < 8 ; i ++){
+          rpm [xCor - i] [yCor] = "o";
       }
       // v
-      for (int i = 0; y - i < 8; i ++){
-          rpm [x] [y - i] = "o";
+      for (int i = 0; yCor- i < 8; i ++){
+          rpm [xCor] [yCor - i] = "o";
       }
       // ^
-      for (int i = 0; y + i < 8; i ++){
-          rpm [x] [y + i] = "o";
+      for (int i = 0; yCor+ i < 8; i ++){
+          rpm [xCor] [yCor + i] = "o";
       }
-      rpm [x] [y] = "*";
+      rpm [xCor] [yCor] = "*";
       return rpm;
 
       }
