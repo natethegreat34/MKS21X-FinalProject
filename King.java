@@ -3,6 +3,7 @@ public class King extends Piece{
   private int yCor;
   private String color;
   private String type;
+  private String[][] data;
 
   public King(int x, int y, String colorWB){
     //sets the color
@@ -17,6 +18,7 @@ public class King extends Piece{
     //sets its coordinates
     xCor = x;
     yCor = y;
+    possibleMoves();
   }
 
   public String getType(){
@@ -24,7 +26,15 @@ public class King extends Piece{
     return type;
   }
 
-  public String [][] possiblemoves(){
+  public String[][] getData(){
+    return data;
+  }
+
+  public void setData(String[][] inpt){
+    data = inpt;
+  }
+
+  private void possibleMoves(){
       String [][] kpm = new String [8][8];
       if (yCor + 1 < 8){
         // ^
@@ -63,6 +73,6 @@ public class King extends Piece{
         kpm [yCor] [xCor - 2] = "o";
       }
       kpm[yCor][xCor] = "*";
-      return kpm;
+      data = kpm;
     }
 }

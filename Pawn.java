@@ -3,6 +3,8 @@ public class Pawn extends Piece {
   private int yCor;
   private String color;
   private String type;
+  private String[][] data;
+
   public Pawn(int x, int y, String colorWB){
     color = colorWB;
     if (color.equals("black")){
@@ -13,11 +15,22 @@ public class Pawn extends Piece {
     }
     xCor = x;
     yCor = y;
+    possibleMoves();
   }
+
   public String getType(){
     return type;
   }
-  public String [][] possiblemoves(){
+
+  public String[][] getData(){
+    return data;
+  }
+
+  public void setData(String[][] inpt){
+    data = inpt;
+  }
+
+  private void possibleMoves(){
       String [][] ppm = new String [8][8];
       if (yCor + 2 < 8){
           // ^^ first time moving import junit.framework.TestCase;
@@ -38,6 +51,6 @@ public class Pawn extends Piece {
               ppm [yCor - 1] [xCor] = "o";
           }
       ppm [yCor][xCor] = "*";
-      return ppm;
+      data = ppm;
   }
 }

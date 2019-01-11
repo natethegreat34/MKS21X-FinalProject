@@ -3,6 +3,7 @@ public class Rook extends Piece {
   private int yCor;
   private String color;
   private String type;
+  private String[][] data;
 
   public Rook(int x, int y, String colorWB){
     color = colorWB;
@@ -14,13 +15,22 @@ public class Rook extends Piece {
     }
     xCor = x;
     yCor = y;
+    possibleMoves();
   }
 
   public String getType(){
     return type;
   }
 
-  public String [][] possiblemoves(){
+  public String[][] getData(){
+    return data;
+  }
+
+  public void setData(String[][] inpt){
+    data = inpt;
+  }
+
+  private String [][] possibleMoves(){
       String [][] rpm = new String [8][8];
       //  >
       for (int i = 0; yCor+ i < 8; i ++){
@@ -39,7 +49,7 @@ public class Rook extends Piece {
           rpm [yCor] [xCor + i] = "o";
       }
       rpm [yCor] [xCor] = "*";
-      return rpm;
+      data = rpm;
 
       }
 }

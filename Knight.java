@@ -3,6 +3,8 @@ public class Knight extends Piece{
   private int yCor;
   private String color;
   private String type;
+  private String[][] data;
+  
   public Knight(int x, int y, String colorWB){
     color = colorWB;
     if (color.equals("black")){
@@ -16,5 +18,13 @@ public class Knight extends Piece{
   }
   public String getType(){
     return type;
+  }
+
+  public String[][] getData(){
+    return data;
+  }
+
+  public void setData(String[][] inpt){
+    data = inpt;
   }
 }
