@@ -26,40 +26,43 @@ public class King extends Piece{
 
   public String [][] possiblemoves(){
       String [][] kpm = new String [8][8];
-      if (yCor + 1 < 7){
+      if (yCor + 1 < 8){
         // ^
-        kpm [xCor] [yCor+ 1] = "o";
+        kpm [yCor + 1] [xCor] = "o";
       }
       if (yCor - 1 >= 0){
         // v
-        kpm [xCor] [yCor- 1] = "o";
+        kpm [yCor - 1] [xCor] = "o";
       }
-      if (xCor+ 1 < 7 && yCor+ 1 < 7){
+      if (yCor+ 1 < 8 && xCor+ 1 < 8){
         // />
-        kpm [xCor+ 1] [yCor+ 1] = "o";
+        kpm [yCor+ 1] [xCor+ 1] = "o";
         // >
-        kpm [xCor+ 1] [yCor] = "o";
+        kpm [yCor+ 1] [xCor] = "o";
       }
-      if (xCor+ 1 < 7 && yCor- 1 >= 0){
+      if (yCor+ 1 < 8 && xCor- 1 >= 0){
         // \>
-        kpm [xCor+ 1] [yCor- 1] = "o";
+        kpm [yCor + 1] [xCor- 1] = "o";
       }
-      if (xCor- 1 >=0 && yCor- 1 >= 0){
+      if (yCor- 1 >=0 && xCor- 1 >= 0){
         // </
-        kpm [xCor- 1] [yCor- 1] = "o";
+        kpm [yCor - 1] [xCor - 1] = "o";
         // <
-        kpm [xCor- 1] [yCor] = "o";
+        kpm [yCor  - 1] [xCor] = "o";
       }
-      if (xCor- 1 >= 0 && yCor+ 1 < 7){
+      if (yCor- 1 >= 0 && xCor+ 1 < 8){
         // <\
-        kpm [xCor- 1] [yCor+ 1] = "o";
+        kpm [yCor- 1] [xCor + 1] = "o";
       }
-      if (xCor+ 2 < 6 || xCor- 2 >= 0){
+      if (xCor + 2 < 8){
         //Castle Kingside
-        kpm [xCor+ 2] [yCor] = "o";
-        //Castle Queenside
-        kpm [xCor- 2] [yCor] = "o";
+        kpm [yCor] [xCor + 2] = "o";
       }
+      if (xCor- 2 >= 0){
+        //Castle Queenside
+        kpm [yCor] [xCor - 2] = "o";
+      }
+      kpm[xCor][yCor] = "*";
       return kpm;
     }
 }
