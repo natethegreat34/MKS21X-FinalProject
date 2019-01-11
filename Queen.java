@@ -30,6 +30,7 @@ public class Queen extends Piece{
   }
 
   private void possibleMoves(){
+    data = new String[8][8];
     //  >/
     for (int i = 0; xCor + i < 8 && yCor- i >= 0; i ++){
         data [yCor - i] [xCor + i] = "o";
