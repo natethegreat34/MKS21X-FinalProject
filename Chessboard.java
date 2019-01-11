@@ -59,7 +59,7 @@ public class Chessboard{
         if (piece.equals("bk")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "black");
-          limitKing(king);
+          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
@@ -109,25 +109,96 @@ public class Chessboard{
     }
   }
   //limits the possible moves of all pieces based on situation
-  public void limitKing(King k){
-    String[][] ans = k.getData();
-    for (int y = 0; y < ans.length; y++){
-      for (int x = 0; x < ans[y].length; x++){
-        if (ans[y][x] != null){
-          if (ans[y][x].equals("o")) {
-            if (!(data[y][x].isEmpty())){
-              if(data[y][x].getPiece().getColor() != k.getColor()){
-                ans[y][x] = "x";
-              }
-              else{
-                ans[y][x] = null;
-              }
+  public void limitPiece(Piece inpt){
+    String[][] ans = inpt.getData();
+    int xCor = inpt.getX();
+    int yCor = inpt.getY();
+    // v
+    boolean delete = false;
+    for (int i = 0; yCor+ i < 8; i ++){
+      if(!delete){
+        if (ans[yCor + i][xCor] != null){
+          if (!(data[yCor + i][xCor].isEmpty())){
+            if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + i][xCor] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor + i][xCor] = "x";
+              delete = true;
             }
           }
         }
       }
+      else{
+        ans[yCor + i][xCor] = null;
+      }
     }
-    k.setData(ans);
+    delete = false;
+    // ^
+    for (int i = 0; yCor - i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor - i][xCor] != null){
+          if (!(data[yCor - i][xCor].isEmpty())){
+            if (data[yCor - i][xCor].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - i][xCor] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor - i][xCor] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor - i][xCor] = null;
+      }
+    }
+    delete = false;
+    // <
+    for (int i = 0; xCor - i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor][xCor - i] != null){
+          if (!(data[yCor][xCor - i].isEmpty())){
+            if (data[yCor][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor][xCor - i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor][xCor - i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor][xCor - i] = null;
+      }
+    }
+    delete = false;
+    // >
+    for (int i = 0; xCor + i < 8; i ++){
+      if(!delete){
+        if (ans[yCor][xCor + i] != null){
+          if (!(data[yCor][xCor + i].isEmpty())){
+            if (data[yCor][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor][xCor + i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor][xCor + i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor][xCor + i] = null;
+      }
+    }
+    delete = false;
+    inpt.setData(ans);
   }
 
   public Square getSquare(int x, int y){
