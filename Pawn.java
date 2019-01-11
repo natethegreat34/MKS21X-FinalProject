@@ -28,6 +28,15 @@ public class Pawn extends Piece {
           // ^^ anytime moving import junit.framework.TestCase;
               ppm [yCor + 1] [xCor] = "o";
           }
+      if (yCor - 2 < 8){
+          // ^^ first time moving import junit.framework.TestCase;
+          ppm [yCor - 2] [xCor] = "o";
+      }
+          // ^
+      if (yCor - 1 < 8){
+          // ^^ anytime moving import junit.framework.TestCase;
+              ppm [yCor - 1] [xCor] = "o";
+          }
       ppm [yCor][xCor] = "*";
       return ppm;
   }
