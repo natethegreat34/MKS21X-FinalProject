@@ -9,5 +9,8 @@ public class pieceDriver{
       King king = new King(3, 7, "white");
       System.out.println(Piece.movesString(king.possiblemoves()));
       System.out.println("wk".equals(king.getType()));
+      Pawn pawn = new Pawn(3, 6, "white");
+      System.out.println(Piece.movesString(pawn.possiblemoves()));
+      System.out.println("wp".equals(pawn.getType()));
     }
 }
