@@ -3,6 +3,7 @@ public class Piece{
   private int yCor;
   private String color;
   private String type;
+  private String[][] data;
  //returns the xcoordinate
   public int getX(){
     return xCor;

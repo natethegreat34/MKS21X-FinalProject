@@ -5,9 +5,11 @@ public class Square {
   private int xCor;
   private int yCor;
 
-  public Square (){
+  public Square(int x, int y){
       stored = null;
       taken = false;
+      xCor = x;
+      yCor = y;
   }
   public boolean isEmpty(){
       return !taken;
@@ -20,6 +22,8 @@ public class Square {
   public void setPiece(Piece noob){
       stored = noob;
       taken = true;
+      noob.setX(xCor);
+      noob.setY(yCor);
   }
 
   public Piece removePiece(){

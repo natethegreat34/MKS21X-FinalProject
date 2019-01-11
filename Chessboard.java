@@ -14,95 +14,123 @@ public class Chessboard{
         String piece = in.next();
         //if it is a black Pawn
         if (piece.equals("bp")){
-          Square slot = new Square();
+          Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "black", 0);
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
         //if it is a black Bishop
         if (piece.equals("bb")){
-          Square slot = new Square();
-          Piece bishop = new Bishop(x, y, "black");
+          Square slot = new Square(x, y);
+          Bishop bishop = new Bishop(x, y, "black");
           slot.setPiece(bishop);
           data[x][y] = slot;
         }
         //if it is a black Knight
         if (piece.equals("bn")){
-          Square slot = new Square();
-          Piece knight = new Knight(x, y, "black");
+          Square slot = new Square(x, y);
+          Knight knight = new Knight(x, y, "black");
           slot.setPiece(knight);
           data[x][y] = slot;
         }
         //if it is a black Rook
         if (piece.equals("br")){
-          Square slot = new Square();
-          Piece rook = new Rook(x, y, "black");
+          Square slot = new Square(x, y);
+          Rook rook = new Rook(x, y, "black");
           slot.setPiece(rook);
           data[x][y] = slot;
         }
         //if it is a black Queen
         if (piece.equals("bq")){
-          Square slot = new Square();
-          Piece queen = new Queen(x, y, "black");
+          Square slot = new Square(x, y);
+          Queen queen = new Queen(x, y, "black");
           slot.setPiece(queen);
           data[x][y] = slot;
         }
         //if it is a black King
         if (piece.equals("bk")){
-          Square slot = new Square();
-          Piece king = new King(x, y, "black");
+          Square slot = new Square(x, y);
+          King king = new King(x, y, "black");
+          limitKing(king);
           slot.setPiece(king);
           data[x][y] = slot;
         }
         //if it is a white pawn
         if (piece.equals("wp")){
-          Square slot = new Square();
-          Piece pawn = new Pawn(x, y, "white", 1);
+          Square slot = new Square(x, y);
+          Pawn pawn = new Pawn(x, y, "white", 1);
           slot.setPiece(pawn);
           data[x][y] = slot;
         }
         //if it is a white Bishop
         if (piece.equals("wb")){
-          Square slot = new Square();
-          Piece bishop = new Bishop(x, y, "white");
+          Square slot = new Square(x, y);
+          Bishop bishop = new Bishop(x, y, "white");
           slot.setPiece(bishop);
           data[x][y] = slot;
         }
         //if it is a white Knight
         if (piece.equals("wn")){
-          Square slot = new Square();
-          Piece knight = new Knight(x, y, "white");
+          Square slot = new Square(x, y);
+          Knight knight = new Knight(x, y, "white");
           slot.setPiece(knight);
           data[x][y] = slot;
         }
         //if it is a white Rook
         if (piece.equals("wr")){
-          Square slot = new Square();
-          Piece rook = new Rook(x, y, "white");
+          Square slot = new Square(x, y);
+          Rook rook = new Rook(x, y, "white");
           slot.setPiece(rook);
           data[x][y] = slot;
         }
         //if it is a white Queen
         if (piece.equals("wq")){
-          Square slot = new Square();
-          Piece queen = new Queen(x, y, "white");
+          Square slot = new Square(x, y);
+          Queen queen = new Queen(x, y, "white");
           slot.setPiece(queen);
           data[x][y] = slot;
         }
         //if it is a white King
         if (piece.equals("wk")){
-          Square slot = new Square();
-          Piece king = new King(x, y, "white");
+          Square slot = new Square(x, y);
+          King king = new King(x, y, "white");
           slot.setPiece(king);
           data[x][y] = slot;
         }
       }
     }
   }
-  //limits the possible moves of the pawn based on situation
-  //public String[][] limitPiece(Piece piece){
+  //limits the possible moves of all pieces based on situation
+  public void limitKing(King k){
+    String[][] ans = k.getData();
+    for (int y = 0; y < ans.length; y++){
+      for (int x = 0; x < ans[y].length; x++){
+        if (ans[y][x].equals("o")) {
+          if (!(data[y][x].isEmpty())){
+            if(data[y][x].getPiece().getColor() != k.getColor()){
+              ans[y][x] = "x";
+            }
+            else{
+              ans[y][x] = "null";
+            }
+          }
+        }
+      }
+    }
+    k.setData(ans);
+  }
 
-  //}
+  public boolean moveKing(King k, int x, int y){
+    String[][] possibleMoves = k.getData();
+    if (!(possibleMoves[y][x].equals(null))){
+      if (possibleMoves[y][x].equals("o")){
+        data[k.getY()][k.getX()].removePiece();
+        data[y][x].setPiece(k);
+        return true;
+      }
+    }
+    return false;
+  }
   /*
   public String[][] possibleMoves(int x, int y, String[][] moveList){
     String[][] ans = new String[8][8];
@@ -135,12 +163,18 @@ public class Chessboard{
     }
   }
 */
+
   public String toString(){
     String ans = "";
-    for (int x = 0; x < data.length; x++){
+    for (int y = 0; y < data.length; y++){
       String line = "";
-      for (int y = 0; y < data[x].length; y++){
-        line += data[x][y].getPiece().getType() + " ";
+      for (int x = 0; x < data[y].length; x++){
+        if(data[y][x].isEmpty()){
+          line += "_ ";
+        }
+        else{
+          line += data[x][y].getPiece().getType() + " ";
+        }
       }
       line += "\n";
       ans += line;
