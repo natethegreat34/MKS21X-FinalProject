@@ -3,56 +3,62 @@ public class King extends Piece{
   private int yCor;
   private String color;
   private String type;
+
   public King(int x, int y, String colorWB){
+    //sets the color
     color = colorWB;
+    //sets it type
     if (color.equals("black")){
       type = "bk";
     }
     if (color.equals("white")){
       type = "wk";
     }
+    //sets its coordinates
     xCor = x;
     yCor = y;
   }
+
   public String getType(){
+    //returns it type
     return type;
   }
 
-  public String [][] possiblemoves(int x, int y){
+  public String [][] possiblemoves(){
       String [][] kpm = new String [8][8];
-      if (y + 1 < 8){
+      if (yCor+ 1 < 8){
         // ^
-        kpm [x] [y + 1] = "o";
+        kpm [xCor] [yCor+ 1] = "o";
       }
-      if (y - 1 >= 0){
+      if (yCor- 1 >= 0){
         // v
-        kpm [x] [y - 1] = "o";
+        kpm [xCor] [yCor- 1] = "o";
       }
-      if (x + 1 < 8 && y + 1 < 8){
+      if (xCor+ 1 < 8 && yCor+ 1 < 8){
         // />
-        kpm [x + 1] [y + 1] = "o";
+        kpm [xCor+ 1] [yCor+ 1] = "o";
         // >
-        kpm [x + 1] [y] = "o";
+        kpm [xCor+ 1] [yCor] = "o";
       }
-      if (x + 1 < 8 && y - 1 >= 0){
+      if (xCor+ 1 < 8 && yCor- 1 >= 0){
         // \>
-        kpm [x + 1] [y - 1] = "o";
+        kpm [xCor+ 1] [yCor- 1] = "o";
       }
-      if (x - 1 >=0 && y - 1 >= 0){
+      if (xCor- 1 >=0 && yCor- 1 >= 0){
         // </
-        kpm [x - 1] [y - 1] = "o";
+        kpm [xCor- 1] [yCor- 1] = "o";
         // <
-        kpm [x - 1] [y] = "o";
+        kpm [xCor- 1] [yCor] = "o";
       }
-      if (x - 1 >= 0 && y + 1 < 8){
+      if (xCor- 1 >= 0 && yCor+ 1 < 8){
         // <\
-        kpm [x - 1] [y + 1] = "o";
+        kpm [xCor- 1] [yCor+ 1] = "o";
       }
-      if (x + 2 < 8 || x - 2 >= 0){
+      if (xCor+ 2 < 8 || xCor- 2 >= 0){
         //Castle Kingside
-        kpm [x + 2] [y] = "o";
+        kpm [xCor+ 2] [yCor] = "o";
         //Castle Queenside
-        kpm [x - 2] [y] = "o";
+        kpm [xCor- 2] [yCor] = "o";
       }
       return kpm;
     }
