@@ -108,6 +108,7 @@ public class Chessboard{
       }
     }
   }
+  
   //limits the possible moves of all pieces based on situation
   public void limitPiece(Piece inpt){
     String[][] ans = inpt.getData();
