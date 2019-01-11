@@ -39,5 +39,25 @@ ntly move. It will then send it to the chessboard class and the chessboard will
 look at the actual chessboard and give the actuall possible moves. The making of
 the 2d array strings will be done by for loops that will loop based on the dire-
 ction the pieces can move. We also decided that the save file will just save a
-chessboard in it with the pieces in it. 
+chessboard in it with the pieces in it.
+--------------------------------------------------------------------------------
+January 9, 2018
+Connor:
+Designing chessboard methods and how the chess board will work with Lanturna.
+Also fixed class pieces.
+
+Nathan:
+Continued making the possible moves list for all of the pieces.
+
+--------------------------------------------------------------------------------
+January 10, 2018
+
+Both:
+We worked through our code together in class.  Got the 2d array of possible
+moves to print out correctly and fixed bugs with the possible moves list.  We
+went to CS Dojo to study ad also to ask how we will make the pieces move or
+insert a text box in order for the player to insert their move.  We texted
+Timothy So and we discussed that we will use Screen in order to display our game
+so it update once we move and not every second like terminal.
+
 --------------------------------------------------------------------------------
