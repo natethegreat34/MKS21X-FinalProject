@@ -3,7 +3,7 @@ public class Piece{
   private int yCor;
   private String color;
   private String type;
-  private String[][] data;
+  private String[][] data = new String[8][8];
  //returns the xcoordinate
   public int getX(){
     return xCor;
@@ -32,6 +32,15 @@ public class Piece{
   public String getType(){
     return type;
   }
+
+  public String[][] getData(){
+    return data;
+  }
+
+  public void setData(String[][] inpt){
+    data = inpt;
+  }
+
   //returns the location
   public String getLocation(){
     String ans = "";

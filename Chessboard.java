@@ -130,12 +130,17 @@ public class Chessboard{
     k.setData(ans);
   }
 
-  public boolean moveKing(King k, int x, int y){
-    String[][] possibleMoves = k.getData();
+  public Square getSquare(int x, int y){
+    return data[y][x];
+  }
+
+  public boolean move(int xCor, int yCor, int x, int y){
+    Piece inpt = getSquare(xCor, yCor).getPiece();
+    String[][] possibleMoves = inpt.getData();
     if (!(possibleMoves[y][x].equals(null))){
       if (possibleMoves[y][x].equals("o")){
-        data[k.getY()][k.getX()].removePiece();
-        data[y][x].setPiece(k);
+        data[inpt.getY()][inpt.getX()].removePiece();
+        data[y][x].setPiece(inpt);
         return true;
       }
     }

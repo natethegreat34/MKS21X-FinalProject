@@ -7,5 +7,7 @@ public class ChessDriver{
     Chessboard chess = new Chessboard();
     chess.fillBoard("file1.txt");
     System.out.println(chess);
+    System.out.println(chess.move(1, 0, 1, 1));
+    System.out.println(chess);
   }
 }
