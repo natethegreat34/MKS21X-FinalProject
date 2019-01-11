@@ -99,10 +99,10 @@ public class Chessboard{
       }
     }
   }
-  public String[][] limitPawn(Pawn pawn){
-    //takes the possible moves list from the piece
-    String[][] inpt = pawn.getData();
-  }
+  //limits the possible moves of the pawn based on situation
+  //public String[][] limitPiece(Piece piece){
+
+  //}
   /*
   public String[][] possibleMoves(int x, int y, String[][] moveList){
     String[][] ans = new String[8][8];
