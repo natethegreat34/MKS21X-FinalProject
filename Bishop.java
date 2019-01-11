@@ -24,21 +24,21 @@ public class Bishop extends Piece{
         String [][] bpm = new String [8][8];
         //  >/
         for (int i = 0; xCor + i < 8 && yCor- i >= 0; i ++){
-            bpm [xCor+ i] [yCor- i] = "o";
+            bpm [yCor - i] [xCor + i] = "o";
         }
         // <\
         for (int i = 0; xCor- i >= 0 && yCor- i >= 0; i ++){
-            bpm [xCor- i] [yCor- i] = "o";
+            bpm [yCor- i] [xCor- i] = "o";
         }
         // >\
         for (int i = 0; xCor+ i < 8 && yCor+ i < 8; i ++){
-            bpm [xCor+ i] [yCor+ i] = "o";
+            bpm [yCor+ i] [xCor+ i] = "o";
         }
         // </
         for (int i = 0; xCor- i >= 0 && yCor+ i < 8; i ++){
-            bpm [xCor- i] [yCor+ i] = "o";
+            bpm [yCor + i] [xCor - i] = "o";
         }
-        bpm [xCor] [yCor] = "*";
+        bpm [yCor] [xCor] = "*";
         return bpm;
 
         }
