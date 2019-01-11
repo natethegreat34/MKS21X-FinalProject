@@ -63,5 +63,6 @@ public class Knight extends Piece{
        data[yCor - 2][xCor - 1] = "o";
       }
     }
+    data[yCor][xCor] = "*";
   }
 }
