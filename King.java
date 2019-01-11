@@ -37,11 +37,11 @@ public class King extends Piece{
   private void possibleMoves(){
       String [][] kpm = new String [8][8];
       if (yCor + 1 < 8){
-        // ^
+        // V
         kpm [yCor + 1] [xCor] = "o";
       }
       if (yCor - 1 >= 0){
-        // v
+        // ^
         kpm [yCor - 1] [xCor] = "o";
       }
       if (yCor+ 1 < 8 && xCor+ 1 < 8){
