@@ -113,13 +113,15 @@ public class Chessboard{
     String[][] ans = k.getData();
     for (int y = 0; y < ans.length; y++){
       for (int x = 0; x < ans[y].length; x++){
-        if (ans[y][x].equals("o")) {
-          if (!(data[y][x].isEmpty())){
-            if(data[y][x].getPiece().getColor() != k.getColor()){
-              ans[y][x] = "x";
-            }
-            else{
-              ans[y][x] = null;
+        if (ans[y][x] != null){
+          if (ans[y][x].equals("o")) {
+            if (!(data[y][x].isEmpty())){
+              if(data[y][x].getPiece().getColor() != k.getColor()){
+                ans[y][x] = "x";
+              }
+              else{
+                ans[y][x] = null;
+              }
             }
           }
         }
