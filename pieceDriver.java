@@ -15,5 +15,8 @@ public class pieceDriver{
       Knight knight = new Knight(3, 7, "white");
       System.out.println(Piece.movesString(knight.getData()));
       System.out.println("wn".equals(knight.getType()));
+      Queen queen = new Queen(5, 7, "white");
+      System.out.println(Piece.movesString(queen.getData()));
+      System.out.println("wq".equals(queen.getType()));
     }
 }
