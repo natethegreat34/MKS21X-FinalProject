@@ -60,4 +60,22 @@ insert a text box in order for the player to insert their move.  We texted
 Timothy So and we discussed that we will use Screen in order to display our game
 so it update once we move and not every second like terminal.
 
+Connor:
+Made it so the pieces kind of moved, only the king moved properly (but hey,
+that's a start!). Did this by writing a limitmoves function that took the
+possible move list, and the given piece and made it return the moves that it
+could do, due to the pieces surrounding it.
+
+--------------------------------------------------------------------------------
+January 11, 2018
+
+Both:
+We did the style where one of us coded (Connor), while another one (Nathan) told
+him what to code and if he made any errors. We skpyed on messenger for like two
+hours. We completed a lot and fixed the bugs in our code to accomplish moving
+pieces including all of their restrictions.
+
+Nathan:
+Coded a rough check method.
+
 --------------------------------------------------------------------------------
