@@ -302,38 +302,6 @@ public class Chessboard{
     }
     return false;
   }
-  /*
-  public String[][] possibleMoves(int x, int y, String[][] moveList){
-    String[][] ans = new String[8][8];
-    int greatestX = 0;
-    int greatestY = 0;
-    for (int x1 = x; x < moveList.length; x++){
-      for (int y1 = y; y < moveList[x].length; y++){
-        if (moveList[x][y].equals("o")){
-
-        }
-      }
-    }
-    return ans;
-  }
-  // public boolean canMove(Piece noob, int x, int y){
-  //   for (int x = 0; x < possibleMoves.length; x++){
-  //     if (x == x1){
-  //       if (possiblemoves[x][1] == y1){
-  //         if (data[x1][y1].isEmpty() ||
-  //       }
-  //     }
-  //   }
-  // }
-  public boolean move(int x1, int y1, int x2, int y2){
-    Piece movePiece = data[x1][y1].getPiece();
-    String[][] allMoves = movePiece.getMoveList();
-    String[][] possibleMovesList = possibleMoves(x1, y1, allMoves);
-    if(possibleMovesList[x2][y2].equals("o")){
-      data[x1][y1].removePiece();
-    }
-  }
-*/
 
   public String toString(){
     String ans = "";
