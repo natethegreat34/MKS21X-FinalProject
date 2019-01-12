@@ -3,6 +3,14 @@ public class pieceDriver{
       Bishop bishop = new Bishop(2, 7, "black");
       System.out.println(Piece.movesString(bishop.getData()));
       System.out.println("bb".equals(bishop.getType()));
+      System.out.println(bishop.getColor());
+      System.out.println(bishop.getX());
+      System.out.println(bishop.getY());
+      System.out.println(bishop.setY(6));
+      bishop.updateData();
+      System.out.println(Piece.movesString(bishop.getData()));
+
+      /*
       Rook rook = new Rook(1, 7, "white");
       System.out.println(Piece.movesString(rook.getData()));
       System.out.println("wr".equals(rook.getType()));
@@ -18,5 +26,6 @@ public class pieceDriver{
       Queen queen = new Queen(5, 7, "white");
       System.out.println(Piece.movesString(queen.getData()));
       System.out.println("wq".equals(queen.getType()));
+      */
     }
 }
