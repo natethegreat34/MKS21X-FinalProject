@@ -33,6 +33,10 @@ public class Pawn extends Piece {
     data = inpt;
   }
 
+  public void setDir(int dir){
+    direction = dir;
+  }
+
   public boolean canMove2(){
     return move2;
   }

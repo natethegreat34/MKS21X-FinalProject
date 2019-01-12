@@ -3,6 +3,8 @@ public class Piece{
   private int yCor;
   private String color;
   private String type;
+  private int direction;
+  private boolean move2;
   private String[][] data = new String[8][8];
  //returns the xcoordinate
   public int getX(){
@@ -52,6 +54,18 @@ public class Piece{
 
   public void updateData(){
     possibleMoves();
+  }
+
+  public void setDir(int dir){
+    direction = dir;
+  }
+
+  public boolean canMove2(){
+    return move2;
+  }
+
+  public void setMove2(boolean inpt){
+    move2 = inpt;
   }
 
   private void possibleMoves(){
