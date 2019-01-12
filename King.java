@@ -10,10 +10,10 @@ public class King extends Piece{
     color = colorWB;
     //sets it type
     if (color.equals("black")){
-      type = "bk";
+      type = "k";
     }
     if (color.equals("white")){
-      type = "wk";
+      type = "K";
     }
     //sets its coordinates
     xCor = x;

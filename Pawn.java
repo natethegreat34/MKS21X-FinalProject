@@ -9,10 +9,10 @@ public class Pawn extends Piece {
   public Pawn(int x, int y, String colorWB, int dir){
     color = colorWB;
     if (color.equals("black")){
-      type = "bp";
+      type = "p";
     }
     if (color.equals("white")){
-      type = "wp";
+      type = "P";
     }
     xCor = x;
     yCor = y;

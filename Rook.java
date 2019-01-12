@@ -8,10 +8,10 @@ public class Rook extends Piece {
   public Rook(int x, int y, String colorWB){
     color = colorWB;
     if (color.equals("black")){
-      type = "br";
+      type = "r";
     }
     if (color.equals("white")){
-      type = "wr";
+      type = "R";
     }
     xCor = x;
     yCor = y;

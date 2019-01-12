@@ -8,10 +8,10 @@ public class Bishop extends Piece{
     public Bishop(int x, int y, String colorWB){
       color = colorWB;
       if (color.equals("black")){
-        type = "bb";
+        type = "b";
       }
       if (color.equals("white")){
-        type = "wb";
+        type = "B";
       }
       xCor = x;
       yCor = y;

@@ -4,14 +4,14 @@ public class Queen extends Piece{
   private String color;
   private String type;
   private String[][] data;
-  
+
   public Queen(int x, int y, String colorWB){
     color = colorWB;
     if (color.equals("black")){
-      type = "bq";
+      type = "q";
     }
     if (color.equals("white")){
-      type = "wq";
+      type = "Q";
     }
     xCor = x;
     yCor = y;

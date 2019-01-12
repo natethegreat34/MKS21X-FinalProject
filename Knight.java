@@ -8,10 +8,10 @@ public class Knight extends Piece{
   public Knight(int x, int y, String colorWB){
     color = colorWB;
     if (color.equals("black")){
-      type = "bn";
+      type = "n";
     }
     if (color.equals("white")){
-      type = "wn";
+      type = "N";
     }
     xCor = x;
     yCor = y;
