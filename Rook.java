@@ -30,6 +30,10 @@ public class Rook extends Piece {
     data = inpt;
   }
 
+  public void updateData(){
+    possibleMoves();
+  }
+
   private void possibleMoves(){
       String [][] rpm = new String [8][8];
       //  >

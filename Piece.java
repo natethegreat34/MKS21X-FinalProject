@@ -49,6 +49,18 @@ public class Piece{
     ans += yCor;
     return ans;
   }
+
+  public void updateData(){
+    possibleMoves();
+  }
+
+  private void possibleMoves(){
+    for (int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        data[y][x] = "o";
+      }
+    }
+  }
   //prints the String of the moveArray made by the pieces possibleMoves methods
   public static String movesString(String[][] inpt){
     String ans = "";

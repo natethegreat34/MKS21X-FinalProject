@@ -29,6 +29,10 @@ public class Queen extends Piece{
     data = inpt;
   }
 
+  public void updateData(){
+    possibleMoves();
+  }
+
   private void possibleMoves(){
     data = new String[8][8];
     //  >/

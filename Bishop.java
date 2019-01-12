@@ -30,6 +30,10 @@ public class Bishop extends Piece{
       data = inpt;
     }
 
+    public void updateData(){
+      possibleMoves();
+    }
+
     //Bishop
     //for going / xCor- yCor= z; (x+-i)-(y+-i) = z
     // for going \ xCor+ yCor= z; (x+-i)+(y+-i) = z

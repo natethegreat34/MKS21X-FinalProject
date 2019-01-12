@@ -34,6 +34,10 @@ public class King extends Piece{
     data = inpt;
   }
 
+  public void updateData(){
+    possibleMoves();
+  }
+
   private void possibleMoves(){
       String [][] kpm = new String [8][8];
       if (yCor + 1 < 8){

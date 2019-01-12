@@ -41,6 +41,10 @@ public class Pawn extends Piece {
     move2 = inpt;
   }
 
+  public void updateData(){
+    possibleMoves();
+  }
+
   private void possibleMoves(){
       String [][] ppm = new String [8][8];
       if(direction == 0){
