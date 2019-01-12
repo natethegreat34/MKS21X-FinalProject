@@ -41,6 +41,35 @@ public class Pawn extends Piece {
     move2 = inpt;
   }
 
+  //returns the xcoordinate
+   public int getX(){
+     return xCor;
+   }
+   //returns the ycoordinate
+   public int getY(){
+     return yCor;
+   }
+   //sets the xcoordinate
+   public int setX(int x){
+     int oldVal = xCor;
+     xCor = x;
+     return oldVal;
+   }
+   //sets the ycoordinate
+   public int setY(int y){
+     int oldVal = yCor;
+     yCor = y;
+     return oldVal;
+   }
+   //returns thec color
+   public String getColor(){
+     return color;
+   }
+
+  public void updateData(){
+    possibleMoves();
+  }
+
   private void possibleMoves(){
       String [][] ppm = new String [8][8];
       if(direction == 0){

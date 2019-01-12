@@ -59,7 +59,7 @@ public class Chessboard{
         if (piece.equals("k")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "black");
-          limitKing(king);
+          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
@@ -108,26 +108,181 @@ public class Chessboard{
       }
     }
   }
+
   //limits the possible moves of all pieces based on situation
-  public void limitKing(King k){
-    String[][] ans = k.getData();
-    for (int y = 0; y < ans.length; y++){
-      for (int x = 0; x < ans[y].length; x++){
-        if (ans[y][x] != null){
-          if (ans[y][x].equals("o")) {
-            if (!(data[y][x].isEmpty())){
-              if(data[y][x].getPiece().getColor() != k.getColor()){
-                ans[y][x] = "x";
-              }
-              else{
-                ans[y][x] = null;
-              }
+  public void limitPiece(Piece inpt){
+    String[][] ans = inpt.getData();
+    int xCor = inpt.getX();
+    int yCor = inpt.getY();
+    // v
+    boolean delete = false;
+    for (int i = 0; yCor + i < 8; i ++){
+      if(!delete){
+        if (ans[yCor + i][xCor] != null){
+          if (!(data[yCor + i][xCor].isEmpty())){
+            if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + i][xCor] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor + i][xCor] = "x";
+              delete = true;
             }
           }
         }
       }
+      else{
+        ans[yCor + i][xCor] = null;
+      }
     }
-    k.setData(ans);
+    delete = false;
+    // ^
+    for (int i = 0; yCor - i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor - i][xCor] != null){
+          if (!(data[yCor - i][xCor].isEmpty())){
+            if (data[yCor - i][xCor].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - i][xCor] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor - i][xCor] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor - i][xCor] = null;
+      }
+    }
+    delete = false;
+    // <
+    for (int i = 0; xCor - i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor][xCor - i] != null){
+          if (!(data[yCor][xCor - i].isEmpty())){
+            if (data[yCor][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor][xCor - i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor][xCor - i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor][xCor - i] = null;
+      }
+    }
+    delete = false;
+    // >
+    for (int i = 0; xCor + i < 8; i ++){
+      if(!delete){
+        if (ans[yCor][xCor + i] != null){
+          if (!(data[yCor][xCor + i].isEmpty())){
+            if (data[yCor][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor][xCor + i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor][xCor + i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor][xCor + i] = null;
+      }
+    }
+    delete = false;
+    for (int i = 0; xCor + i < 8 && yCor- i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor - i][xCor + i] != null){
+          if (!(data[yCor - i][xCor + i].isEmpty())){
+            if (data[yCor - i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - i][xCor + i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor - i][xCor + i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor - i][xCor + i] = null;
+      }
+    }
+    delete = false;
+    // <\
+    for (int i = 0; xCor- i >= 0 && yCor- i >= 0; i ++){
+      if(!delete){
+        if (ans[yCor][xCor - i] != null){
+          if (!(data[yCor - i][xCor - i].isEmpty())){
+            if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - i][xCor - i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor - i][xCor - i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor - i][xCor - i] = null;
+      }
+    }
+    delete = false;
+    // >\
+    for (int i = 0; xCor+ i < 8 && yCor+ i < 8; i ++){
+      if(!delete){
+        if (ans[yCor + i][xCor + i] != null){
+          if (!(data[yCor + i][xCor + i].isEmpty())){
+            if (data[yCor + i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + i][xCor + i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor + i][xCor + i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor + i][xCor + i] = null;
+      }
+    }
+    delete = false;
+    // </
+    for (int i = 0; xCor- i >= 0 && yCor+ i < 8; i ++){
+      if(!delete){
+        if (ans[yCor + i][xCor - i] != null){
+          if (!(data[yCor + i][xCor - i].isEmpty())){
+            if (data[yCor + i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + i][xCor - i] = null;
+              delete = true;
+            }
+            else{
+              ans[yCor + i][xCor - i] = "x";
+              delete = true;
+            }
+          }
+        }
+      }
+      else{
+        ans[yCor + i][xCor - i] = null;
+      }
+    }
+    delete = false;
+    inpt.setData(ans);
   }
 
   public Square getSquare(int x, int y){
@@ -141,43 +296,12 @@ public class Chessboard{
       if (possibleMoves[y][x].equals("o")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
+        data[y][x].getPiece().updateData();
         return true;
       }
     }
     return false;
   }
-  /*
-  public String[][] possibleMoves(int x, int y, String[][] moveList){
-    String[][] ans = new String[8][8];
-    int greatestX = 0;
-    int greatestY = 0;
-    for (int x1 = x; x < moveList.length; x++){
-      for (int y1 = y; y < moveList[x].length; y++){
-        if (moveList[x][y].equals("o")){
-
-        }
-      }
-    }
-    return ans;
-  }
-  // public boolean canMove(Piece noob, int x, int y){
-  //   for (int x = 0; x < possibleMoves.length; x++){
-  //     if (x == x1){
-  //       if (possiblemoves[x][1] == y1){
-  //         if (data[x1][y1].isEmpty() ||
-  //       }
-  //     }
-  //   }
-  // }
-  public boolean move(int x1, int y1, int x2, int y2){
-    Piece movePiece = data[x1][y1].getPiece();
-    String[][] allMoves = movePiece.getMoveList();
-    String[][] possibleMovesList = possibleMoves(x1, y1, allMoves);
-    if(possibleMovesList[x2][y2].equals("o")){
-      data[x1][y1].removePiece();
-    }
-  }
-*/
 
   public String toString(){
     String ans = "";
