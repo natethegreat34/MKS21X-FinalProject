@@ -18,6 +18,8 @@ public class Rook extends Piece {
     possibleMoves();
   }
 
+  
+
   public String getType(){
     return type;
   }
