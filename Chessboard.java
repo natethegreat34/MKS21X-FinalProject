@@ -296,6 +296,7 @@ public class Chessboard{
       if (possibleMoves[y][x].equals("o")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
+        data[y][x].getPiece().updateData();
         return true;
       }
     }
