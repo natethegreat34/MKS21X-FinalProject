@@ -24,6 +24,7 @@ public class Chessboard{
         if (piece.equals("p")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "black", 0);
+          limitPiece(pawn);
           slot.setPiece(pawn);
           data[y][x] = slot;
         }
@@ -31,6 +32,7 @@ public class Chessboard{
         if (piece.equals("b")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "black");
+          limitPiece(bishop);
           slot.setPiece(bishop);
           data[y][x] = slot;
         }
@@ -38,6 +40,7 @@ public class Chessboard{
         if (piece.equals("n")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "black");
+          limitPiece(knight);
           slot.setPiece(knight);
           data[y][x] = slot;
         }
@@ -45,6 +48,7 @@ public class Chessboard{
         if (piece.equals("r")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "black");
+          limitPiece(rook);
           slot.setPiece(rook);
           data[y][x] = slot;
         }
@@ -52,6 +56,7 @@ public class Chessboard{
         if (piece.equals("q")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "black");
+          limitPiece(queen);
           slot.setPiece(queen);
           data[y][x] = slot;
         }
@@ -67,6 +72,7 @@ public class Chessboard{
         if (piece.equals("P")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "white", 1);
+          limitPiece(pawn);
           slot.setPiece(pawn);
           data[y][x] = slot;
         }
@@ -74,6 +80,7 @@ public class Chessboard{
         if (piece.equals("B")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "white");
+          limitPiece(bishop);
           slot.setPiece(bishop);
           data[y][x] = slot;
         }
@@ -81,6 +88,7 @@ public class Chessboard{
         if (piece.equals("N")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "white");
+          limitPiece(knight);
           slot.setPiece(knight);
           data[y][x] = slot;
         }
@@ -88,6 +96,7 @@ public class Chessboard{
         if (piece.equals("R")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "white");
+          limitPiece(rook);
           slot.setPiece(rook);
           data[y][x] = slot;
         }
@@ -95,6 +104,7 @@ public class Chessboard{
         if (piece.equals("Q")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "white");
+          limitPiece(queen);
           slot.setPiece(queen);
           data[y][x] = slot;
         }
@@ -102,6 +112,7 @@ public class Chessboard{
         if (piece.equals("K")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "white");
+          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
@@ -297,6 +308,7 @@ public class Chessboard{
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         data[y][x].getPiece().updateData();
+        limitPiece(data[y][x].getPiece());
         return true;
       }
     }

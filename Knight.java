@@ -53,6 +53,10 @@ public class Knight extends Piece{
     data = inpt;
   }
 
+  public void updateData(){
+    possibleMoves();
+  }
+
   private void possibleMoves(){
     data = new String[8][8];
     if (yCor + 1 < 8){
