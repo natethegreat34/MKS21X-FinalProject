@@ -305,7 +305,7 @@ public class Chessboard{
     String[][] possibleMoves = inpt.getData();
     //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
     if (possibleMoves[y][x]!=null){
-      if (possibleMoves[y][x].equals("o")){
+      if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         data[y][x].getPiece().updateData();
