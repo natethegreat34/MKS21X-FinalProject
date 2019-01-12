@@ -127,9 +127,9 @@ public class Chessboard{
     int yCor = inpt.getY();
     // v
     boolean delete = false;
-    for (int i = 0; yCor + i < 8; i ++){
+    for (int i = 1; yCor + i < 8; i ++){
       if(!delete){
-        if (ans[yCor + i][xCor] != null){
+        if (ans[yCor + i][xCor]!= null){
           if (!(data[yCor + i][xCor].isEmpty())){
             if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
               ans[yCor + i][xCor] = null;
@@ -148,7 +148,7 @@ public class Chessboard{
     }
     delete = false;
     // ^
-    for (int i = 0; yCor - i >= 0; i ++){
+    for (int i = 1; yCor - i >= 0; i ++){
       if(!delete){
         if (ans[yCor - i][xCor] != null){
           if (!(data[yCor - i][xCor].isEmpty())){
@@ -169,7 +169,7 @@ public class Chessboard{
     }
     delete = false;
     // <
-    for (int i = 0; xCor - i >= 0; i ++){
+    for (int i = 1; xCor - i >= 0; i ++){
       if(!delete){
         if (ans[yCor][xCor - i] != null){
           if (!(data[yCor][xCor - i].isEmpty())){
@@ -190,7 +190,7 @@ public class Chessboard{
     }
     delete = false;
     // >
-    for (int i = 0; xCor + i < 8; i ++){
+    for (int i = 1; xCor + i < 8; i ++){
       if(!delete){
         if (ans[yCor][xCor + i] != null){
           if (!(data[yCor][xCor + i].isEmpty())){
@@ -210,7 +210,7 @@ public class Chessboard{
       }
     }
     delete = false;
-    for (int i = 0; xCor + i < 8 && yCor- i >= 0; i ++){
+    for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
       if(!delete){
         if (ans[yCor - i][xCor + i] != null){
           if (!(data[yCor - i][xCor + i].isEmpty())){
@@ -231,7 +231,7 @@ public class Chessboard{
     }
     delete = false;
     // <\
-    for (int i = 0; xCor- i >= 0 && yCor- i >= 0; i ++){
+    for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
       if(!delete){
         if (ans[yCor][xCor - i] != null){
           if (!(data[yCor - i][xCor - i].isEmpty())){
@@ -252,7 +252,7 @@ public class Chessboard{
     }
     delete = false;
     // >\
-    for (int i = 0; xCor+ i < 8 && yCor+ i < 8; i ++){
+    for (int i = 1; xCor+ i < 8 && yCor+ i < 8; i ++){
       if(!delete){
         if (ans[yCor + i][xCor + i] != null){
           if (!(data[yCor + i][xCor + i].isEmpty())){
@@ -273,7 +273,7 @@ public class Chessboard{
     }
     delete = false;
     // </
-    for (int i = 0; xCor- i >= 0 && yCor+ i < 8; i ++){
+    for (int i = 1; xCor- i >= 0 && yCor+ i < 8; i ++){
       if(!delete){
         if (ans[yCor + i][xCor - i] != null){
           if (!(data[yCor + i][xCor - i].isEmpty())){
@@ -303,12 +303,14 @@ public class Chessboard{
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
+    //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
     if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         data[y][x].getPiece().updateData();
         limitPiece(data[y][x].getPiece());
+        //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
     }

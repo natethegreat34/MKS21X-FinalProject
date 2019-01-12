@@ -18,7 +18,7 @@ public class Rook extends Piece {
     possibleMoves();
   }
 
-  
+
 
   public String getType(){
     return type;
@@ -63,19 +63,19 @@ public class Rook extends Piece {
 
   private void possibleMoves(){
       String [][] rpm = new String [8][8];
-      //  >
+      //  v
       for (int i = 0; yCor+ i < 8; i ++){
           rpm [yCor + i] [xCor] = "o";
       }
-      // <
+      // ^
       for (int i = 0; yCor - i >= 0 ; i ++){
           rpm [yCor - i] [xCor] = "o";
       }
-      // v
+      // <
       for (int i = 0; xCor - i >= 0; i ++){
           rpm [yCor] [xCor - i] = "o";
       }
-      // ^
+      // >
       for (int i = 0; xCor+ i < 8; i ++){
           rpm [yCor] [xCor + i] = "o";
       }
