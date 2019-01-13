@@ -36,7 +36,7 @@ public class Chessboard{
 
   //==============================================================================
   public void loadGame(String filename) throws FileNotFoundException{
-    File f = new File(filename);
+    File f = new File("SaveFiles/"+filename+".txt");
     Scanner in = new Scanner(f);
     clear();
     for (int y = 0; y < data.length; y++){
@@ -594,9 +594,9 @@ public class Chessboard{
 
   //==============================================================================
 
-  public void newGame(){
+  public void newGame(String filename){
     fill();
-    file = new File("SaveFiles/save.txt");
+    file = new File("SaveFiles/"+ filename +".txt");
     FileWriter fr = null;
     try{
       boolean newFile = file.createNewFile();
