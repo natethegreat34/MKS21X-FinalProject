@@ -3,11 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Chessboard{
-  private int Kx;
-  private int Ky;
-  private int kx;
-  private int ky;
-
   private Square[][] data;
   public Chessboard(){
     data = new Square[8][8];
@@ -18,6 +13,11 @@ public class Chessboard{
       }
     }
   }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public void fillBoard(String filename) throws FileNotFoundException{
     File f = new File(filename);
     Scanner in = new Scanner(f);
@@ -72,8 +72,6 @@ public class Chessboard{
           limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
-          kx = x;
-          ky = y;
         }
         //if it is a white piece
         if (piece.equals("P")){
@@ -122,17 +120,15 @@ public class Chessboard{
           limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
-          Kx = x;
-          Ky = y;
         }
       }
     }
   }
   //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public boolean checkOnBlackKing() {
     //possible moves of the piece
     //loops through data and finds an x, which signifies a take, from each piece's data
@@ -162,7 +158,11 @@ public class Chessboard{
     //otherwise it returns false
     return false;
   }
+  //------------------------------------------------------------------------------
 
+
+
+  //==============================================================================
   public boolean checkOnWhiteKing() {
     //possible moves of the piece
     //loops through data and finds an x, which signifies a take, from each piece's data
@@ -374,12 +374,20 @@ public class Chessboard{
     }
     delete = false;
     inpt.setData(ans);
-}
+  }
+  //------------------------------------------------------------------------------
 
+
+
+  //==============================================================================
   public Square getSquare(int x, int y){
     return data[y][x];
   }
+  //------------------------------------------------------------------------------
 
+
+
+  //==============================================================================
   public void updateAllPieces(){
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
@@ -389,7 +397,11 @@ public class Chessboard{
       }
     }
   }
+  //------------------------------------------------------------------------------
 
+
+
+  //==============================================================================
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
@@ -407,7 +419,11 @@ public class Chessboard{
     }
     return false;
   }
+  //------------------------------------------------------------------------------
 
+
+
+  //==============================================================================
   public void fill (){
         Pawn piece1 = new Pawn (0,1, "black", 0); Rook piece17 = new Rook (0,0, "black");
         data[1][0].setPiece(piece1); data[0][0].setPiece(piece17);
@@ -444,24 +460,28 @@ public class Chessboard{
         data[6][7].setPiece(piece16); data[7][7].setPiece(piece32);
 
     }
+    //------------------------------------------------------------------------------
+  
 
-  public String toString(){
-    String ans = "";
-    for (int y = 0; y < data.length; y++){
-      String line = "";
-      for (int x = 0; x < data[y].length; x++){
-        if(data[y][x].isEmpty()){
-          line += "_ ";
+
+    //==============================================================================
+    public String toString(){
+      String ans = "";
+      for (int y = 0; y < data.length; y++){
+        String line = "";
+        for (int x = 0; x < data[y].length; x++){
+          if(data[y][x].isEmpty()){
+            line += "_ ";
+          }
+          else{
+            line += data[y][x].getPiece().getType() + " ";
+          }
         }
-        else{
-          line += data[y][x].getPiece().getType() + " ";
-        }
+        line += "\n";
+        ans += line;
       }
-      line += "\n";
-      ans += line;
+      return ans;
     }
-    return ans;
-  }
 
 //for the possibleMoves method, it will use the loops from the classes and just perform them all and then check the first instances of
 //blocking pieces and pieces to be taken
