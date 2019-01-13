@@ -36,8 +36,8 @@ public class Chessboard{
 
   //==============================================================================
   public void loadGame(String filename) throws FileNotFoundException{
-    File f = new File("../SaveFiles/"+filename+".txt");
-    Scanner in = new Scanner(f);
+    file = new File("../SaveFiles/"+filename+".txt");
+    Scanner in = new Scanner(file);
     clear();
     for (int y = 0; y < data.length; y++){
       for (int x = 0; x < data[y].length; x++){
