@@ -380,6 +380,16 @@ public class Chessboard{
     return data[y][x];
   }
 
+  public void updateAllPieces(){
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        if (!(data[y][x].isEmpty())){
+          data[y][x].getPiece().updateData();
+        }
+      }
+    }
+  }
+
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
@@ -390,6 +400,7 @@ public class Chessboard{
         data[y][x].setPiece(inpt);
         data[y][x].getPiece().updateData();
         limitPiece(data[y][x].getPiece());
+        updateAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
