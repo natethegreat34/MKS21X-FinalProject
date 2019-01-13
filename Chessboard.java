@@ -133,503 +133,73 @@ public class Chessboard{
   //------------------------------------------------------------------------------
   //------------------------------------------------------------------------------
   //------------------------------------------------------------------------------
-  public boolean checkonwhite (Piece inpt){
-    String[][] ans = inpt.getData();
-    int xCor = inpt.getX();
-    int yCor = inpt.getY();
-    // v
-    boolean delete = false;
-    for (int i = 1; yCor + i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor]!= null){
-          if (!(data[yCor + i][xCor].isEmpty())){
-            if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor] = null;
-              delete = true;
-            }
-            else{
-              if(yCor + i == Ky && xCor == Kx){
-                  return true;
+  public boolean checkOnBlackKing() {
+    //possible moves of the piece
+    //loops through data and finds an x, which signifies a take, from each piece's data
+    //if that piece on data is a king then it is in check
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        Piece inpt = data[y][x].getPiece();
+        String[][] pM = inpt.getData();
+        for (int yCor = 0; yCor < pM.length; yCor++){
+          for (int xCor = 0; xCor < pM[yCor].length; xCor++){
+            //checks if its not null
+            if (pM[yCor][xCor] != null){
+              //checks for "x" to signify a take slot
+              if (pM[yCor][xCor].equals("x")){
+                //checks based on color what king is in check
+                if (inpt.getColor().equals("white")){
+                  if (data[yCor][xCor].getPiece().getType().equals("k")){
+                    return true;
+                  }
+                }
               }
-              delete = true;
             }
           }
         }
       }
-      else{
-        ans[yCor + i][xCor] = null;
-      }
     }
-    delete = false;
-    // ^
-    for (int i = 1; yCor - i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor] != null){
-          if (!(data[yCor - i][xCor].isEmpty())){
-            if (data[yCor - i][xCor].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor] = null;
-              delete = true;
-            }
-            else{
-              if(yCor - i == Ky && xCor == Kx){
-                  return true;
+    //otherwise it returns false
+    return false;
+  }
+
+  public boolean checkOnWhiteKing() {
+    //possible moves of the piece
+    //loops through data and finds an x, which signifies a take, from each piece's data
+    //if that piece on data is a king then it is in check
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        Piece inpt = data[y][x].getPiece();
+        String[][] pM = inpt.getData();
+        for (int yCor = 0; yCor < pM.length; yCor++){
+          for (int xCor = 0; xCor < pM[yCor].length; xCor++){
+            //checks if its not null
+            if (pM[yCor][xCor] != null){
+              //checks for "x" to signify a take slot
+              if (pM[yCor][xCor].equals("x")){
+                //checks based on color what king is in check
+                if (inpt.getColor().equals("black")){
+                  if (data[yCor][xCor].getPiece().getType().equals("K")){
+                    return true;
+                  }
+                }
               }
-              delete = true;
             }
           }
         }
       }
-      else{
-        ans[yCor - i][xCor] = null;
-      }
     }
-    delete = false;
-    // <
-    for (int i = 1; xCor - i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor][xCor - i] != null){
-          if (!(data[yCor][xCor - i].isEmpty())){
-            if (data[yCor][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor == Ky && xCor - i == Kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor][xCor - i] = null;
-      }
-    }
-    delete = false;
-    // >
-    for (int i = 1; xCor + i < 8; i ++){
-      if(!delete){
-        if (ans[yCor][xCor + i] != null){
-          if (!(data[yCor][xCor + i].isEmpty())){
-            if (data[yCor][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor == Ky && xCor + i == Kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor][xCor + i] = null;
-      }
-    }
-    delete = false;
-    for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor + i] != null){
-          if (!(data[yCor - i][xCor + i].isEmpty())){
-            if (data[yCor - i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor - i == Ky && xCor + i == Kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // <\
-    for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor][xCor - i] != null){
-          if (!(data[yCor - i][xCor - i].isEmpty())){
-            if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor - i == Ky && xCor - i == Kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor - i] = null;
-      }
-    }
-    delete = false;
-    // >\
-    for (int i = 1; xCor+ i < 8 && yCor+ i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor + i] != null){
-          if (!(data[yCor + i][xCor + i].isEmpty())){
-            if (data[yCor + i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor + i == Ky && xCor + i == Kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // </
-    for (int i = 1; xCor- i >= 0 && yCor+ i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor - i] != null){
-          if (!(data[yCor + i][xCor - i].isEmpty())){
-            if (data[yCor + i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor + i == Ky && xCor - i == Kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor - i] = null;
-      }
-    }
-    delete = false;
-    inpt.setData(ans);
+    //otherwise it returns false
+    return false;
   }
   //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
- // ------------------------------------------------------------------------------
- // ------------------------------------------------------------------------------
-  public boolean checkonblack (Piece inpt){
-    String[][] ans = inpt.getData();
-    int xCor = inpt.getX();
-    int yCor = inpt.getY();
-    // v
-    boolean delete = false;
-    for (int i = 1; yCor + i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor]!= null){
-          if (!(data[yCor + i][xCor].isEmpty())){
-            if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor] = null;
-              delete = true;
-            }
-            else{
-              if(yCor + i == ky && xCor == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor] = null;
-      }
-    }
-    delete = false;
-    // ^
-    for (int i = 1; yCor - i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor] != null){
-          if (!(data[yCor - i][xCor].isEmpty())){
-            if (data[yCor - i][xCor].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor] = null;
-              delete = true;
-            }
-            else{
-              if(yCor - i == ky && xCor == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor] = null;
-      }
-    }
-    delete = false;
-    // <
-    for (int i = 1; xCor - i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor][xCor - i] != null){
-          if (!(data[yCor][xCor - i].isEmpty())){
-            if (data[yCor][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor == ky && xCor - i == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor][xCor - i] = null;
-      }
-    }
-    delete = false;
-    // >
-    for (int i = 1; xCor + i < 8; i ++){
-      if(!delete){
-        if (ans[yCor][xCor + i] != null){
-          if (!(data[yCor][xCor + i].isEmpty())){
-            if (data[yCor][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor == ky && xCor + i == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor][xCor + i] = null;
-      }
-    }
-    delete = false;
-    for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor + i] != null){
-          if (!(data[yCor - i][xCor + i].isEmpty())){
-            if (data[yCor - i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor - i == ky && xCor + i == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // <\
-    for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor][xCor - i] != null){
-          if (!(data[yCor - i][xCor - i].isEmpty())){
-            if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor - i == ky && xCor - i == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor - i] = null;
-      }
-    }
-    delete = false;
-    // >\
-    for (int i = 1; xCor+ i < 8 && yCor+ i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor + i] != null){
-          if (!(data[yCor + i][xCor + i].isEmpty())){
-            if (data[yCor + i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor + i == ky && xCor + i == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // </
-    for (int i = 1; xCor- i >= 0 && yCor+ i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor - i] != null){
-          if (!(data[yCor + i][xCor - i].isEmpty())){
-            if (data[yCor + i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              if(yCor + i == ky && xCor - i == kx){
-                  return true;
-              }
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor - i] = null;
-      }
-    }
-    delete = false;
-    inpt.setData(ans);
-  }
-  // ------------------------------------------------------------------------------
-  // ------------------------------------------------------------------------------
-  // ------------------------------------------------------------------------------
-  // ------------------------------------------------------------------------------
-  // ------------------------------------------------------------------------------
 
 
-  public boolean check (){
-      //piece 21 and 29 are kings
-       if (checkonwhite(piece1)){
-           return true;
-       }
-       if (checkonwhite(piece2)){
-           return true;
-       }
-       if (checkonwhite(piece3)){
-           return true;
-       }
-       if (checkonwhite(piece4)){
-           return true;
-       }
-       if (checkonwhite(piece5)){
-           return true;
-       }
-       if (checkonwhite(piece6)){
-           return true;
-       }
-       if (checkonwhite(piece7)){
-           return true;
-       }
-       if (checkonwhite(piece8)){
-           return true;
-       }
-       //========================================================
-       if (checkonblack(piece9)){
-           return true;
-       }
-       if (checkonblack(piece10)){
-           return true;
-       }
-       if (checkonblack(piece11)){
-           return true;
-       }
-       if (checkonblack(piece12)){
-           return true;
-       }
-       if (checkonblack(piece13)){
-           return true;
-       }
-       if (checkonblack(piece14)){
-           return true;
-       }
-       if (checkonblack(piece15)){
-           return true;
-       }
-       if (checkonblack(piece16)){
-           return true;
-       }
-       //========================================================
-       if (checkonwhite(piece17)){
-           return true;
-       }
-       if (checkonwhite(piece18)){
-           return true;
-       }
-       if (checkonwhite(piece19)){
-           return true;
-       }
-       if (checkonwhite(piece20)){
-           return true;
-       }
-       if (checkonwhite(piece22)){
-           return true;
-       }
-       if (checkonwhite(piece23)){
-           return true;
-       }
-       if (checkonwhite(piece24)){
-           return true;
-       }
-       //========================================================
-       if (checkonblack(piece25)){
-           return true;
-       }
-       if (checkonblack(piece26)){
-           return true;
-       }
-       if (checkonblack(piece27)){
-           return true;
-       }
-       if (checkonblack(piece28)){
-           return true;
-       }
-       if (checkonblack(piece30)){
-           return true;
-       }
-       if (checkonblack(piece31)){
-           return true;
-       }
-       if (checkonblack(piece32)){
-           return true;
-       }
-       return false;
-   }
-       //========================================================
+
+  //==============================================================================
 
   //limits the possible moves of all pieces based on situation
   public void limitPiece(Piece inpt){
-    if (check){
-        ;
-    }
-    else{
     String[][] ans = inpt.getData();
     int xCor = inpt.getX();
     int yCor = inpt.getY();
@@ -802,7 +372,7 @@ public class Chessboard{
     }
     delete = false;
     inpt.setData(ans);
-}}
+}
 
   public Square getSquare(int x, int y){
     return data[y][x];
