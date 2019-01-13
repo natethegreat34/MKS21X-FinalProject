@@ -7,6 +7,7 @@ import java.io.FileWriter;
 
 public class Chessboard{
   private Square[][] data;
+  private File file;
   public Chessboard(){
     data = new Square[8][8];
     for (int y = 0; y < data.length; y++){
@@ -587,26 +588,40 @@ public class Chessboard{
 
   }
 
-  public void newGame() throws IOException{
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  public void newGame(){
     fill();
-    File file = new File("SaveFiles/save.txt");
+    file = new File("SaveFiles/save.txt");
     FileWriter fr = null;
-    boolean newFile = file.createNewFile();
-    String dataBoard = toString();
-    if (newFile){
-      try {
-            fr = new FileWriter(file);
-            fr.write(dataBoard);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            //close resources
-            try {
-                fr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    try{
+      boolean newFile = file.createNewFile();
+      String dataBoard = toString();
+      if (newFile){
+        try {
+              fr = new FileWriter(file);
+              fr.write(dataBoard);
+          } catch (IOException e) {
+              e.printStackTrace();
+          }finally{
+              //close resources
+              try {
+                  fr.close();
+              } catch (IOException e) {
+                  e.printStackTrace();
+              }
+          }
         }
+      else{
+        saveGame();
+      }
+    }
+    catch (IOException e) {
+        e.printStackTrace();
     }
   }
 
@@ -615,6 +630,42 @@ public class Chessboard{
 
 
   //==============================================================================
+
+  public void saveGame() throws IOException {
+    FileWriter fr = null;
+    try{
+      boolean newFile = file.createNewFile();
+      String dataBoard = toString();
+      if (!newFile){
+        try {
+              fr = new FileWriter(file);
+              fr.write(dataBoard);
+          } catch (IOException e) {
+              e.printStackTrace();
+          }finally{
+              //close resources
+              try {
+                  fr.close();
+              } catch (IOException e) {
+                e.printStackTrace();
+              }
+          }
+        }
+      else{
+        newGame();
+      }
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
   public String toString(){
     String ans = "";
     for (int y = 0; y < data.length; y++){
