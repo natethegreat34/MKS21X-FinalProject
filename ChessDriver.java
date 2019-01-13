@@ -32,5 +32,11 @@ public class ChessDriver{
     System.out.println(chess.move(1, 2, 1, 3));
     System.out.println(chess);
     */
+    chess.fillBoard("file2.txt");
+    System.out.println(chess);
+    System.out.println(chess.move(3,0,4,2));
+    System.out.println(chess);
+    System.out.println(chess.move(4,2,5,0));
+    System.out.println(chess);
   }
 }
