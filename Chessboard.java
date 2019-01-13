@@ -528,15 +528,14 @@ public class Chessboard{
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
-    //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
+    System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
     if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
-        data[y][x].getPiece().updateData();
-        limitPiece(data[y][x].getPiece());
         updateAllPieces();
-        //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        limitPiece(data[y][x].getPiece());
+        System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
     }
