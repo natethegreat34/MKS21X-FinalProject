@@ -36,7 +36,7 @@ We went to the CSDojo to get more face to face planning and we came up with how
 the pieces will make their possible move lists and decided that it will generate
 its own 2D array of Strings that will hold the places where the piece can curre-
 ntly move. It will then send it to the chessboard class and the chessboard will
-look at the actual chessboard and give the actual possible moves. The making of
+look at the actual chessboard and give the actuall possible moves. The making of
 the 2d array strings will be done by for loops that will loop based on the dire-
 ction the pieces can move. We also decided that the save file will just save a
 chessboard in it with the pieces in it.
@@ -59,23 +59,5 @@ went to CS Dojo to study ad also to ask how we will make the pieces move or
 insert a text box in order for the player to insert their move.  We texted
 Timothy So and we discussed that we will use Screen in order to display our game
 so it update once we move and not every second like terminal.
-
-Connor:
-Made it so the pieces kind of moved, only the king moved properly (but hey,
-that's a start!). Did this by writing a limitmoves function that took the
-possible move list, and the given piece and made it return the moves that it
-could do, due to the pieces surrounding it.
-
---------------------------------------------------------------------------------
-January 11, 2018
-
-Both:
-We did the style where one of us coded (Connor), while another one (Nathan) told
-him what to code and if he made any errors. We skpyed on messenger for like two
-hours. We completed a lot and fixed the bugs in our code to accomplish moving
-pieces including all of their restrictions.
-
-Nathan:
-Coded a rough check method.
 
 --------------------------------------------------------------------------------

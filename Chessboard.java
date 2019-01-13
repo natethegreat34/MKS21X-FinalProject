@@ -3,10 +3,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Chessboard{
-    private int Kx;
-    private int Ky;
-    private int kx;
-    private int ky;
+  private int Kx;
+  private int Ky;
+  private int kx;
+  private int ky;
 
   private Square[][] data;
   public Chessboard(){

@@ -1,4 +1,5 @@
 public class Chess{
+  /*
 private String [] [] board;
 public Chess (){
       board = new Squares [8][8];
@@ -85,8 +86,10 @@ public void setup(){
     }
 
 }
+*/
 }
 // private void save();
 //
 //
+
 // }
