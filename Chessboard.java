@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.IOException;
+import java.io.FileWriter;
+
 public class Chessboard{
   private Square[][] data;
   public Chessboard(){
@@ -528,14 +531,14 @@ public class Chessboard{
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
-    System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
+    //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
     if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         updateAllPieces();
         limitPiece(data[y][x].getPiece());
-        System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
     }
@@ -583,6 +586,30 @@ public class Chessboard{
     data[6][7].setPiece(piece16); data[7][7].setPiece(piece32);
 
   }
+
+  public void newGame() throws IOException{
+    fill();
+    File file = new File("SaveFiles/save.txt");
+    FileWriter fr = null;
+    boolean newFile = file.createNewFile();
+    String dataBoard = toString();
+    if (newFile){
+      try {
+            fr = new FileWriter(file);
+            fr.write(dataBoard);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            //close resources
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+  }
+
   //------------------------------------------------------------------------------
 
 
