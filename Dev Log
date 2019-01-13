@@ -79,3 +79,14 @@ Nathan:
 Coded a rough check method.
 
 --------------------------------------------------------------------------------
+January 12, 2018
+Both:
+We yet again did one person typing(Connor) and one person editing(Nathan). We
+refined the check methods and made a successful check system. We also added kn-
+ight moves to the limit method. We then realized that move was actually counter
+acting the limit method by using the update all method in the wrong placed. This
+allowed us to finally make somewhat of a working game in our driver.
+
+Connor:
+Coded the saveGame, newGame, and loadGame methods which successfully made the
+save system as promised in our proposal. 

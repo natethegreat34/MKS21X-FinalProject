@@ -1,7 +1,8 @@
 public class Chess{
+  /*
 private String [] [] board;
 public Chess (){
-      board = new String [8][8];
+      board = new Squares [8][8];
       clear();
       setup();
         }
@@ -30,7 +31,25 @@ for (int x = 0; x < 8; x ++){
         }
       }
     }
+public Squares [][] fill (){
+    Pawn pawn = new Pawn (0,1, "black", 0); Rook rook = new Rook (0,0, "black");
+    Pawn pawn = new Pawn (1,1, "black", 0);Knight knight = new Knight (1, 0, "black");
+    Pawn pawn = new Pawn (2,1, "black", 0);Bishop bishop = new Bishop (2, 0, "black");
+    Pawn pawn = new Pawn (3,1, "black", 0);Queen queen = new Queen (3, 0, "black");
+    Pawn pawn = new Pawn (4,1, "black", 0);King king = new King (4, 0, "black");
+    Pawn pawn = new Pawn (5,1, "black", 0);Bishop bishop = new Bishop (5, 0, "black");
+    Pawn pawn = new Pawn (6,1, "black", 0);Knight knight = new Knight (6, 0, "black");
+    Pawn pawn = new Pawn (7,1, "black", 0);Rook rook = new Rook (7, 0, "black");
 
+    Pawn pawn = new Pawn (0,6, "white", 1); Rook rook = new Rook (0,7, "white");
+    Pawn pawn = new Pawn (1,6, "white", 1);Knight knight = new Knight (1, 7, "white");
+    Pawn pawn = new Pawn (2,6, "white", 1);Bishop bishop = new Bishop (2, 7, "white");
+    Pawn pawn = new Pawn (3,6, "white", 1);Queen queen = new Queen (3, 7, "white");
+    Pawn pawn = new Pawn (4,6, "white", 1);King king = new King (4, 7, "white");
+    Pawn pawn = new Pawn (5,6, "white", 1);Bishop bishop = new Bishop (5, 7, "white");
+    Pawn pawn = new Pawn (6,6, "white", 1);Knight knight = new Knight (6, 7, "white");
+    Pawn pawn = new Pawn (7,6, "white", 1);Rook rook = new Rook (7, 7, "white");
+}
     // need to call each piece and set location
 public void setup(){
     //black rooks
@@ -67,8 +86,10 @@ public void setup(){
     }
 
 }
+*/
 }
 // private void save();
 //
 //
+
 // }
