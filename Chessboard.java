@@ -35,7 +35,7 @@ public class Chessboard{
 
 
   //==============================================================================
-  public void fillBoard(String filename) throws FileNotFoundException{
+  public void loadGame(String filename) throws FileNotFoundException{
     File f = new File(filename);
     Scanner in = new Scanner(f);
     clear();
@@ -550,7 +550,7 @@ public class Chessboard{
 
 
   //==============================================================================
-  public void fill (){
+  private void fill (){
     clear();
     Pawn piece1 = new Pawn (0,1, "black", 0); Rook piece17 = new Rook (0,0, "black");
     data[1][0].setPiece(piece1); data[0][0].setPiece(piece17);
@@ -659,6 +659,7 @@ public class Chessboard{
         e.printStackTrace();
     }
   }
+
 
   //------------------------------------------------------------------------------
 
