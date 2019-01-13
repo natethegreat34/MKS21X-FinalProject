@@ -8,27 +8,27 @@ public class ChessDriver{
     Chessboard chess = new Chessboard();
     chess.newGame("save1");
     System.out.println(chess);
-    System.out.println("In Check: " + chess.checkOnWhiteKing());
+    //System.out.println("In Check: " + chess.checkOnWhiteKing());
     System.out.println(chess.move(5, 6, 5, 5));
     System.out.println(chess);
-    System.out.println("In Check: " + chess.checkOnWhiteKing());
+    //System.out.println("In Check: " + chess.checkOnWhiteKing());
     System.out.println(chess.move(4, 1, 4, 3));
     System.out.println(chess);
-    System.out.println("In Check: " + chess.checkOnWhiteKing());
+    //System.out.println("In Check: " + chess.checkOnWhiteKing());
     System.out.println(chess.move(6, 6, 6, 4));
     System.out.println(chess);
-    System.out.println("In Check: " + chess.checkOnWhiteKing());
+    //System.out.println("In Check: " + chess.checkOnWhiteKing());
     System.out.println(chess.move(3, 0, 7, 4));
     System.out.println(chess);
-    System.out.println("In Check: " + chess.checkOnWhiteKing());
+    //System.out.println("In Check: " + chess.checkOnWhiteKing());
     chess.saveGame();
     chess.newGame("save2");
     System.out.println(chess);
     chess.loadGame("save1");
     System.out.println(chess);
+    chess.printAllData();
     System.out.println("In Check: " + chess.checkOnWhiteKing());
-    chess.clear();
-    System.out.println(chess);
+
     /*
     chess.fill();
     System.out.println(chess);

@@ -188,17 +188,22 @@ public class Chessboard{
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
         if(!(data[y][x].isEmpty())){
+          System.out.println("Passed isEmpty()");
           Piece inpt = data[y][x].getPiece();
           String[][] pM = inpt.getData();
           for (int yCor = 0; yCor < pM.length; yCor++){
             for (int xCor = 0; xCor < pM[yCor].length; xCor++){
               //checks if its not null
               if (pM[yCor][xCor] != null){
+                System.out.println("Passed null");
                 //checks for "x" to signify a take slot
                 if (pM[yCor][xCor].equals("x")){
+                  System.out.println("Passed x check");
                   //checks based on color what king is in check
                   if (inpt.getColor().equals("black")){
+                    System.out.println("Passed color pass");
                     if (data[yCor][xCor].getPiece().getType().equals("K")){
+                      System.out.println("Passed K pass\n\n\n\n");
                       return true;
                     }
                   }
@@ -666,7 +671,15 @@ public class Chessboard{
 
 
   //==============================================================================
-
+  public String printAllData(){
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        String [][] inpt = data[y][x].getPiece().getData();
+        System.out.println(Piece.movesString(inpt));
+      }
+    }
+    return "Done";
+  }
   public String toString(){
     String ans = "";
     for (int y = 0; y < data.length; y++){
