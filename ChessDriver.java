@@ -14,7 +14,7 @@ public class ChessDriver{
     chess.fillBoard("file1.txt");
     System.out.println(chess);
     System.out.println("Should Return True: " + chess.checkOnWhiteKing());
-    System.out.println(chess.move(4,1,3,1));
+    System.out.println(chess.move(3,0,4,0));
     System.out.println(chess);
     System.out.println("Should Return False: " + chess.checkOnWhiteKing());
     /*
