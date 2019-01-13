@@ -13,6 +13,12 @@ public class ChessDriver{
     */
     chess.fillBoard("file1.txt");
     System.out.println(chess);
+    System.out.println("Should Return True: " + chess.checkOnWhiteKing());
+    System.out.println(chess.move(4,1,3,1));
+    System.out.println(chess);
+    System.out.println("Should Return False: " + chess.checkOnWhiteKing());
+    /*
+    System.out.println(chess);
     System.out.println(chess.move(1, 0, 1, 1));
     System.out.println(chess);
     System.out.println(chess.move(1, 1, 2, 3));
@@ -25,5 +31,6 @@ public class ChessDriver{
     System.out.println(chess);
     System.out.println(chess.move(1, 2, 1, 3));
     System.out.println(chess);
+    */
   }
 }

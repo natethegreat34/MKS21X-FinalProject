@@ -169,18 +169,20 @@ public class Chessboard{
     //if that piece on data is a king then it is in check
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
-        Piece inpt = data[y][x].getPiece();
-        String[][] pM = inpt.getData();
-        for (int yCor = 0; yCor < pM.length; yCor++){
-          for (int xCor = 0; xCor < pM[yCor].length; xCor++){
-            //checks if its not null
-            if (pM[yCor][xCor] != null){
-              //checks for "x" to signify a take slot
-              if (pM[yCor][xCor].equals("x")){
-                //checks based on color what king is in check
-                if (inpt.getColor().equals("black")){
-                  if (data[yCor][xCor].getPiece().getType().equals("K")){
-                    return true;
+        if(!(data[y][x].isEmpty())){
+          Piece inpt = data[y][x].getPiece();
+          String[][] pM = inpt.getData();
+          for (int yCor = 0; yCor < pM.length; yCor++){
+            for (int xCor = 0; xCor < pM[yCor].length; xCor++){
+              //checks if its not null
+              if (pM[yCor][xCor] != null){
+                //checks for "x" to signify a take slot
+                if (pM[yCor][xCor].equals("x")){
+                  //checks based on color what king is in check
+                  if (inpt.getColor().equals("black")){
+                    if (data[yCor][xCor].getPiece().getType().equals("K")){
+                      return true;
+                    }
                   }
                 }
               }
