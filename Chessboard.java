@@ -388,90 +388,111 @@ public class Chessboard{
     }
     //special knight moves
     //will check the possible knight moves and limit import junit.framework.TestCase;
-    if (ans[yCor + 1][xCor + 2] != null){
-      if (!(data[yCor + 1][xCor + 2].isEmpty())){
-        if (data[yCor + 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor + 1][xCor + 2] = null;
+    if (yCor + 1 < 8){
+      if (xCor + 2 < 8){
+        if (ans[yCor + 1][xCor + 2] != null){
+          if (!(data[yCor + 1][xCor + 2].isEmpty())){
+            if (data[yCor + 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + 1][xCor + 2] = null;
+            }
+            else{
+              ans[yCor + 1][xCor + 2] = "x";
+            }
+          }
         }
-        else{
-          ans[yCor + 1][xCor + 2] = "x";
+      }
+
+      if(xCor - 2 >= 0){
+        if (ans[yCor + 1][xCor - 2] != null){
+          if (!(data[yCor + 1][xCor - 2].isEmpty())){
+            if (data[yCor + 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + 1][xCor - 2] = null;
+            }
+            else{
+              ans[yCor + 1][xCor - 2] = "x";
+            }
+          }
         }
       }
     }
 
-    if (ans[yCor + 1][xCor - 2] != null){
-      if (!(data[yCor + 1][xCor - 2].isEmpty())){
-        if (data[yCor + 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor + 1][xCor - 2] = null;
+    if(yCor + 2 < 8){
+      if (xCor + 1 < 8){
+        if (ans[yCor + 2][xCor + 1] != null){
+          if (!(data[yCor + 2][xCor + 1].isEmpty())){
+            if (data[yCor + 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + 2][xCor + 1] = null;
+            }
+            else{
+              ans[yCor + 2][xCor + 1] = "x";
+            }
+          }
         }
-        else{
-          ans[yCor + 1][xCor - 2] = "x";
+      }
+      if (xCor - 1 >= 0){
+        if (ans[yCor + 2][xCor - 1] != null){
+          if (!(data[yCor + 2][xCor - 1].isEmpty())){
+            if (data[yCor + 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor + 2][xCor - 1] = null;
+            }
+            else{
+              ans[yCor + 2][xCor - 1] = "x";
+            }
+          }
         }
       }
     }
 
-    if (ans[yCor + 2][xCor + 1] != null){
-      if (!(data[yCor + 2][xCor + 1].isEmpty())){
-        if (data[yCor + 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor + 2][xCor + 1] = null;
+    if (yCor - 1 >= 0){
+      if (xCor + 2 < 8){
+        if (ans[yCor - 1][xCor + 2] != null){
+          if (!(data[yCor - 1][xCor + 2].isEmpty())){
+            if (data[yCor - 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - 1][xCor + 2] = null;
+            }
+            else{
+              ans[yCor - 1][xCor + 2] = "x";
+            }
+          }
         }
-        else{
-          ans[yCor + 2][xCor + 1] = "x";
+      }
+
+      if (xCor - 2 >= 0){
+        if (ans[yCor - 1][xCor - 2] != null){
+          if (!(data[yCor - 1][xCor - 2].isEmpty())){
+            if (data[yCor - 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - 1][xCor - 2] = null;
+            }
+            else{
+              ans[yCor - 1][xCor - 2] = "x";
+            }
+          }
         }
       }
     }
-
-    if (ans[yCor + 2][xCor - 1] != null){
-      if (!(data[yCor + 2][xCor - 1].isEmpty())){
-        if (data[yCor + 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor + 2][xCor - 1] = null;
-        }
-        else{
-          ans[yCor + 2][xCor - 1] = "x";
-        }
-      }
-    }
-
-    if (ans[yCor - 1][xCor + 2] != null){
-      if (!(data[yCor - 1][xCor + 2].isEmpty())){
-        if (data[yCor - 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor - 1][xCor + 2] = null;
-        }
-        else{
-          ans[yCor - 1][xCor + 2] = "x";
+    if (yCor - 2 >= 0){
+      if (xCor + 1 < 8){
+        if (ans[yCor - 2][xCor + 1] != null){
+          if (!(data[yCor - 2][xCor + 1].isEmpty())){
+            if (data[yCor - 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - 2][xCor + 1] = null;
+            }
+            else{
+              ans[yCor - 2][xCor + 1] = "x";
+            }
+          }
         }
       }
-    }
-
-    if (ans[yCor - 1][xCor - 2] != null){
-      if (!(data[yCor - 1][xCor - 2].isEmpty())){
-        if (data[yCor - 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor - 1][xCor - 2] = null;
-        }
-        else{
-          ans[yCor - 1][xCor - 2] = "x";
-        }
-      }
-    }
-
-    if (ans[yCor - 2][xCor + 1] != null){
-      if (!(data[yCor - 2][xCor + 1].isEmpty())){
-        if (data[yCor - 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor - 2][xCor + 1] = null;
-        }
-        else{
-          ans[yCor - 2][xCor + 1] = "x";
-        }
-      }
-    }
-
-    if (ans[yCor - 2][xCor - 1] != null){
-      if (!(data[yCor - 2][xCor - 1].isEmpty())){
-        if (data[yCor - 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
-          ans[yCor - 2][xCor - 1] = null;
-        }
-        else{
-          ans[yCor - 2][xCor - 1] = "x";
+      if (xCor - 1 >= 0){
+        if (ans[yCor - 2][xCor - 1] != null){
+          if (!(data[yCor - 2][xCor - 1].isEmpty())){
+            if (data[yCor - 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
+              ans[yCor - 2][xCor - 1] = null;
+            }
+            else{
+              ans[yCor - 2][xCor - 1] = "x";
+            }
+          }
         }
       }
     }
