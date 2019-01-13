@@ -6,9 +6,7 @@ import java.io.IOException;
 public class ChessDriver{
   public static void main(String[] args) throws FileNotFoundException{
     Chessboard chess = new Chessboard();
-    chess.fill();
     chess.newGame();
-    /*
     System.out.println(chess);
     System.out.println(chess.move(5, 6, 5, 5));
     System.out.println(chess);
@@ -19,6 +17,7 @@ public class ChessDriver{
     System.out.println(chess.move(3, 0, 7, 4));
     System.out.println(chess);
     System.out.println("In Check: " + chess.checkOnWhiteKing());
+    chess.saveGame();
     /*
     chess.fill();
     System.out.println(chess);

@@ -631,7 +631,7 @@ public class Chessboard{
 
   //==============================================================================
 
-  public void saveGame() throws IOException {
+  public void saveGame(){
     FileWriter fr = null;
     try{
       boolean newFile = file.createNewFile();
@@ -647,16 +647,16 @@ public class Chessboard{
               try {
                   fr.close();
               } catch (IOException e) {
-                e.printStackTrace();
+                  e.printStackTrace();
               }
           }
         }
       else{
-        newGame();
+        saveGame();
       }
     }
     catch (IOException e) {
-      e.printStackTrace();
+        e.printStackTrace();
     }
   }
 
