@@ -35,101 +35,105 @@ public class Chessboard{
 
 
   //==============================================================================
-  public void loadGame(String filename) throws FileNotFoundException{
-    file = new File("../SaveFiles/"+filename+".txt");
-    Scanner in = new Scanner(file);
-    clear();
-    for (int y = 0; y < data.length; y++){
-      for (int x = 0; x < data[y].length; x++){
-        //read the next letter from the file
-        String piece = in.next();
-        //if it is a black Pawn
-        if (piece.equals("p")){
-          Square slot = new Square(x, y);
-          Pawn pawn = new Pawn(x, y, "black", 0);
-          slot.setPiece(pawn);
-          data[y][x] = slot;
-        }
-        //if it is a black Bishop
-        if (piece.equals("b")){
-          Square slot = new Square(x, y);
-          Bishop bishop = new Bishop(x, y, "black");
-          slot.setPiece(bishop);
-          data[y][x] = slot;
-        }
-        //if it is a black Knight
-        if (piece.equals("n")){
-          Square slot = new Square(x, y);
-          Knight knight = new Knight(x, y, "black");
-          slot.setPiece(knight);
-          data[y][x] = slot;
-        }
-        //if it is a black Rook
-        if (piece.equals("r")){
-          Square slot = new Square(x, y);
-          Rook rook = new Rook(x, y, "black");
-          slot.setPiece(rook);
-          data[y][x] = slot;
-        }
-        //if it is a black Queen
-        if (piece.equals("q")){
-          Square slot = new Square(x, y);
-          Queen queen = new Queen(x, y, "black");
-          slot.setPiece(queen);
-          data[y][x] = slot;
-        }
-        //if it is a black King
-        if (piece.equals("k")){
-          Square slot = new Square(x, y);
-          King king = new King(x, y, "black");
-          slot.setPiece(king);
-          data[y][x] = slot;
-        }
-        //if it is a white piece
-        if (piece.equals("P")){
-          Square slot = new Square(x, y);
-          Pawn pawn = new Pawn(x, y, "white", 1);
-          slot.setPiece(pawn);
-          data[y][x] = slot;
-        }
-        //if it is a white Bishop
-        if (piece.equals("B")){
-          Square slot = new Square(x, y);
-          Bishop bishop = new Bishop(x, y, "white");
-          slot.setPiece(bishop);
-          data[y][x] = slot;
-        }
-        //if it is a white Knight
-        if (piece.equals("N")){
-          Square slot = new Square(x, y);
-          Knight knight = new Knight(x, y, "white");
-          slot.setPiece(knight);
-          data[y][x] = slot;
-        }
-        //if it is a white Rook
-        if (piece.equals("R")){
-          Square slot = new Square(x, y);
-          Rook rook = new Rook(x, y, "white");
-          slot.setPiece(rook);
-          data[y][x] = slot;
-        }
-        //if it is a white Queen
-        if (piece.equals("Q")){
-          Square slot = new Square(x, y);
-          Queen queen = new Queen(x, y, "white");
-          slot.setPiece(queen);
-          data[y][x] = slot;
-        }
-        //if it is a white King
-        if (piece.equals("K")){
-          Square slot = new Square(x, y);
-          King king = new King(x, y, "white");
-          slot.setPiece(king);
-          data[y][x] = slot;
+  public void loadGame(String filename){
+    try{
+      file = new File("../SaveFiles/"+filename+".txt");
+      Scanner in = new Scanner(file);
+      clear();
+      for (int y = 0; y < data.length; y++){
+        for (int x = 0; x < data[y].length; x++){
+          //read the next letter from the file
+          String piece = in.next();
+          //if it is a black Pawn
+          if (piece.equals("p")){
+            Square slot = new Square(x, y);
+            Pawn pawn = new Pawn(x, y, "black", 0);
+            slot.setPiece(pawn);
+            data[y][x] = slot;
+          }
+          //if it is a black Bishop
+          if (piece.equals("b")){
+            Square slot = new Square(x, y);
+            Bishop bishop = new Bishop(x, y, "black");
+            slot.setPiece(bishop);
+            data[y][x] = slot;
+          }
+          //if it is a black Knight
+          if (piece.equals("n")){
+            Square slot = new Square(x, y);
+            Knight knight = new Knight(x, y, "black");
+            slot.setPiece(knight);
+            data[y][x] = slot;
+          }
+          //if it is a black Rook
+          if (piece.equals("r")){
+            Square slot = new Square(x, y);
+            Rook rook = new Rook(x, y, "black");
+            slot.setPiece(rook);
+            data[y][x] = slot;
+          }
+          //if it is a black Queen
+          if (piece.equals("q")){
+            Square slot = new Square(x, y);
+            Queen queen = new Queen(x, y, "black");
+            slot.setPiece(queen);
+            data[y][x] = slot;
+          }
+          //if it is a black King
+          if (piece.equals("k")){
+            Square slot = new Square(x, y);
+            King king = new King(x, y, "black");
+            slot.setPiece(king);
+            data[y][x] = slot;
+          }
+          //if it is a white piece
+          if (piece.equals("P")){
+            Square slot = new Square(x, y);
+            Pawn pawn = new Pawn(x, y, "white", 1);
+            slot.setPiece(pawn);
+            data[y][x] = slot;
+          }
+          //if it is a white Bishop
+          if (piece.equals("B")){
+            Square slot = new Square(x, y);
+            Bishop bishop = new Bishop(x, y, "white");
+            slot.setPiece(bishop);
+            data[y][x] = slot;
+          }
+          //if it is a white Knight
+          if (piece.equals("N")){
+            Square slot = new Square(x, y);
+            Knight knight = new Knight(x, y, "white");
+            slot.setPiece(knight);
+            data[y][x] = slot;
+          }
+          //if it is a white Rook
+          if (piece.equals("R")){
+            Square slot = new Square(x, y);
+            Rook rook = new Rook(x, y, "white");
+            slot.setPiece(rook);
+            data[y][x] = slot;
+          }
+          //if it is a white Queen
+          if (piece.equals("Q")){
+            Square slot = new Square(x, y);
+            Queen queen = new Queen(x, y, "white");
+            slot.setPiece(queen);
+            data[y][x] = slot;
+          }
+          //if it is a white King
+          if (piece.equals("K")){
+            Square slot = new Square(x, y);
+            King king = new King(x, y, "white");
+            slot.setPiece(king);
+            data[y][x] = slot;
+          }
         }
       }
+      limitAllPieces();
+    } catch(FileNotFoundException e){
+      newGame(filename);
     }
-    limitAllPieces();
   }
   //------------------------------------------------------------------------------
 
