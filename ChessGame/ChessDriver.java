@@ -10,6 +10,7 @@ public class ChessDriver{
     System.out.println(chess);
     System.out.println(chess.move(3, 7, 2, 6));
     System.out.println(chess);
+    chess.printAllData();
     /*
     chess.newGame("save1");
     System.out.println(chess);
