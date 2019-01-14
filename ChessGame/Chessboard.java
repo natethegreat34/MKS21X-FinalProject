@@ -326,12 +326,12 @@ public class Chessboard{
     // <\
     for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
       if(!delete){
-        if (ans[yCor][xCor - i] != null){
-          System.out.println("Pass Null");
+        if (ans[yCor - i][xCor - i] != null){
+          //System.out.println("Pass Null");
           if (!(data[yCor - i][xCor - i].isEmpty())){
-            System.out.println("Pass isEmpty");
+            //System.out.println("Pass isEmpty");
             if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              System.out.println("Deletion Working");
+              //System.out.println("Deletion Working");
               ans[yCor - i][xCor - i] = null;
               delete = true;
             }
