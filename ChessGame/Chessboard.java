@@ -302,6 +302,7 @@ public class Chessboard{
       }
     }
     delete = false;
+    // >/
     for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
       if(!delete){
         if (ans[yCor - i][xCor + i] != null){
