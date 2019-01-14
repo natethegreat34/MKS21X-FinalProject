@@ -8,7 +8,6 @@ public class Demo1{
     System.out.println("This uses our newGame() method and this creates a new file if it doesn't exist already");
     chess.newGame("save1");
     System.out.println("\nNew game Chessboard:");
-    System.out.println("The new game method");
     System.out.println(chess);
     System.out.println("Checks: ");
     System.out.println("White In Check: " + chess.checkOnWhiteKing());
