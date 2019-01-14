@@ -3,7 +3,7 @@ public class Demo3{
     System.out.println("=====================================================================");
     System.out.println("Loading Demo Interactive");
     Chessboard chess =  new Chessboard();
-    chess.loadGame("demo3.txt");
+    chess.loadGame("demo3");
     System.out.println(chess);
     System.out.println("Checks: ");
     System.out.println("White In Check: " + chess.checkOnWhiteKing());

@@ -130,6 +130,7 @@ public class Chessboard{
           }
         }
       }
+      updateAllPieces();
       limitAllPieces();
     } catch(FileNotFoundException e){
       newGame(filename);
@@ -563,7 +564,7 @@ public class Chessboard{
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         updateAllPieces();
-        limitPiece(data[y][x].getPiece());
+        limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
