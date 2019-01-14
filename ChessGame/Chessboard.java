@@ -47,7 +47,6 @@ public class Chessboard{
         if (piece.equals("p")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "black", 0);
-          limitPiece(pawn);
           slot.setPiece(pawn);
           data[y][x] = slot;
         }
@@ -55,7 +54,6 @@ public class Chessboard{
         if (piece.equals("b")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "black");
-          limitPiece(bishop);
           slot.setPiece(bishop);
           data[y][x] = slot;
         }
@@ -63,7 +61,6 @@ public class Chessboard{
         if (piece.equals("n")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "black");
-          limitPiece(knight);
           slot.setPiece(knight);
           data[y][x] = slot;
         }
@@ -71,7 +68,6 @@ public class Chessboard{
         if (piece.equals("r")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "black");
-          limitPiece(rook);
           slot.setPiece(rook);
           data[y][x] = slot;
         }
@@ -79,7 +75,6 @@ public class Chessboard{
         if (piece.equals("q")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "black");
-          limitPiece(queen);
           slot.setPiece(queen);
           data[y][x] = slot;
         }
@@ -87,7 +82,6 @@ public class Chessboard{
         if (piece.equals("k")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "black");
-          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
@@ -95,7 +89,6 @@ public class Chessboard{
         if (piece.equals("P")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "white", 1);
-          limitPiece(pawn);
           slot.setPiece(pawn);
           data[y][x] = slot;
         }
@@ -103,7 +96,6 @@ public class Chessboard{
         if (piece.equals("B")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "white");
-          limitPiece(bishop);
           slot.setPiece(bishop);
           data[y][x] = slot;
         }
@@ -111,7 +103,6 @@ public class Chessboard{
         if (piece.equals("N")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "white");
-          limitPiece(knight);
           slot.setPiece(knight);
           data[y][x] = slot;
         }
@@ -119,7 +110,6 @@ public class Chessboard{
         if (piece.equals("R")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "white");
-          limitPiece(rook);
           slot.setPiece(rook);
           data[y][x] = slot;
         }
@@ -127,7 +117,6 @@ public class Chessboard{
         if (piece.equals("Q")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "white");
-          limitPiece(queen);
           slot.setPiece(queen);
           data[y][x] = slot;
         }
@@ -135,12 +124,12 @@ public class Chessboard{
         if (piece.equals("K")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "white");
-          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
       }
     }
+    limitAllPieces();
   }
   //------------------------------------------------------------------------------
 
@@ -153,18 +142,25 @@ public class Chessboard{
     //if that piece on data is a king then it is in check
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
-        Piece inpt = data[y][x].getPiece();
-        String[][] pM = inpt.getData();
-        for (int yCor = 0; yCor < pM.length; yCor++){
-          for (int xCor = 0; xCor < pM[yCor].length; xCor++){
-            //checks if its not null
-            if (pM[yCor][xCor] != null){
-              //checks for "x" to signify a take slot
-              if (pM[yCor][xCor].equals("x")){
-                //checks based on color what king is in check
-                if (inpt.getColor().equals("white")){
-                  if (data[yCor][xCor].getPiece().getType().equals("k")){
-                    return true;
+        if(!(data[y][x].isEmpty())){
+          //System.out.println("Passed isEmpty()");
+          Piece inpt = data[y][x].getPiece();
+          String[][] pM = inpt.getData();
+          for (int yCor = 0; yCor < pM.length; yCor++){
+            for (int xCor = 0; xCor < pM[yCor].length; xCor++){
+              //checks if its not null
+              if (pM[yCor][xCor] != null){
+                //System.out.println("Passed null");
+                //checks for "x" to signify a take slot
+                if (pM[yCor][xCor].equals("x")){
+                  //System.out.println("Passed x check");
+                  //checks based on color what king is in check
+                  if (inpt.getColor().equals("white")){
+                    //System.out.println("Passed color pass");
+                    if (data[yCor][xCor].getPiece().getType().equals("k")){
+                      //System.out.println("Passed K pass\n\n\n\n");
+                      return true;
+                    }
                   }
                 }
               }
@@ -188,17 +184,22 @@ public class Chessboard{
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
         if(!(data[y][x].isEmpty())){
+          //System.out.println("Passed isEmpty()");
           Piece inpt = data[y][x].getPiece();
           String[][] pM = inpt.getData();
           for (int yCor = 0; yCor < pM.length; yCor++){
             for (int xCor = 0; xCor < pM[yCor].length; xCor++){
               //checks if its not null
               if (pM[yCor][xCor] != null){
+                //System.out.println("Passed null");
                 //checks for "x" to signify a take slot
                 if (pM[yCor][xCor].equals("x")){
+                  //System.out.println("Passed x check");
                   //checks based on color what king is in check
                   if (inpt.getColor().equals("black")){
+                    //System.out.println("Passed color pass");
                     if (data[yCor][xCor].getPiece().getType().equals("K")){
+                      //System.out.println("Passed K pass\n\n\n\n");
                       return true;
                     }
                   }
@@ -308,6 +309,7 @@ public class Chessboard{
       }
     }
     delete = false;
+    // >/
     for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
       if(!delete){
         if (ans[yCor - i][xCor + i] != null){
@@ -331,9 +333,12 @@ public class Chessboard{
     // <\
     for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
       if(!delete){
-        if (ans[yCor][xCor - i] != null){
+        if (ans[yCor - i][xCor - i] != null){
+          //System.out.println("Pass Null");
           if (!(data[yCor - i][xCor - i].isEmpty())){
+            //System.out.println("Pass isEmpty");
             if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+              //System.out.println("Deletion Working");
               ans[yCor - i][xCor - i] = null;
               delete = true;
             }
@@ -529,6 +534,22 @@ public class Chessboard{
 
 
   //==============================================================================
+
+  public void limitAllPieces(){
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        if (!(data[y][x].isEmpty())){
+          limitPiece(data[y][x].getPiece());
+        }
+      }
+    }
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
@@ -552,40 +573,72 @@ public class Chessboard{
   //==============================================================================
   private void fill (){
     clear();
-    Pawn piece1 = new Pawn (0,1, "black", 0); Rook piece17 = new Rook (0,0, "black");
-    data[1][0].setPiece(piece1); data[0][0].setPiece(piece17);
-    Pawn piece2 = new Pawn (1,1, "black", 0); Knight piece18 = new Knight (1, 0, "black");
-    data[1][1].setPiece(piece2); data[0][1].setPiece(piece18);
-    Pawn piece3 = new Pawn (2,1, "black", 0); Bishop piece19 = new Bishop (2, 0, "black");
-    data[1][2].setPiece(piece3); data[0][2].setPiece(piece19);
-    Pawn piece4 = new Pawn (3,1, "black", 0); Queen piece20 = new Queen (3, 0, "black");
-    data[1][3].setPiece(piece4); data[0][3].setPiece(piece20);
-    Pawn piece5 = new Pawn (4,1, "black", 0); King piece21 = new King (4, 0, "black");
-    data[1][4].setPiece(piece5); data[0][4].setPiece(piece21);
-    Pawn piece6 = new Pawn (5,1, "black", 0); Bishop piece22 = new Bishop (5, 0, "black");
-    data[1][5].setPiece(piece6); data[0][5].setPiece(piece22);
-    Pawn piece7 = new Pawn (6,1, "black", 0); Knight piece23 = new Knight (6, 0, "black");
-    data[1][6].setPiece(piece7); data[0][6].setPiece(piece23);
-    Pawn piece8 = new Pawn (7,1, "black", 0); Rook piece24 = new Rook (7, 0, "black");
-    data[1][7].setPiece(piece8); data[0][7].setPiece(piece24);
-
-    Pawn piece9 = new Pawn (0,6, "white", 1); Rook piece25 = new Rook (0,7, "white");
-    data[6][0].setPiece(piece9); data[7][0].setPiece(piece25);
-    Pawn piece10 = new Pawn (1,6, "white", 1);Knight piece26 = new Knight (1, 7, "white");
-    data[6][1].setPiece(piece10); data[7][1].setPiece(piece26);
-    Pawn piece11 = new Pawn (2,6, "white", 1);Bishop piece27 = new Bishop (2, 7, "white");
-    data[6][2].setPiece(piece11); data[7][2].setPiece(piece27);
-    Pawn piece12 = new Pawn (3,6, "white", 1);Queen piece28 = new Queen (3, 7, "white");
-    data[6][3].setPiece(piece12); data[7][3].setPiece(piece28);
-    Pawn piece13 = new Pawn (4,6, "white", 1);King piece29 = new King (4, 7, "white");
-    data[6][4].setPiece(piece13); data[7][4].setPiece(piece29);
-    Pawn piece14 = new Pawn (5,6, "white", 1);Bishop piece30 = new Bishop (5, 7, "white");
-    data[6][5].setPiece(piece14); data[7][5].setPiece(piece30);
-    Pawn piece15 = new Pawn (6,6, "white", 1);Knight piece31 = new Knight (6, 7, "white");
-    data[6][6].setPiece(piece15); data[7][6].setPiece(piece31);
-    Pawn piece16 = new Pawn (7,6, "white", 1);Rook piece32 = new Rook (7, 7, "white");
-    data[6][7].setPiece(piece16); data[7][7].setPiece(piece32);
-
+    Rook piece17 = new Rook (0,0, "black");
+    data[0][0].setPiece(piece17);
+    Knight piece18 = new Knight (1, 0, "black");
+    data[0][1].setPiece(piece18);
+    Bishop piece19 = new Bishop (2, 0, "black");
+    data[0][2].setPiece(piece19);
+    Queen piece20 = new Queen (3, 0, "black");
+    data[0][3].setPiece(piece20);
+    King piece21 = new King (4, 0, "black");
+    data[0][4].setPiece(piece21);
+    Bishop piece22 = new Bishop (5, 0, "black");
+    data[0][5].setPiece(piece22);
+    Knight piece23 = new Knight (6, 0, "black");
+    data[0][6].setPiece(piece23);
+    Rook piece24 = new Rook (7, 0, "black");
+    data[0][7].setPiece(piece24);
+    Pawn piece1 = new Pawn (0,1, "black", 0);
+    data[1][0].setPiece(piece1);
+    Pawn piece2 = new Pawn (1,1, "black", 0);
+    data[1][1].setPiece(piece2);
+    Pawn piece3 = new Pawn (2,1, "black", 0);
+    data[1][2].setPiece(piece3);
+    Pawn piece4 = new Pawn (3,1, "black", 0);
+    data[1][3].setPiece(piece4);
+    Pawn piece5 = new Pawn (4,1, "black", 0);
+    data[1][4].setPiece(piece5);
+    Pawn piece6 = new Pawn (5,1, "black", 0);
+    data[1][5].setPiece(piece6);
+    Pawn piece7 = new Pawn (6,1, "black", 0);
+    data[1][6].setPiece(piece7);
+    Pawn piece8 = new Pawn (7,1, "black", 0);
+    data[1][7].setPiece(piece8);
+    Pawn piece9 = new Pawn (0,6, "white", 1);
+    data[6][0].setPiece(piece9);
+    Pawn piece10 = new Pawn (1,6, "white", 1);
+    data[6][1].setPiece(piece10);
+    Pawn piece11 = new Pawn (2,6, "white", 1);
+    data[6][2].setPiece(piece11);
+    Pawn piece12 = new Pawn (3,6, "white", 1);
+    data[6][3].setPiece(piece12);
+    Pawn piece13 = new Pawn (4,6, "white", 1);
+    data[6][4].setPiece(piece13);
+    Pawn piece14 = new Pawn (5,6, "white", 1);
+    data[6][5].setPiece(piece14);
+    Pawn piece15 = new Pawn (6,6, "white", 1);
+    data[6][6].setPiece(piece15);
+    Pawn piece16 = new Pawn (7,6, "white", 1);
+    data[6][7].setPiece(piece16);
+    Rook piece25 = new Rook (0,7, "white");
+    data[7][0].setPiece(piece25);
+    Knight piece26 = new Knight (1, 7, "white");
+    data[7][1].setPiece(piece26);
+    Bishop piece27 = new Bishop (2, 7, "white");
+    data[7][2].setPiece(piece27);
+    Queen piece28 = new Queen (3, 7, "white");
+    data[7][3].setPiece(piece28);
+    King piece29 = new King (4, 7, "white");
+    data[7][4].setPiece(piece29);
+    Bishop piece30 = new Bishop (5, 7, "white");
+    data[7][5].setPiece(piece30);
+    Knight piece31 = new Knight (6, 7, "white");
+    data[7][6].setPiece(piece31);
+    Rook piece32 = new Rook (7, 7, "white");
+    data[7][7].setPiece(piece32);
+    updateAllPieces();
+    limitAllPieces();
   }
 
   //------------------------------------------------------------------------------
@@ -666,7 +719,22 @@ public class Chessboard{
 
 
   //==============================================================================
+  public String printAllData(){
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        if(!(data[y][x].isEmpty())){
+          String [][] inpt = data[y][x].getPiece().getData();
+          System.out.println(Piece.movesString(inpt));
+        }
+      }
+    }
+    return "Done";
+  }
+  //------------------------------------------------------------------------------
 
+
+
+  //==============================================================================
   public String toString(){
     String ans = "";
     for (int y = 0; y < data.length; y++){

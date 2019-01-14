@@ -24,7 +24,6 @@ public class Square {
       taken = true;
       noob.setX(xCor);
       noob.setY(yCor);
-      noob.updateData();
   }
 
   public Piece removePiece(){
