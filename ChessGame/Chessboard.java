@@ -47,7 +47,6 @@ public class Chessboard{
         if (piece.equals("p")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "black", 0);
-          limitPiece(pawn);
           slot.setPiece(pawn);
           data[y][x] = slot;
         }
@@ -55,7 +54,6 @@ public class Chessboard{
         if (piece.equals("b")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "black");
-          limitPiece(bishop);
           slot.setPiece(bishop);
           data[y][x] = slot;
         }
@@ -63,7 +61,6 @@ public class Chessboard{
         if (piece.equals("n")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "black");
-          limitPiece(knight);
           slot.setPiece(knight);
           data[y][x] = slot;
         }
@@ -71,7 +68,6 @@ public class Chessboard{
         if (piece.equals("r")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "black");
-          limitPiece(rook);
           slot.setPiece(rook);
           data[y][x] = slot;
         }
@@ -79,7 +75,6 @@ public class Chessboard{
         if (piece.equals("q")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "black");
-          limitPiece(queen);
           slot.setPiece(queen);
           data[y][x] = slot;
         }
@@ -87,7 +82,6 @@ public class Chessboard{
         if (piece.equals("k")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "black");
-          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
@@ -95,7 +89,6 @@ public class Chessboard{
         if (piece.equals("P")){
           Square slot = new Square(x, y);
           Pawn pawn = new Pawn(x, y, "white", 1);
-          limitPiece(pawn);
           slot.setPiece(pawn);
           data[y][x] = slot;
         }
@@ -103,7 +96,6 @@ public class Chessboard{
         if (piece.equals("B")){
           Square slot = new Square(x, y);
           Bishop bishop = new Bishop(x, y, "white");
-          limitPiece(bishop);
           slot.setPiece(bishop);
           data[y][x] = slot;
         }
@@ -111,7 +103,6 @@ public class Chessboard{
         if (piece.equals("N")){
           Square slot = new Square(x, y);
           Knight knight = new Knight(x, y, "white");
-          limitPiece(knight);
           slot.setPiece(knight);
           data[y][x] = slot;
         }
@@ -119,7 +110,6 @@ public class Chessboard{
         if (piece.equals("R")){
           Square slot = new Square(x, y);
           Rook rook = new Rook(x, y, "white");
-          limitPiece(rook);
           slot.setPiece(rook);
           data[y][x] = slot;
         }
@@ -127,7 +117,6 @@ public class Chessboard{
         if (piece.equals("Q")){
           Square slot = new Square(x, y);
           Queen queen = new Queen(x, y, "white");
-          limitPiece(queen);
           slot.setPiece(queen);
           data[y][x] = slot;
         }
@@ -135,12 +124,12 @@ public class Chessboard{
         if (piece.equals("K")){
           Square slot = new Square(x, y);
           King king = new King(x, y, "white");
-          limitPiece(king);
           slot.setPiece(king);
           data[y][x] = slot;
         }
       }
     }
+    limitAllPieces();
   }
   //------------------------------------------------------------------------------
 
@@ -534,6 +523,22 @@ public class Chessboard{
 
 
   //==============================================================================
+
+  public void limitAllPieces(){
+    for(int y = 0; y < data.length; y++){
+      for(int x = 0; x < data[y].length; x++){
+        if (!(data[y][x].isEmpty())){
+          limitPiece(data[y][x].getPiece());
+        }
+      }
+    }
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public boolean move(int xCor, int yCor, int x, int y){
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
@@ -674,12 +679,19 @@ public class Chessboard{
   public String printAllData(){
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
-        String [][] inpt = data[y][x].getPiece().getData();
-        System.out.println(Piece.movesString(inpt));
+        if(!(data[y][x].isEmpty())){
+          String [][] inpt = data[y][x].getPiece().getData();
+          System.out.println(Piece.movesString(inpt));
+        }
       }
     }
     return "Done";
   }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public String toString(){
     String ans = "";
     for (int y = 0; y < data.length; y++){

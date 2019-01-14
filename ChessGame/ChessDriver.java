@@ -27,7 +27,7 @@ public class ChessDriver{
     chess.loadGame("save1");
     System.out.println(chess);
     chess.printAllData();
-    System.out.println("In Check: " + chess.checkOnWhiteKing());
+    //System.out.println("In Check: " + chess.checkOnWhiteKing());
 
     /*
     chess.fill();
