@@ -67,6 +67,20 @@ public class Piece{
   public void sethasmoved(boolean inpt){
     hasmoved = inpt;
   }
+  public boolean getKinghasmoved(){
+    return Kingmoved;
+  }
+
+  public void setKingmoved(boolean inpt){
+    Kingmoved = inpt;
+  }
+  public boolean getRookmoved(){
+    return Rookmoved;
+  }
+
+  public void setRookmoved(boolean inpt){
+    Rookmoved = inpt;
+  }
 
   private void possibleMoves(){
     for (int y = 0; y < data.length; y++){

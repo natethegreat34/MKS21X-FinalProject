@@ -569,20 +569,32 @@ public class Chessboard{
     if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
         data[inpt.getY()][inpt.getX()].removePiece();
+        // stops from pushing the pawn for two spaces more than once, and only at beginning
         if (inpt.getType().equals("P")){
             inpt.sethasmoved(crying);
         }
         if (inpt.getType().equals("p")){
             inpt.sethasmoved(crying);
         }
+        //Once a rook moves it can no longer castle with the king
+        if (inpt.getType().equals("R")){
+            inpt.Rookmoved(crying);
+        }
+        if (inpt.getType().equals("r")){
+            inpt.Rookmoved(crying);
+        }
+        //Once a king moves, it cannot castle
         if (inpt.getType().equals("k")){
+            inpt.Kingmoved(crying);
             kx = x;
             ky = y;
         }
         if (inpt.getType().equals("K")){
+            inpt.Kingmoved(crying);
             Kx = x;
             Ky = y;
         }
+
         data[y][x].setPiece(inpt);
         updateAllPieces();
         limitAllPieces();
