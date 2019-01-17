@@ -99,6 +99,18 @@ other.  Realized that the limit function wasn't working properly so we fixed
 that.
 --------------------------------------------------------------------------------
 January 14, 2018
-Fixed the way the pawns moved and fixed their limits.  Made it so pawn can only
-move two spaces forward if it was its first move, else it can't.
+Nathan: Fixed the way the pawns moved and fixed their limits.  Made it so pawn 
+can only move two spaces forward if it was its first move, else it can't.
+--------------------------------------------------------------------------------
+January 16, 2018
+Nathan: Made the castling possible and made it so that if the king moves, it 
+can't castle, and if a rook moves, it can't take part in a castle (if both move 
+castle cannot occur).
+--------------------------------------------------------------------------------
+January 17, 2018
+Both: Going over prototype, improving it, and reprinting some parts.  Discussed 
+what steps we have to take next. Decided pawn chess will be easy to do, we need 
+en passant, and checkmate would be great to have.  Everything else, can be extra.
+--------------------------------------------------------------------------------
+
 --------------------------------------------------------------------------------
