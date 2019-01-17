@@ -91,3 +91,10 @@ allowed us to finally make somewhat of a working game in our driver.
 Connor:
 Coded the saveGame, newGame, and loadGame methods which successfully made the
 save system as promised in our proposal. 
+--------------------------------------------------------------------------------
+January 13, 2018
+Both: We set up our demo presentation and planned how we would present.
+We did a practice presentation and assigned parts of the presentation to each 
+other.  Realized that the limit function wasn't working properly so we fixed 
+that.
+--------------------------------------------------------------------------------
