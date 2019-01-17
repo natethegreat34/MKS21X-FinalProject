@@ -98,3 +98,7 @@ We did a practice presentation and assigned parts of the presentation to each
 other.  Realized that the limit function wasn't working properly so we fixed 
 that.
 --------------------------------------------------------------------------------
+January 14, 2018
+Fixed the way the pawns moved and fixed their limits.  Made it so pawn can only
+move two spaces forward if it was its first move, else it can't.
+--------------------------------------------------------------------------------
