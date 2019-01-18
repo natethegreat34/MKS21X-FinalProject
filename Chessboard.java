@@ -457,7 +457,9 @@ public class Chessboard{
             }
             else{
               ans[yCor + 2][xCor - 1] = "x";
-            }
+            }  public Square getSquare(int x, int y){
+    return data[y][x];
+  }
           }
         }
       }
@@ -540,6 +542,7 @@ public class Chessboard{
       }
     }
   }
+
   //------------------------------------------------------------------------------
 
 
