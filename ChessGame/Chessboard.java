@@ -188,15 +188,32 @@ public class Chessboard{
 
   //==============================================================================
 
+    public void copyFromTo (String[][] from, String[][] to){
+      for (int y = 0; y < data.length; y++){
+        for (int x = 0;  x < data[y].length; x++){
+          if (from[y][x] != null){
+            if (to[y][x] == null){
+              to[y][x] = from [y][x];
+            }
+          }
+        }
+      }
+    }
+
+  //------------------------------------------------------------------------------
+
+
+  //==============================================================================
+
   public void whiteKinglimit(){
-    Piece king = data[Ky][Kx].getPiece()
+    Piece king = data[Ky][Kx].getPiece();
     limitPiece(king);
     String[][] old = king.getData();
     String[][] nsp = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
         if(data[y][x].getPiece().getColor().equals("black")){
-          copyFromTo(data[y][x].getPiece().getData(),nsp)
+          copyFromTo(data[y][x].getPiece().getData(),nsp);
         }
       }
     }
