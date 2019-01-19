@@ -186,6 +186,36 @@ public class Chessboard{
   //------------------------------------------------------------------------------
 
 
+  //==============================================================================
+
+  public void whiteKinglimit(){
+    Piece king = data[Ky][Kx].getPiece()
+    limitPiece(king);
+    String[][] old = king.getData();
+    String[][] nsp = new String[8][8];
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0;  x < data[y].length; x++){
+        if(data[y][x].getPiece().getColor().equals("black")){
+          copyFromTo(data[y][x].getPiece().getData(),nsp)
+        }
+      }
+    }
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0;  x < data[y].length; x++){
+        if (old[y][x] != null){
+          if (old[y][x] != "*"){
+            if (nsp[y][x].equals("o")){
+              old[y][x] = null;
+            }
+          }
+        }
+      }
+    }
+    king.setData(nsp);
+  }
+
+  //------------------------------------------------------------------------------
+
 
   //==============================================================================
   public boolean checkOnWhiteKing() {
@@ -619,6 +649,7 @@ public class Chessboard{
             inpt.setKingmoved(crying);
             kx = x;
             ky = y;
+          }
         }
         if (inpt.getType().equals("K")){
             if (!inpt.getKingmoved()){
@@ -655,6 +686,7 @@ public class Chessboard{
             inpt.setKingmoved(crying);
             Kx = x;
             Ky = y;
+          }
         }
 
 
@@ -672,7 +704,7 @@ public class Chessboard{
 
 
   //==============================================================================
-  public void fill (){
+  public void fill(){
     clear();
     Rook piece17 = new Rook (0,0, "black");
     data[0][0].setPiece(piece17);
