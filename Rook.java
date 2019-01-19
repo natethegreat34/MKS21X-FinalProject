@@ -84,6 +84,14 @@ public class Rook extends Piece {
       for (int i = 0; xCor+ i < 8; i ++){
           rpm [yCor] [xCor + i] = "o";
       }
+      if (!Rookmoved){
+          if(xCor == 0){
+              xCor = 2;
+          }
+          if(xCor == 7){
+              xCor = 5;
+          }
+      }
       rpm [yCor] [xCor] = "*";
       data = rpm;
 

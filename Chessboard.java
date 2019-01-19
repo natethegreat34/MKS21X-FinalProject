@@ -457,9 +457,7 @@ public class Chessboard{
             }
             else{
               ans[yCor + 2][xCor - 1] = "x";
-            }  public Square getSquare(int x, int y){
-    return data[y][x];
-  }
+            }
           }
         }
       }
@@ -542,7 +540,6 @@ public class Chessboard{
       }
     }
   }
-
   //------------------------------------------------------------------------------
 
 
@@ -581,22 +578,85 @@ public class Chessboard{
         }
         //Once a rook moves it can no longer castle with the king
         if (inpt.getType().equals("R")){
-            inpt.Rookmoved(crying);
+            inpt.setRookmoved(crying);
         }
         if (inpt.getType().equals("r")){
-            inpt.Rookmoved(crying);
+            inpt.setRookmoved(crying);
         }
         //Once a king moves, it cannot castle
         if (inpt.getType().equals("k")){
-            inpt.Kingmoved(crying);
+            if (!inpt.getKingmoved()){
+                //Black castle >>>
+                if(xCor == x - 2){
+                    Piece rock = getSquare(7, 0).getPiece();
+                    if (rock.getType().equals("r")){
+                        if (possibleMoves[y][x]!= null && possibleMoves[y][x - 1]!= null ){
+                            if (!getRookmoved){
+                                data[y][x].setPiece(inpt);
+                                data[yCor][xCor] = null;
+                                data [y] [x-1].setPiece(rock);
+                                data[0][7] = null;
+                                return true;
+                            }
+                        }
+                    }
+                }
+                //Black castle <<<
+                if(xCor == x + 2){
+                    Piece rock = getSquare(0, 0).getPiece();
+                    if (rock.getType().equals("r")){
+                        if (possibleMoves[y][x]!= null && possibleMoves[y][x + 1]!= null ){
+                            if (!getRookmoved){
+                                data[y][x].setPiece(inpt);
+                                data[yCor][xCor] = null;
+                                data [y] [x-1].setPiece(rock);
+                                data[0][0] = null;
+                                return true;
+                            }
+                        }
+                    }
+                }
+            inpt.setKingmoved(crying);
             kx = x;
             ky = y;
         }
         if (inpt.getType().equals("K")){
-            inpt.Kingmoved(crying);
+            if (!inpt.getKingmoved()){
+                //White castle >>>
+                if(xCor == x - 2){
+                    Piece rock = getSquare(7, 7).getPiece();
+                    if (rock.getType().equals("R")){
+                        if (possibleMoves[y][x]!= null && possibleMoves[y][x - 1]!= null ){
+                            if (!getRookmoved){
+                                data[y][x].setPiece(inpt);
+                                data[yCor][xCor] = null;
+                                data [y] [x-1].setPiece(rock);
+                                data[7][7] = null;
+                                return true;
+                            }
+                        }
+                    }
+                }
+                //Black castle <<<
+                if(xCor == x + 2){
+                    Piece rock = getSquare(0, 7).getPiece();
+                    if (rock.getType().equals("R")){
+                        if (possibleMoves[y][x]!= null && possibleMoves[y][x + 1]!= null ){
+                            if (!getRookmoved){
+                                data[y][x].setPiece(inpt);
+                                data[yCor][xCor] = null;
+                                data [y] [x-1].setPiece(rock);
+                                data [7][0] = null;
+                                return true;
+                            }
+                        }
+                    }
+                }
+            inpt.setKingmoved(crying);
             Kx = x;
             Ky = y;
         }
+
 
         data[y][x].setPiece(inpt);
         updateAllPieces();
