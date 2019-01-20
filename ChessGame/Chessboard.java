@@ -226,16 +226,34 @@ public class Chessboard{
 
   //==============================================================================
 
-  public boolean canCastleWhite(){
+  public boolean canCastleWhite(String side){
     int y = kingW.getY();
     int x = kingW.getX();
-    if(kingW.getMoveNumber() == 0){
-      if(data[y][x + 2].getPiece()!= null || data[y][x - 2].getPiece() != null){
-        if(data[y][x + 4].getPiece().getType().equals("R") || data[y][x - 3].getPiece().getType().equals("R")){
-          if(data[y][x + 4].getPiece().getMoveNumber() == 0 || data[y][x - 3].getPiece().getMoveNumber() == 0){
-            if((data[y][x + 1].getPiece() != null && data[y][x + 2] != null && data[y][x + 3] != null) || (data[y][x - 1].getPiece() != null && data[y][x - 2] != null)){
-              if(!checkOnWhiteKing()){
-                return true;
+    side.toLowerCase();
+    if(side.equals("queen")){
+      if(kingW.getMoveNumber() == 0){
+        if(data[y][x - 4].getPiece() != null){
+          if(data[y][x - 4].getPiece().getType().equals("R")){
+            if(data[y][x - 4].getPiece().getMoveNumber() == 0){
+              if(data[y][x - 1].getPiece() != null && data[y][x - 2] != null && data[y][x - 3] != null){
+                if(!checkOnWhiteKing()){
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if(side.equals("king")){
+      if(kingW.getMoveNumber() == 0){
+        if(data[y][x + 3].getPiece() != null){
+          if(data[y][x + 3].getPiece().getType().equals("R")){
+            if(data[y][x + 3].getPiece().getMoveNumber() == 0){
+              if(data[y][x + 1].getPiece() != null && data[y][x + 2] != null){
+                if(!checkOnWhiteKing()){
+                  return true;
+                }
               }
             }
           }
@@ -245,15 +263,26 @@ public class Chessboard{
     return false;
   }
 
-  public boolean castle(King king, Rook rook){
-    if(king.getColor().equals("white") && rook.getColor().equals("white")){
-      if(canCastleWhite()){
-        if(!whiteKingMovingIntoCheck())
-      }
+  public boolean castle(King king, String side){
+    if(side.equals("king")){
+      Piece rook = data[king.getY()][king.getX() + 3].getPiece();
+      data[king.getY()][king.getX()].removePiece();
+      data[king.getY()][king.getX()+2].setPiece(king);
+      data[rook.getY()][rook.getX()].removePiece();
+      data[rook.getY()][rook.getX()-2].setPiece(rook);
+      return true;
     }
+    if(side.equals("queen")){
+      Piece rook = data[king.getY()][king.getX() - 4].getPiece();
+      data[king.getY()][king.getX()].removePiece();
+      data[king.getY()][king.getX()-2].setPiece(king);
+      data[rook.getY()][rook.getX()].removePiece();
+      data[rook.getY()][rook.getX()+3].setPiece(rook);
+      return true;
+    }
+    return false;
   }
   //------------------------------------------------------------------------------
-
 
 
   //==============================================================================
@@ -624,6 +653,16 @@ public class Chessboard{
             }
           }
         }
+      }
+    }
+    //special cases for castling based on the helper methods that will determine if conditions are rightf
+    //it separates the cases by which side to castle on and which color
+    if(inpt.getColor().equals("K")){
+      if(!canCastleWhite("king")){
+        ans[yCor][xCor + 2] = null;
+      }
+      if(!canCastleWhite("queen")){
+        ans[yCor][xCor - 2] = null;
       }
     }
     inpt.setData(ans);

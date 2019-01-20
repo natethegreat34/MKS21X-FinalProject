@@ -97,11 +97,11 @@ public class King extends Piece{
       }
       if (xCor + 2 < 8){
         //Castle Kingside
-        kpm [yCor] [xCor + 2] = "o";
+        kpm [yCor] [xCor + 2] = "C";
       }
       if (xCor- 2 >= 0){
         //Castle Queenside
-        kpm [yCor] [xCor - 2] = "o";
+        kpm [yCor] [xCor - 2] = "c";
       }
       kpm[yCor][xCor] = "*";
       data = kpm;
