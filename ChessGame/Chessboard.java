@@ -10,8 +10,8 @@ public class Chessboard{
   private File file;
   private King kingW;
   private King kingB;
-  private String[][] allBlackMoves;
-  private String[][] allWhiteMoves;
+  private String[][] blackMoves;
+  private String[][] whiteMoves;
   public Chessboard(){
     data = new Square[8][8];
     for (int y = 0; y < data.length; y++){
@@ -31,11 +31,11 @@ public class Chessboard{
     for (int y = 0; y < 8; y++){
       String line = "";
       for (int x = 0; x < 8; x++){
-        if(allBlackMoves[y][x] == null){
+        if(blackMoves[y][x] == null){
           line += "_ ";
         }
         else{
-          line += allBlackMoves[y][x] + " ";
+          line += blackMoves[y][x] + " ";
         }
       }
       line += "\n";
@@ -53,11 +53,11 @@ public class Chessboard{
     for (int y = 0; y < 8; y++){
       String line = "";
       for (int x = 0; x < 8; x++){
-        if(allWhiteMoves[y][x] == null){
+        if(whiteMoves[y][x] == null){
           line += "_ ";
         }
         else{
-          line += allWhiteMoves[y][x] + " ";
+          line += whiteMoves[y][x] + " ";
         }
       }
       line += "\n";
@@ -213,12 +213,12 @@ public class Chessboard{
   //==============================================================================
 
   private void updateAllBlacksMoves(){
-    allBlackMoves = new String[8][8];
+    blackMoves = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
         if(data[y][x].getPiece() != null){
           if(data[y][x].getPiece().getColor().equals("black")){
-            copyFromTo(data[y][x].getPiece().getData(), allBlackMoves);
+            copyFromTo(data[y][x].getPiece().getData(), blackMoves);
           }
         }
       }
@@ -232,12 +232,12 @@ public class Chessboard{
   //==============================================================================
 
   private void updateAllWhitesMoves(){
-    allWhiteMoves = new String[8][8];
+    whiteMoves = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
         if(data[y][x].getPiece() != null){
           if(data[y][x].getPiece().getColor().equals("white")){
-            copyFromTo(data[y][x].getPiece().getData(), allWhiteMoves);
+            copyFromTo(data[y][x].getPiece().getData(), whiteMoves);
           }
         }
       }
@@ -251,7 +251,7 @@ public class Chessboard{
   //==============================================================================
 
   private boolean whiteKingMovingIntoCheck(int x, int y){
-    if (allBlackMoves[y][x].equals("o")){
+    if (blackMoves[y][x].equals("o")){
       return true;
     }
     return false;
@@ -264,7 +264,7 @@ public class Chessboard{
   //==============================================================================
 
   private boolean blackKingMovingIntoCheck(int x, int y){
-    if (allWhiteMoves[y][x].equals("o")){
+    if (whiteMoves[y][x].equals("o")){
       return true;
     }
     return false;
@@ -279,7 +279,7 @@ public class Chessboard{
   public boolean canCastleWhite(String side){
     int y = kingW.getY();
     int x = kingW.getX();
-    String[][] board = allWhiteMoves;
+    String[][] board = whiteMoves;
     side.toLowerCase();
     if(side.equals("queen")){
       System.out.println("Checking Queen Side");
@@ -299,8 +299,8 @@ public class Chessboard{
               }
               if(!checkOnWhiteKing()){
                 System.out.println("Passed 5");
-                for(int i = x + 1; i < 7; i++){
-                  if(allBlackMoves[y][i]!=null){
+                for(int i = x - 1; i >= 1; i--){
+                  if(blackMoves[y][i] != null){
                     return false;
                   }
                 }
@@ -322,7 +322,7 @@ public class Chessboard{
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
               System.out.println("Passed 4");
               for(int i = x + 1; i < 7; i++){
-                if(data[y][i].getPiece()!=null){
+                if(data[y][i].getPiece() != null){
                   System.out.println(data[y][i].getPiece().getType());
                   return false;
                 }
@@ -330,10 +330,11 @@ public class Chessboard{
               if(!checkOnWhiteKing()){
                 System.out.println("Passed 5");
                 for(int i = x + 1; i < 7; i++){
-                  if(allBlackMoves[y][i] != null){
+                  if(blackMoves[y][i] != null){
                     return false;
                   }
                 }
+                System.out.println("Passed 6");
                 return true;
               }
             }
@@ -354,7 +355,7 @@ public class Chessboard{
   public boolean canCastleBlack(String side){
     int y = kingB.getY();
     int x = kingB.getX();
-    String[][] board = allBlackMoves;
+    String[][] board = blackMoves;
     side.toLowerCase();
     if(side.equals("queen")){
       if(kingB.getMoveNumber() == 0){
@@ -369,7 +370,7 @@ public class Chessboard{
               }
               if(!checkOnWhiteKing()){
                 System.out.println("Passed 5");
-                if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                if(whiteMoves[y][x-1] == null && whiteMoves[y][x-2] == null && whiteMoves[y][x-3] == null){
                   return true;
                 }
               }
@@ -396,7 +397,7 @@ public class Chessboard{
               }
               if(!checkOnWhiteKing()){
                 System.out.println("Passed 5");
-                if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                if(whiteMoves[y][x-1] == null && whiteMoves[y][x-2] == null && whiteMoves[y][x-3] == null){
                   return true;
                 }
               }
