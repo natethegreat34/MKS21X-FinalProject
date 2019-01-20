@@ -8,10 +8,12 @@ public class ChessDriver{
 
     Chessboard chess = new Chessboard();
     chess.loadGame("file1");
-    chess.returnData(4,0);
-    System.out.println(chess);
     System.out.println(chess.printBlackMoves());
     System.out.println(chess.printWhiteMoves());
+    chess.returnData(4,7);
+    System.out.println(chess);
+    chess.canCastleWhite("queen");
+    chess.canCastleWhite("king");
     /*
     chess.newGame("test2");
     System.out.println(chess);

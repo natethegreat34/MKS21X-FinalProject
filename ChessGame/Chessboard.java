@@ -131,8 +131,8 @@ public class Chessboard{
           if (piece.equals("k")){
             Square slot = new Square(x, y);
             King king = new King(x, y, "black");
-            kingB = king;
             slot.setPiece(king);
+            kingB = king;
             data[y][x] = slot;
           }
           //if it is a white piece
@@ -174,16 +174,16 @@ public class Chessboard{
           if (piece.equals("K")){
             Square slot = new Square(x, y);
             King king = new King(x, y, "white");
-            kingW = king;
             slot.setPiece(king);
+            kingW = king;
             data[y][x] = slot;
           }
         }
       }
       updateAllPieces();
       limitAllPieces();
-      allBlacksMoves();
-      allWhitesMoves();
+      updateAllBlacksMoves();
+      updateAllWhitesMoves();
     } catch(FileNotFoundException e){
       newGame(filename);
     }
@@ -212,7 +212,7 @@ public class Chessboard{
 
   //==============================================================================
 
-  private void allBlacksMoves(){
+  private void updateAllBlacksMoves(){
     allBlackMoves = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
@@ -231,7 +231,7 @@ public class Chessboard{
 
   //==============================================================================
 
-  private void allWhitesMoves(){
+  private void updateAllWhitesMoves(){
     allWhiteMoves = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
@@ -279,8 +279,10 @@ public class Chessboard{
   public boolean canCastleWhite(String side){
     int y = kingW.getY();
     int x = kingW.getX();
+    String[][] board = allWhiteMoves;
     side.toLowerCase();
     if(side.equals("queen")){
+      System.out.println("Checking Queen Side");
       if(kingW.getMoveNumber() == 0){
         System.out.println("Passed 1");
         if(data[y][x - 4].getPiece() != null){
@@ -289,13 +291,12 @@ public class Chessboard{
             System.out.println("Passed 3");
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
               System.out.println("Passed 4");
-              if(data[y][x - 1].getPiece() == null && data[y][x - 2] == null && data[y][x - 3] == null){
-                System.out.println("Passed 5");
-                if(!checkOnWhiteKing()){
-                  System.out.println("Passed 6");
-                  if(allBlackMoves[y][x-1] == null && allBlackMoves[y][x-2] == null && allBlackMoves[y][x-3] == null){
-                    System.out.println("Passed 7");
-                    return true;
+              if(board[y][x - 1] != null && board[y][x - 2] != null && board[y][x - 3] != null){
+                if(board[y][x - 1].equals("o") && board[y][x - 2].equals("o") && board[y][x - 3].equals("o")){
+                  if(!checkOnWhiteKing()){
+                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                      return true;
+                    }
                   }
                 }
               }
@@ -305,6 +306,7 @@ public class Chessboard{
       }
     }
     if(side.equals("king")){
+      System.out.println("Checking King Side");
       if(kingW.getMoveNumber() == 0){
         System.out.println("Passed 1");
         if(data[y][x + 3].getPiece() != null){
@@ -313,13 +315,10 @@ public class Chessboard{
             System.out.println("Passed 3");
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
               System.out.println("Passed 4");
-              if(data[y][x + 1].getPiece() == null){
-                if(data[y][x + 2] == null){
-                  System.out.println("Passed 5");
+              if(board[y][x + 1] != null && board[y][x + 2] != null){
+                if(board[y][x + 1].equals("o") && board[y][x + 2].equals("o")){
                   if(!checkOnWhiteKing()){
-                    System.out.println("Passed 6");
-                    if(allBlackMoves[y][x+1] == null && allBlackMoves[y][x+2] == null){
-                      System.out.println("Passed 7");
+                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
                       return true;
                     }
                   }
@@ -336,16 +335,19 @@ public class Chessboard{
   public boolean canCastleBlack(String side){
     int y = kingB.getY();
     int x = kingB.getX();
+    String[][] board = allBlackMoves;
     side.toLowerCase();
     if(side.equals("queen")){
       if(kingB.getMoveNumber() == 0){
         if(data[y][x - 4].getPiece() != null){
           if(data[y][x - 4].getPiece().getType().equals("r")){
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
-              if(data[y][x - 1].getPiece() == null && data[y][x - 2] == null && data[y][x - 3] == null){
-                if(!checkOnWhiteKing()){
-                  if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
-                    return true;
+              if(board[y][x - 1] != null && board[y][x - 2] != null && board[y][x - 3] != null){
+                if(board[y][x - 1].equals("o") && board[y][x - 2].equals("o") && board[y][x - 3].equals("o")){
+                  if(!checkOnWhiteKing()){
+                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                      return true;
+                    }
                   }
                 }
               }
@@ -359,10 +361,12 @@ public class Chessboard{
         if(data[y][x + 3].getPiece() != null){
           if(data[y][x + 3].getPiece().getType().equals("r")){
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
-              if(data[y][x + 1].getPiece() == null && data[y][x + 2] == null){
-                if(!checkOnWhiteKing()){
-                  if(allWhiteMoves[y][x+1] == null && allWhiteMoves[y][x+2] == null){
-                    return true;
+              if(board[y][x + 1] != null && board[y][x + 2] != null){
+                if(board[y][x + 1].equals("o") && board[y][x + 2].equals("o")){
+                  if(!checkOnWhiteKing()){
+                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                      return true;
+                    }
                   }
                 }
               }
@@ -855,8 +859,8 @@ public class Chessboard{
         data[y][x].setPiece(inpt);
         updateAllPieces();
         limitAllPieces();
-        allBlacksMoves();
-        allWhitesMoves();
+        updateAllBlacksMoves();
+        updateAllWhitesMoves();
         inpt.increaseMoveNumber();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
@@ -868,15 +872,15 @@ public class Chessboard{
         data[y][x].setPiece(inpt);
         updateAllPieces();
         limitAllPieces();
-        allBlacksMoves();
-        allWhitesMoves();
+        updateAllBlacksMoves();
+        updateAllWhitesMoves();
       }
       if (possibleMoves[y][x].equals("c")){
         castle(inpt,"queen");
         updateAllPieces();
         limitAllPieces();
-        allBlacksMoves();
-        allWhitesMoves();
+        updateAllBlacksMoves();
+        updateAllWhitesMoves();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
@@ -884,8 +888,8 @@ public class Chessboard{
         castle(inpt,"king");
         updateAllPieces();
         limitAllPieces();
-        allBlacksMoves();
-        allWhitesMoves();
+        updateAllBlacksMoves();
+        updateAllWhitesMoves();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
@@ -909,6 +913,7 @@ public class Chessboard{
     data[0][3].setPiece(piece20);
     King piece21 = new King (4, 0, "black");
     data[0][4].setPiece(piece21);
+    kingB = piece21;
     Bishop piece22 = new Bishop (5, 0, "black");
     data[0][5].setPiece(piece22);
     Knight piece23 = new Knight (6, 0, "black");
@@ -957,6 +962,7 @@ public class Chessboard{
     data[7][3].setPiece(piece28);
     King piece29 = new King (4, 7, "white");
     data[7][4].setPiece(piece29);
+    kingW = piece29;
     Bishop piece30 = new Bishop (5, 7, "white");
     data[7][5].setPiece(piece30);
     Knight piece31 = new Knight (6, 7, "white");
@@ -965,8 +971,8 @@ public class Chessboard{
     data[7][7].setPiece(piece32);
     updateAllPieces();
     limitAllPieces();
-    allBlacksMoves();
-    allWhitesMoves();
+    updateAllBlacksMoves();
+    updateAllWhitesMoves();
   }
 
   //------------------------------------------------------------------------------
