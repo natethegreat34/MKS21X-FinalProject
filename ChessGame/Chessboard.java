@@ -10,6 +10,8 @@ public class Chessboard{
   private File file;
   private King kingW;
   private King kingB;
+  private String[][] allBlackMoves;
+  private String[][] allWhiteMoves;
   public Chessboard(){
     data = new Square[8][8];
     for (int y = 0; y < data.length; y++){
@@ -146,7 +148,7 @@ public class Chessboard{
 
 
   //==============================================================================
-  public void copyFromTo (String[][] from, String[][] to){
+  private void copyFromTo (String[][] from, String[][] to){
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
         if (from[y][x] != null){
@@ -164,16 +166,53 @@ public class Chessboard{
 
   //==============================================================================
 
-  public boolean castleWhite(){
+  private void allBlacksMoves(){
+    allBlackMoves = new String[8][8];
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0;  x < data[y].length; x++){
+        if(data[y][x].getPiece().getColor().equals("black")){
+          copyFromTo(data[y][x].getPiece().getData(), allBlackMoves);
+        }
+      }
+    }
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  private void allWhitesMoves(){
+    allWhiteMoves = new String[8][8];
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0;  x < data[y].length; x++){
+        if(data[y][x].getPiece().getColor().equals("white")){
+          copyFromTo(data[y][x].getPiece().getData(), allWhiteMoves);
+        }
+      }
+    }
+  }
+
+  //------------------------------------------------------------------------------
+
+  private whiteKingMovingIntoCheck(int x, int y, int xCor, int yCor){
+    
+  }
+
+  //==============================================================================
+
+
+  public boolean canCastleWhite(){
     int y = kingW.getY();
     int x = kingW.getX();
-    if(kingW.getMoveNumber == 0){
+    if(kingW.getMoveNumber() == 0){
       if(data[y][x + 2].getPiece()!= null || data[y][x - 2].getPiece() != null){
         if(data[y][x + 4].getPiece().getType().equals("R") || data[y][x - 3].getPiece().getType().equals("R")){
-          if(data[y][x + 4].getPiece().getMoveNumber() = 0 || data[y][x - 3].getPiece().getMoveNumber() = 0){
+          if(data[y][x + 4].getPiece().getMoveNumber() == 0 || data[y][x - 3].getPiece().getMoveNumber() == 0){
             if((data[y][x + 1].getPiece() != null && data[y][x + 2] != null && data[y][x + 3] != null) || (data[y][x - 1].getPiece() != null && data[y][x - 2] != null)){
               if(!checkOnWhiteKing()){
-                
+
               }
             }
           }
