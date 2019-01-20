@@ -734,19 +734,19 @@ public class Chessboard{
     }
     //special cases for castling based on the helper methods that will determine if conditions are rightf
     //it separates the cases by which side to castle on and which color
-    if(inpt.getColor().equals("K")){
-      if(!canCastleWhite("king")){
+    if(inpt.getType().equals("K")){
+      if(!(canCastleWhite("king"))){
         ans[yCor][xCor + 2] = null;
       }
-      if(!canCastleWhite("queen")){
+      if(!(canCastleWhite("queen"))){
         ans[yCor][xCor - 2] = null;
       }
     }
-    if(inpt.getColor().equals("k")){
-      if(!canCastleBlack("king")){
+    if(inpt.getType().equals("k")){
+      if(!(canCastleBlack("king"))){
         ans[yCor][xCor + 2] = null;
       }
-      if(!canCastleBlack("queen")){
+      if(!(canCastleBlack("queen"))){
         ans[yCor][xCor - 2] = null;
       }
     }
