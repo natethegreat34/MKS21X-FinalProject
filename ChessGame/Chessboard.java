@@ -829,21 +829,32 @@ public class Chessboard{
     }
     //special cases for castling based on the helper methods that will determine if conditions are rightf
     //it separates the cases by which side to castle on and which color
-    if(null != blackMoves){
+    if(null == blackMoves || null == whiteMoves){
+      inpt.setData(ans);
+    }
+    else{
       if(inpt.getType().equals("K")){
         if(!(canCastleWhite("king"))){
-          ans[yCor][xCor + 2] = null;
+          if(xCor + 2 < 8){
+            ans[yCor][xCor + 2] = null;
+          }
         }
         if(!(canCastleWhite("queen"))){
-          ans[yCor][xCor - 2] = null;
+          if(xCor - 2 > -1){
+            ans[yCor][xCor - 2] = null;
+          }
         }
       }
       if(inpt.getType().equals("k")){
         if(!(canCastleBlack("king"))){
-          ans[yCor][xCor + 2] = null;
+          if(xCor + 2 < 8){
+            ans[yCor][xCor + 2] = null;
+          }
         }
         if(!(canCastleBlack("queen"))){
-          ans[yCor][xCor - 2] = null;
+          if(xCor - 2 > -1){
+            ans[yCor][xCor - 2] = null;
+          }
         }
       }
     }
@@ -916,6 +927,7 @@ public class Chessboard{
         limitAllPieces();
         updateAllBlacksMoves();
         updateAllWhitesMoves();
+        limitAllPieces();
         inpt.increaseMoveNumber();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
@@ -929,6 +941,7 @@ public class Chessboard{
         limitAllPieces();
         updateAllBlacksMoves();
         updateAllWhitesMoves();
+        limitAllPieces();
       }
       if (possibleMoves[y][x].equals("c")){
         castle(inpt,"queen");
@@ -936,6 +949,7 @@ public class Chessboard{
         limitAllPieces();
         updateAllBlacksMoves();
         updateAllWhitesMoves();
+        limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
@@ -945,6 +959,7 @@ public class Chessboard{
         limitAllPieces();
         updateAllBlacksMoves();
         updateAllWhitesMoves();
+        limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }

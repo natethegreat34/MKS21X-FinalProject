@@ -12,8 +12,8 @@ public class ChessDriver{
     System.out.println(chess.printWhiteMoves());
     chess.returnData(4,7);
     System.out.println(chess);
-    chess.canCastleWhite("queen");
-    chess.canCastleWhite("king");
+    chess.move(4,7,6,7);
+    System.out.println(chess);
     /*
     chess.newGame("test2");
     System.out.println(chess);
