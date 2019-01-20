@@ -84,7 +84,7 @@ public class Pawn extends Piece {
    private void possibleMoves(){
       String [][] ppm = new String [8][8];
       if(direction == 0){
-        if(super.getMoveNumber() > 0){
+        if(getMoveNumber() == 0){
           if (yCor + 2 < 8){
             // ^^ first time moving import junit.framework.TestCase;
             ppm [yCor + 2] [xCor] = "o";
@@ -97,7 +97,7 @@ public class Pawn extends Piece {
           }
         }
       if (direction == 1){
-        if(super.getMoveNumber() > 0){
+        if(getMoveNumber() == 0){
           if (yCor - 2 >= 0){
               // ^^ first time moving import junit.framework.TestCase;
               ppm [yCor - 2] [xCor] = "o";

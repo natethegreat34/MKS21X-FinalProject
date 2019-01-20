@@ -263,7 +263,44 @@ public class Chessboard{
     return false;
   }
 
-  public boolean castle(King king, String side){
+  public boolean canCastleBlack(String side){
+    int y = kingB.getY();
+    int x = kingB.getX();
+    side.toLowerCase();
+    if(side.equals("queen")){
+      if(kingW.getMoveNumber() == 0){
+        if(data[y][x - 4].getPiece() != null){
+          if(data[y][x - 4].getPiece().getType().equals("r")){
+            if(data[y][x - 4].getPiece().getMoveNumber() == 0){
+              if(data[y][x - 1].getPiece() != null && data[y][x - 2] != null && data[y][x - 3] != null){
+                if(!checkOnWhiteKing()){
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if(side.equals("king")){
+      if(kingW.getMoveNumber() == 0){
+        if(data[y][x + 3].getPiece() != null){
+          if(data[y][x + 3].getPiece().getType().equals("r")){
+            if(data[y][x + 3].getPiece().getMoveNumber() == 0){
+              if(data[y][x + 1].getPiece() != null && data[y][x + 2] != null){
+                if(!checkOnWhiteKing()){
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  public boolean castle(Piece king, String side){
     if(side.equals("king")){
       Piece rook = data[king.getY()][king.getX() + 3].getPiece();
       data[king.getY()][king.getX()].removePiece();
@@ -665,6 +702,14 @@ public class Chessboard{
         ans[yCor][xCor - 2] = null;
       }
     }
+    if(inpt.getColor().equals("k")){
+      if(!canCastleBlack("king")){
+        ans[yCor][xCor + 2] = null;
+      }
+      if(!canCastleBlack("queen")){
+        ans[yCor][xCor - 2] = null;
+      }
+    }
     inpt.setData(ans);
   }
   //------------------------------------------------------------------------------
@@ -718,6 +763,21 @@ public class Chessboard{
       if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
+        updateAllPieces();
+        limitAllPieces();
+        inpt.increaseMoveNumber();
+        //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        return true;
+      }
+      if (possibleMoves[y][x].equals("c")){
+        castle(inpt,"queen");
+        updateAllPieces();
+        limitAllPieces();
+        //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        return true;
+      }
+      if (possibleMoves[y][x].equals("C")){
+        castle(inpt,"king");
         updateAllPieces();
         limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
