@@ -3,6 +3,8 @@ public class King extends Piece{
   private int yCor;
   private String color;
   private String type;
+  private int direction;
+  private int moveNumber = 0;
   private String[][] data;
 
   public King(int x, int y, String colorWB){
@@ -20,46 +22,7 @@ public class King extends Piece{
     yCor = y;
     possibleMoves();
   }
-  //returns the xcoordinate
-   public int getX(){
-     return xCor;
-   }
-   //returns the ycoordinate
-   public int getY(){
-     return yCor;
-   }
-   //sets the xcoordinate
-   public int setX(int x){
-     int oldVal = xCor;
-     xCor = x;
-     return oldVal;
-   }
-   //sets the ycoordinate
-   public int setY(int y){
-     int oldVal = yCor;
-     yCor = y;
-     return oldVal;
-   }
-   //returns thec color
-   public String getColor(){
-     return color;
-   }
-  public String getType(){
-    //returns it type
-    return type;
-  }
-
-  public String[][] getData(){
-    return data;
-  }
-
-  public void setData(String[][] inpt){
-    data = inpt;
-  }
-
-  public void updateData(){
-    possibleMoves();
-  }
+  
 
   private void possibleMoves(){
       String [][] kpm = new String [8][8];
