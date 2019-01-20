@@ -196,12 +196,35 @@ public class Chessboard{
 
   //------------------------------------------------------------------------------
 
-  private whiteKingMovingIntoCheck(int x, int y, int xCor, int yCor){
-    
-  }
+
 
   //==============================================================================
 
+  private boolean whiteKingMovingIntoCheck(int x, int y){
+    if (allBlackMoves[y][x].equals("o")){
+      return true;
+    }
+    return false;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  private boolean blackKingMovingIntoCheck(int x, int y){
+    if (allWhiteMoves[y][x].equals("o")){
+      return true;
+    }
+    return false;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
 
   public boolean canCastleWhite(){
     int y = kingW.getY();
@@ -212,17 +235,22 @@ public class Chessboard{
           if(data[y][x + 4].getPiece().getMoveNumber() == 0 || data[y][x - 3].getPiece().getMoveNumber() == 0){
             if((data[y][x + 1].getPiece() != null && data[y][x + 2] != null && data[y][x + 3] != null) || (data[y][x - 1].getPiece() != null && data[y][x - 2] != null)){
               if(!checkOnWhiteKing()){
-
+                return true;
               }
             }
           }
         }
       }
     }
+    return false;
   }
 
-  public void castle(King king, Rook rook){
-
+  public boolean castle(King king, Rook rook){
+    if(king.getColor().equals("white") && rook.getColor().equals("white")){
+      if(canCastleWhite()){
+        if(!whiteKingMovingIntoCheck())
+      }
+    }
   }
   //------------------------------------------------------------------------------
 
