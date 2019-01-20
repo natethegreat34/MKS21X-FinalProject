@@ -4,7 +4,7 @@ public class Piece{
   private String color;
   private String type;
   private int direction;
-  private boolean move2;
+  private int moveNumber = 0;
   private String[][] data = new String[8][8];
  //returns the xcoordinate
   public int getX(){
@@ -34,15 +34,14 @@ public class Piece{
   public String getType(){
     return type;
   }
-
+  // returns its data which shows all the possible moves
   public String[][] getData(){
     return data;
   }
-
+  // sets the data, used in limitpiece and move
   public void setData(String[][] inpt){
     data = inpt;
   }
-
   //returns the location
   public String getLocation(){
     String ans = "";
@@ -51,23 +50,23 @@ public class Piece{
     ans += yCor;
     return ans;
   }
-
+  //tells how many times the piece moved
+  public void increaseMoveNumber(){
+    moveNumber++;
+  }
+  //returns move number it is at
+  public int getMoveNumber(){
+    return moveNumber;
+  }
+  //this will reset its data if it moves its
   public void updateData(){
     possibleMoves();
   }
-
+  //only really used with pawn to set which direction it can move
   public void setDir(int dir){
-    direction = dir;
+    direction = dir % 2;
   }
-
-  public boolean canMove2(){
-    return move2;
-  }
-
-  public void setMove2(boolean inpt){
-    move2 = inpt;
-  }
-
+  //based on its coordinates it will make the possible moves
   private void possibleMoves(){
     for (int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
