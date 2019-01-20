@@ -265,7 +265,9 @@ public class Chessboard{
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
               if(data[y][x - 1].getPiece() != null && data[y][x - 2] != null && data[y][x - 3] != null){
                 if(!checkOnWhiteKing()){
-                  return true;
+                  if(allBlackMoves[y][x-1] == null && allBlackMoves[y][x-2] == null && allBlackMoves[y][x-3] == null){
+                    return true;
+                  }
                 }
               }
             }
@@ -280,7 +282,9 @@ public class Chessboard{
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
               if(data[y][x + 1].getPiece() != null && data[y][x + 2] != null){
                 if(!checkOnWhiteKing()){
-                  return true;
+                  if(allBlackMoves[y][x+1] == null && allBlackMoves[y][x+2] == null){
+                    return true;
+                  }
                 }
               }
             }
@@ -302,7 +306,9 @@ public class Chessboard{
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
               if(data[y][x - 1].getPiece() != null && data[y][x - 2] != null && data[y][x - 3] != null){
                 if(!checkOnWhiteKing()){
-                  return true;
+                  if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                    return true;
+                  }
                 }
               }
             }
@@ -317,7 +323,9 @@ public class Chessboard{
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
               if(data[y][x + 1].getPiece() != null && data[y][x + 2] != null){
                 if(!checkOnWhiteKing()){
-                  return true;
+                  if(allWhiteMoves[y][x+1] == null && allWhiteMoves[y][x+2] == null){
+                    return true;
+                  }
                 }
               }
             }
