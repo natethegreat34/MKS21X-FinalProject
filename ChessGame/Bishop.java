@@ -5,6 +5,7 @@ public class Bishop extends Piece{
   private String type;
   private int direction;
   private int moveNumber = 0;
+  private boolean moved2;
     private String[][] data;
 
     public Bishop(int x, int y, String colorWB){
@@ -26,6 +27,14 @@ public class Bishop extends Piece{
      //returns the ycoordinate
      public int getY(){
        return yCor;
+     }
+     //if it is a pawn and moves 2 spaces then it will mark if it moved2
+     public boolean getMoved2(){
+       return moved2;
+     }
+     //if it is a pawn and moves 2 spaces then it will mark if it moved2
+     public void setMoved2(boolean inpt){
+       moved2 = inpt;
      }
      //sets the xcoordinate
      public int setX(int x){
