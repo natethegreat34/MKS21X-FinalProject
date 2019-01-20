@@ -7,6 +7,12 @@ public class ChessDriver{
   public static void main(String[] args) throws FileNotFoundException{
 
     Chessboard chess = new Chessboard();
+    chess.newGame("castleTest");
+    chess.returnData(4,7);
+    chess.move(1,7,1,5);
+    chess.move(2,7,2,5);
+    chess.move(3,7,3,5);
+    chess.move(4,7,4,5);
     /*
     chess.newGame("test2");
     System.out.println(chess);
@@ -14,7 +20,7 @@ public class ChessDriver{
     System.out.println(chess);
     chess.printAllData();
     */
-
+    /*
     chess.newGame("save1");
     System.out.println(chess);
     System.out.println("White In Check: " + chess.checkOnWhiteKing());

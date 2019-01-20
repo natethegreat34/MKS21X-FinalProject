@@ -895,6 +895,17 @@ public class Chessboard{
 
 
   //==============================================================================
+
+
+  public void returnData(int x, int y){
+    Piece inpt = data[y][x].getPiece();
+    System.out.println(Piece.movesString(inpt.getData()));
+  }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public String toString(){
     String ans = "";
     for (int y = 0; y < data.length; y++){
