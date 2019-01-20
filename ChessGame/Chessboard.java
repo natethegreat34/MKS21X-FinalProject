@@ -8,6 +8,8 @@ import java.io.FileWriter;
 public class Chessboard{
   private Square[][] data;
   private File file;
+  private King kingW;
+  private King kingB;
   public Chessboard(){
     data = new Square[8][8];
     for (int y = 0; y < data.length; y++){
@@ -83,6 +85,7 @@ public class Chessboard{
           if (piece.equals("k")){
             Square slot = new Square(x, y);
             King king = new King(x, y, "black");
+            kingB = king;
             slot.setPiece(king);
             data[y][x] = slot;
           }
@@ -125,6 +128,7 @@ public class Chessboard{
           if (piece.equals("K")){
             Square slot = new Square(x, y);
             King king = new King(x, y, "white");
+            kingW = king;
             slot.setPiece(king);
             data[y][x] = slot;
           }
@@ -135,6 +139,51 @@ public class Chessboard{
     } catch(FileNotFoundException e){
       newGame(filename);
     }
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+  public void copyFromTo (String[][] from, String[][] to){
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0;  x < data[y].length; x++){
+        if (from[y][x] != null){
+          if (to[y][x] == null){
+            to[y][x] = from [y][x];
+          }
+        }
+      }
+    }
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  public boolean castleWhite(){
+    int y = kingW.getY();
+    int x = kingW.getX();
+    if(kingW.getMoveNumber == 0){
+      if(data[y][x + 2].getPiece()!= null || data[y][x - 2].getPiece() != null){
+        if(data[y][x + 4].getPiece().getType().equals("R") || data[y][x - 3].getPiece().getType().equals("R")){
+          if(data[y][x + 4].getPiece().getMoveNumber() = 0 || data[y][x - 3].getPiece().getMoveNumber() = 0){
+            if((data[y][x + 1].getPiece() != null && data[y][x + 2] != null && data[y][x + 3] != null) || (data[y][x - 1].getPiece() != null && data[y][x - 2] != null)){
+              if(!checkOnWhiteKing()){
+                
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public void castle(King king, Rook rook){
+
   }
   //------------------------------------------------------------------------------
 
