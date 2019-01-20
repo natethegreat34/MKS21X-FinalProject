@@ -12,6 +12,7 @@ public class Chessboard{
   private King kingB;
   private String[][] blackMoves;
   private String[][] whiteMoves;
+
   public Chessboard(){
     data = new Square[8][8];
     for (int y = 0; y < data.length; y++){
@@ -181,9 +182,10 @@ public class Chessboard{
         }
       }
       updateAllPieces();
-      limitAllPieces();
       updateAllBlacksMoves();
       updateAllWhitesMoves();
+      limitAllPieces();
+
     } catch(FileNotFoundException e){
       newGame(filename);
     }
@@ -279,7 +281,6 @@ public class Chessboard{
   public boolean canCastleWhite(String side){
     int y = kingW.getY();
     int x = kingW.getX();
-    String[][] board = whiteMoves;
     side.toLowerCase();
     if(side.equals("queen")){
       System.out.println("Checking Queen Side");
@@ -300,7 +301,7 @@ public class Chessboard{
               if(!checkOnWhiteKing()){
                 System.out.println("Passed 5");
                 for(int i = x - 1; i >= 1; i--){
-                  if(blackMoves[y][i] != null){
+                  if(null != blackMoves[y][i]){
                     if(blackMoves[y][i].equals("o")){
                       return false;
                     }
@@ -332,7 +333,7 @@ public class Chessboard{
               if(!checkOnWhiteKing()){
                 System.out.println("Passed 5");
                 for(int i = x + 1; i < 7; i++){
-                  if(blackMoves[y][i] != null){
+                  if(null != blackMoves[y][i]){
                     if(blackMoves[y][i].equals("o")){
                       return false;
                     }
@@ -811,20 +812,22 @@ public class Chessboard{
     }
     //special cases for castling based on the helper methods that will determine if conditions are rightf
     //it separates the cases by which side to castle on and which color
-    if(inpt.getType().equals("K")){
-      if(!(canCastleWhite("king"))){
-        ans[yCor][xCor + 2] = null;
+    if(null != blackMoves){
+      if(inpt.getType().equals("K")){
+        if(!(canCastleWhite("king"))){
+          ans[yCor][xCor + 2] = null;
+        }
+        if(!(canCastleWhite("queen"))){
+          ans[yCor][xCor - 2] = null;
+        }
       }
-      if(!(canCastleWhite("queen"))){
-        ans[yCor][xCor - 2] = null;
-      }
-    }
-    if(inpt.getType().equals("k")){
-      if(!(canCastleBlack("king"))){
-        ans[yCor][xCor + 2] = null;
-      }
-      if(!(canCastleBlack("queen"))){
-        ans[yCor][xCor - 2] = null;
+      if(inpt.getType().equals("k")){
+        if(!(canCastleBlack("king"))){
+          ans[yCor][xCor + 2] = null;
+        }
+        if(!(canCastleBlack("queen"))){
+          ans[yCor][xCor - 2] = null;
+        }
       }
     }
     //this sets the piece up for an en passant
@@ -1005,9 +1008,9 @@ public class Chessboard{
     Rook piece32 = new Rook (7, 7, "white");
     data[7][7].setPiece(piece32);
     updateAllPieces();
-    limitAllPieces();
     updateAllBlacksMoves();
     updateAllWhitesMoves();
+    limitAllPieces();
   }
 
   //------------------------------------------------------------------------------
