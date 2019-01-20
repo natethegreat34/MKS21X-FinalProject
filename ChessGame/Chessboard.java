@@ -331,6 +331,8 @@ public class Chessboard{
   public boolean castle(Piece king, String side){
     if(side.equals("king")){
       Piece rook = data[king.getY()][king.getX() + 3].getPiece();
+      king.increaseMoveNumber();
+      rook.increaseMoveNumber();
       data[king.getY()][king.getX()].removePiece();
       data[king.getY()][king.getX()+2].setPiece(king);
       data[rook.getY()][rook.getX()].removePiece();
@@ -339,6 +341,8 @@ public class Chessboard{
     }
     if(side.equals("queen")){
       Piece rook = data[king.getY()][king.getX() - 4].getPiece();
+      king.increaseMoveNumber();
+      rook.increaseMoveNumber();
       data[king.getY()][king.getX()].removePiece();
       data[king.getY()][king.getX()-2].setPiece(king);
       data[rook.getY()][rook.getX()].removePiece();
