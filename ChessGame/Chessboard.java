@@ -291,13 +291,86 @@ public class Chessboard{
             System.out.println("Passed 3");
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
               System.out.println("Passed 4");
-              if(board[y][x - 1] != null && board[y][x - 2] != null && board[y][x - 3] != null){
-                if(board[y][x - 1].equals("o") && board[y][x - 2].equals("o") && board[y][x - 3].equals("o")){
-                  if(!checkOnWhiteKing()){
-                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
-                      return true;
-                    }
+              for(int i = x - 1; i >= 1; i--){
+                if(data[y][i].getPiece()!= null){
+                  System.out.println(data[y][i].getPiece().getType());
+                  return false;
+                }
+              }
+              if(!checkOnWhiteKing()){
+                System.out.println("Passed 5");
+                for(int i = x + 1; i < 7; i++){
+                  if(allBlackMoves[y][i]!=null){
+                    return false;
                   }
+                }
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    if(side.equals("king")){
+      System.out.println("Checking King Side");
+      if(kingW.getMoveNumber() == 0){
+        System.out.println("Passed 1");
+        if(data[y][x + 3].getPiece() != null){
+          System.out.println("Passed 2");
+          if(data[y][x + 3].getPiece().getType().equals("R")){
+            System.out.println("Passed 3");
+            if(data[y][x + 3].getPiece().getMoveNumber() == 0){
+              System.out.println("Passed 4");
+              for(int i = x + 1; i < 7; i++){
+                if(data[y][i].getPiece()!=null){
+                  System.out.println(data[y][i].getPiece().getType());
+                  return false;
+                }
+              }
+              if(!checkOnWhiteKing()){
+                System.out.println("Passed 5");
+                for(int i = x + 1; i < 7; i++){
+                  if(allBlackMoves[y][i] != null){
+                    return false;
+                  }
+                }
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+
+  public boolean canCastleBlack(String side){
+    int y = kingB.getY();
+    int x = kingB.getX();
+    String[][] board = allBlackMoves;
+    side.toLowerCase();
+    if(side.equals("queen")){
+      if(kingB.getMoveNumber() == 0){
+        if(data[y][x - 4].getPiece() != null){
+          if(data[y][x - 4].getPiece().getType().equals("r")){
+            if(data[y][x - 4].getPiece().getMoveNumber() == 0){
+              for(int i = x; i >= 1; i--){
+                if(data[y][i - 1].getPiece()!= null){
+                  System.out.println(data[y][i].getPiece().getType());
+                  return false;
+                }
+              }
+              if(!checkOnWhiteKing()){
+                System.out.println("Passed 5");
+                if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                  return true;
                 }
               }
             }
@@ -315,59 +388,16 @@ public class Chessboard{
             System.out.println("Passed 3");
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
               System.out.println("Passed 4");
-              if(board[y][x + 1] != null && board[y][x + 2] != null){
-                if(board[y][x + 1].equals("o") && board[y][x + 2].equals("o")){
-                  if(!checkOnWhiteKing()){
-                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
-                      return true;
-                    }
-                  }
+              for(int i = x; i < 7; i++){
+                if(data[y][i + 1].getPiece() != null){
+                  System.out.println(data[y][i].getPiece().getType());
+                  return false;
                 }
               }
-            }
-          }
-        }
-      }
-    }
-    return false;
-  }
-
-  public boolean canCastleBlack(String side){
-    int y = kingB.getY();
-    int x = kingB.getX();
-    String[][] board = allBlackMoves;
-    side.toLowerCase();
-    if(side.equals("queen")){
-      if(kingB.getMoveNumber() == 0){
-        if(data[y][x - 4].getPiece() != null){
-          if(data[y][x - 4].getPiece().getType().equals("r")){
-            if(data[y][x - 4].getPiece().getMoveNumber() == 0){
-              if(board[y][x - 1] != null && board[y][x - 2] != null && board[y][x - 3] != null){
-                if(board[y][x - 1].equals("o") && board[y][x - 2].equals("o") && board[y][x - 3].equals("o")){
-                  if(!checkOnWhiteKing()){
-                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
-                      return true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if(side.equals("king")){
-      if(kingB.getMoveNumber() == 0){
-        if(data[y][x + 3].getPiece() != null){
-          if(data[y][x + 3].getPiece().getType().equals("r")){
-            if(data[y][x + 3].getPiece().getMoveNumber() == 0){
-              if(board[y][x + 1] != null && board[y][x + 2] != null){
-                if(board[y][x + 1].equals("o") && board[y][x + 2].equals("o")){
-                  if(!checkOnWhiteKing()){
-                    if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
-                      return true;
-                    }
-                  }
+              if(!checkOnWhiteKing()){
+                System.out.println("Passed 5");
+                if(allWhiteMoves[y][x-1] == null && allWhiteMoves[y][x-2] == null && allWhiteMoves[y][x-3] == null){
+                  return true;
                 }
               }
             }
