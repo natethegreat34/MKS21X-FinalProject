@@ -301,7 +301,9 @@ public class Chessboard{
                 System.out.println("Passed 5");
                 for(int i = x - 1; i >= 1; i--){
                   if(blackMoves[y][i] != null){
-                    return false;
+                    if(blackMoves[y][i].equals("o")){
+                      return false;
+                    }
                   }
                 }
                 return true;
@@ -331,7 +333,9 @@ public class Chessboard{
                 System.out.println("Passed 5");
                 for(int i = x + 1; i < 7; i++){
                   if(blackMoves[y][i] != null){
-                    return false;
+                    if(blackMoves[y][i].equals("o")){
+                      return false;
+                    }
                   }
                 }
                 System.out.println("Passed 6");
