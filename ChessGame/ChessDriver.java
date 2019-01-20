@@ -10,7 +10,8 @@ public class ChessDriver{
     chess.loadGame("file1");
     chess.returnData(4,7);
     System.out.println(chess);
-    System.out.println(chess.printBlackMoves());
+    chess.move(4,7,6,7);
+    System.out.println(chess);
     /*
     chess.newGame("test2");
     System.out.println(chess);
