@@ -4,6 +4,7 @@ public class Piece{
   private String color;
   private String type;
   private int direction;
+  private boolean moved2;
   private int moveNumber = 0;
   private String[][] data = new String[8][8];
  //returns the xcoordinate
@@ -54,9 +55,9 @@ public class Piece{
   public void increaseMoveNumber(){
     moveNumber++;
   }
-  //returns move number it is at
-  public int getMoveNumber(){
-    return moveNumber;
+  //if it is a pawn and moves 2 spaces then it will mark if it moved2
+  public boolean getMoved2(){
+    return moved2;
   }
   //this will reset its data if it moves its
   public void updateData(){
@@ -65,6 +66,14 @@ public class Piece{
   //only really used with pawn to set which direction it can move
   public void setDir(int dir){
     direction = dir % 2;
+  }
+  //if it is a pawn and moves 2 spaces then it will mark if it moved2
+  public void setMoved2(boolean inpt){
+    moved2 = inpt;
+  }
+  //returns move number it is at
+  public int getMoveNumber(){
+    return moveNumber;
   }
   //based on its coordinates it will make the possible moves
   private void possibleMoves(){

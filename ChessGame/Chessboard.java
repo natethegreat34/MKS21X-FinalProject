@@ -26,6 +26,28 @@ public class Chessboard{
 
 
   //==============================================================================
+  public String printBlackMoves(){
+    String ans = "";
+    for (int y = 0; y < 8; y++){
+      String line = "";
+      for (int x = 0; x < 8; x++){
+        if(allBlackMoves[y][x] == null){
+          line += "_ ";
+        }
+        else{
+          line += allBlackMoves[y][x] + " ";
+        }
+      }
+      line += "\n";
+      ans += line;
+    }
+    return ans;
+  }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public void clear(){
     for (int y = 0; y < data.length; y++){
       for (int x = 0; x < data[y].length; x++){
@@ -138,6 +160,8 @@ public class Chessboard{
       }
       updateAllPieces();
       limitAllPieces();
+      allBlacksMoves();
+      allWhitesMoves();
     } catch(FileNotFoundException e){
       newGame(filename);
     }
@@ -149,8 +173,8 @@ public class Chessboard{
 
   //==============================================================================
   private void copyFromTo (String[][] from, String[][] to){
-    for (int y = 0; y < data.length; y++){
-      for (int x = 0;  x < data[y].length; x++){
+    for (int y = 0; y < 8; y++){
+      for (int x = 0;  x < 8; x++){
         if (from[y][x] != null){
           if (to[y][x] == null){
             to[y][x] = from [y][x];
@@ -170,8 +194,10 @@ public class Chessboard{
     allBlackMoves = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
-        if(data[y][x].getPiece().getColor().equals("black")){
-          copyFromTo(data[y][x].getPiece().getData(), allBlackMoves);
+        if(data[y][x].getPiece() != null){
+          if(data[y][x].getPiece().getColor().equals("black")){
+            copyFromTo(data[y][x].getPiece().getData(), allBlackMoves);
+          }
         }
       }
     }
@@ -187,8 +213,10 @@ public class Chessboard{
     allWhiteMoves = new String[8][8];
     for (int y = 0; y < data.length; y++){
       for (int x = 0;  x < data[y].length; x++){
-        if(data[y][x].getPiece().getColor().equals("white")){
-          copyFromTo(data[y][x].getPiece().getData(), allWhiteMoves);
+        if(data[y][x].getPiece() != null){
+          if(data[y][x].getPiece().getColor().equals("white")){
+            copyFromTo(data[y][x].getPiece().getData(), allWhiteMoves);
+          }
         }
       }
     }
@@ -710,6 +738,12 @@ public class Chessboard{
         ans[yCor][xCor - 2] = null;
       }
     }
+    //this sets the piece up for an en passant
+    /*
+    if(data[yCor][xCor + 1].getPiece() != null){
+
+    }
+    */
     inpt.setData(ans);
   }
   //------------------------------------------------------------------------------
@@ -761,18 +795,38 @@ public class Chessboard{
     //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
     if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
+        if(inpt.getType().equals("P") || inpt.getType().equals("p")){
+           if (inpt.getMoved2()) {
+             inpt.setMoved2(false);
+           }
+        }
+        inpt.increaseMoveNumber();
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         updateAllPieces();
         limitAllPieces();
+        allBlacksMoves();
+        allWhitesMoves();
         inpt.increaseMoveNumber();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
+      }
+      if (possibleMoves[y][x].equals("P")){
+        inpt.increaseMoveNumber();
+        inpt.setMoved2(true);
+        data[inpt.getY()][inpt.getX()].removePiece();
+        data[y][x].setPiece(inpt);
+        updateAllPieces();
+        limitAllPieces();
+        allBlacksMoves();
+        allWhitesMoves();
       }
       if (possibleMoves[y][x].equals("c")){
         castle(inpt,"queen");
         updateAllPieces();
         limitAllPieces();
+        allBlacksMoves();
+        allWhitesMoves();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
@@ -780,6 +834,8 @@ public class Chessboard{
         castle(inpt,"king");
         updateAllPieces();
         limitAllPieces();
+        allBlacksMoves();
+        allWhitesMoves();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
@@ -859,6 +915,8 @@ public class Chessboard{
     data[7][7].setPiece(piece32);
     updateAllPieces();
     limitAllPieces();
+    allBlacksMoves();
+    allWhitesMoves();
   }
 
   //------------------------------------------------------------------------------
@@ -890,7 +948,7 @@ public class Chessboard{
           }
         }
       else{
-        saveGame();
+        loadGame(filename);
       }
     }
     catch (IOException e) {

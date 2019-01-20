@@ -5,6 +5,7 @@ public class Pawn extends Piece {
   private String type;
   private int direction;
   private int moveNumber = 0;
+  private boolean moved2 = false;
   private String[][] data;
 
   public Pawn(int x, int y, String colorWB, int dir){
@@ -19,6 +20,14 @@ public class Pawn extends Piece {
     yCor = y;
     direction = dir % 2;
     possibleMoves();
+  }
+  //if it is a pawn and moves 2 spaces then it will mark if it moved2
+  public void setMoved2(boolean inpt){
+    moved2 = inpt;
+  }
+  //if it is a pawn and moves 2 spaces then it will mark if it moved2
+  public boolean getMoved2(){
+    return moved2;
   }
   //returns the xcoordinate
    public int getX(){
@@ -87,7 +96,7 @@ public class Pawn extends Piece {
         if(getMoveNumber() == 0){
           if (yCor + 2 < 8){
             // ^^ first time moving import junit.framework.TestCase;
-            ppm [yCor + 2] [xCor] = "o";
+            ppm [yCor + 2] [xCor] = "P";
           }
         }
         // ^
@@ -100,7 +109,7 @@ public class Pawn extends Piece {
         if(getMoveNumber() == 0){
           if (yCor - 2 >= 0){
               // ^^ first time moving import junit.framework.TestCase;
-              ppm [yCor - 2] [xCor] = "o";
+              ppm [yCor - 2] [xCor] = "P";
           }
         }
         // ^

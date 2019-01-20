@@ -25,6 +25,7 @@ public class ChessDriver{
     chess.returnData(4,7);
     chess.move(4,7,2,7);
     System.out.println(chess);
+    System.out.println(chess.printBlackMoves());
     /*
     chess.newGame("test2");
     System.out.println(chess);
