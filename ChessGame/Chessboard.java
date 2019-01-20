@@ -546,314 +546,354 @@ public class Chessboard{
     String[][] ans = inpt.getData();
     int xCor = inpt.getX();
     int yCor = inpt.getY();
-    // v
-    boolean delete = false;
-    for (int i = 1; yCor + i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor]!= null){
-          if (!(data[yCor + i][xCor].isEmpty())){
-            if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor] = null;
-              delete = true;
+    if(inpt.getType().equals("P") || inpt.getType().equals("p")){
+      if(inpt.getColor().equals("black")){
+        if(yCor + 1 < 8){
+          if(xCor + 1 < 8){
+            if(!(data[yCor + 1][xCor + 1].isEmpty())) {
+              if(data[yCor + 1][xCor + 1].getPiece().getColor().equals("white")){
+                ans[yCor + 1][xCor + 1] = "x";
+              }
             }
-            else{
-              ans[yCor + i][xCor] = "x";
-              delete = true;
+          }
+          if(xCor - 1 >= 0){
+            if(!(data[yCor + 1][xCor - 1].isEmpty())) {
+              if(data[yCor + 1][xCor - 1].getPiece().getColor().equals("white")){
+                ans[yCor + 1][xCor - 1] = "x";
+              }
             }
           }
         }
       }
-      else{
-        ans[yCor + i][xCor] = null;
-      }
-    }
-    delete = false;
-    // ^
-    for (int i = 1; yCor - i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor] != null){
-          if (!(data[yCor - i][xCor].isEmpty())){
-            if (data[yCor - i][xCor].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor] = null;
-              delete = true;
+      if(inpt.getColor().equals("white")){
+        if(yCor - 1 >= 0){
+          if(xCor + 1 < 8){
+            if(!(data[yCor - 1][xCor + 1].isEmpty())) {
+              if(data[yCor - 1][xCor + 1].getPiece().getColor().equals("black")){
+                ans[yCor - 1][xCor + 1] = "x";
+              }
             }
-            else{
-              ans[yCor - i][xCor] = "x";
-              delete = true;
+          }
+          if(xCor - 1 >= 0){
+            if(!(data[yCor - 1][xCor - 1].isEmpty())) {
+              if(data[yCor - 1][xCor - 1].getPiece().getColor().equals("black")){
+                ans[yCor - 1][xCor - 1] = "x";
+              }
             }
           }
         }
       }
-      else{
-        ans[yCor - i][xCor] = null;
-      }
-    }
-    delete = false;
-    // <
-    for (int i = 1; xCor - i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor][xCor - i] != null){
-          if (!(data[yCor][xCor - i].isEmpty())){
-            if (data[yCor][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              ans[yCor][xCor - i] = "x";
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor][xCor - i] = null;
-      }
-    }
-    delete = false;
-    // >
-    for (int i = 1; xCor + i < 8; i ++){
-      if(!delete){
-        if (ans[yCor][xCor + i] != null){
-          if (!(data[yCor][xCor + i].isEmpty())){
-            if (data[yCor][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              ans[yCor][xCor + i] = "x";
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // >/
-    for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor + i] != null){
-          if (!(data[yCor - i][xCor + i].isEmpty())){
-            if (data[yCor - i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - i][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              ans[yCor - i][xCor + i] = "x";
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // <\
-    for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
-      if(!delete){
-        if (ans[yCor - i][xCor - i] != null){
-          //System.out.println("Pass Null");
-          if (!(data[yCor - i][xCor - i].isEmpty())){
-            //System.out.println("Pass isEmpty");
-            if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              //System.out.println("Deletion Working");
-              ans[yCor - i][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              ans[yCor - i][xCor - i] = "x";
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor - i][xCor - i] = null;
-      }
-    }
-    delete = false;
-    // >\
-    for (int i = 1; xCor+ i < 8 && yCor+ i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor + i] != null){
-          if (!(data[yCor + i][xCor + i].isEmpty())){
-            if (data[yCor + i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor + i] = null;
-              delete = true;
-            }
-            else{
-              ans[yCor + i][xCor + i] = "x";
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor + i] = null;
-      }
-    }
-    delete = false;
-    // </
-    for (int i = 1; xCor- i >= 0 && yCor+ i < 8; i ++){
-      if(!delete){
-        if (ans[yCor + i][xCor - i] != null){
-          if (!(data[yCor + i][xCor - i].isEmpty())){
-            if (data[yCor + i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + i][xCor - i] = null;
-              delete = true;
-            }
-            else{
-              ans[yCor + i][xCor - i] = "x";
-              delete = true;
-            }
-          }
-        }
-      }
-      else{
-        ans[yCor + i][xCor - i] = null;
-      }
-    }
-    //special knight moves
-    //will check the possible knight moves and limit import junit.framework.TestCase;
-    if (yCor + 1 < 8){
-      if (xCor + 2 < 8){
-        if (ans[yCor + 1][xCor + 2] != null){
-          if (!(data[yCor + 1][xCor + 2].isEmpty())){
-            if (data[yCor + 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + 1][xCor + 2] = null;
-            }
-            else{
-              ans[yCor + 1][xCor + 2] = "x";
-            }
-          }
-        }
-      }
-
-      if(xCor - 2 >= 0){
-        if (ans[yCor + 1][xCor - 2] != null){
-          if (!(data[yCor + 1][xCor - 2].isEmpty())){
-            if (data[yCor + 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + 1][xCor - 2] = null;
-            }
-            else{
-              ans[yCor + 1][xCor - 2] = "x";
-            }
-          }
-        }
-      }
-    }
-
-    if(yCor + 2 < 8){
-      if (xCor + 1 < 8){
-        if (ans[yCor + 2][xCor + 1] != null){
-          if (!(data[yCor + 2][xCor + 1].isEmpty())){
-            if (data[yCor + 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + 2][xCor + 1] = null;
-            }
-            else{
-              ans[yCor + 2][xCor + 1] = "x";
-            }
-          }
-        }
-      }
-      if (xCor - 1 >= 0){
-        if (ans[yCor + 2][xCor - 1] != null){
-          if (!(data[yCor + 2][xCor - 1].isEmpty())){
-            if (data[yCor + 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor + 2][xCor - 1] = null;
-            }
-            else{
-              ans[yCor + 2][xCor - 1] = "x";
-            }
-          }
-        }
-      }
-    }
-
-    if (yCor - 1 >= 0){
-      if (xCor + 2 < 8){
-        if (ans[yCor - 1][xCor + 2] != null){
-          if (!(data[yCor - 1][xCor + 2].isEmpty())){
-            if (data[yCor - 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - 1][xCor + 2] = null;
-            }
-            else{
-              ans[yCor - 1][xCor + 2] = "x";
-            }
-          }
-        }
-      }
-
-      if (xCor - 2 >= 0){
-        if (ans[yCor - 1][xCor - 2] != null){
-          if (!(data[yCor - 1][xCor - 2].isEmpty())){
-            if (data[yCor - 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - 1][xCor - 2] = null;
-            }
-            else{
-              ans[yCor - 1][xCor - 2] = "x";
-            }
-          }
-        }
-      }
-    }
-    if (yCor - 2 >= 0){
-      if (xCor + 1 < 8){
-        if (ans[yCor - 2][xCor + 1] != null){
-          if (!(data[yCor - 2][xCor + 1].isEmpty())){
-            if (data[yCor - 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - 2][xCor + 1] = null;
-            }
-            else{
-              ans[yCor - 2][xCor + 1] = "x";
-            }
-          }
-        }
-      }
-      if (xCor - 1 >= 0){
-        if (ans[yCor - 2][xCor - 1] != null){
-          if (!(data[yCor - 2][xCor - 1].isEmpty())){
-            if (data[yCor - 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
-              ans[yCor - 2][xCor - 1] = null;
-            }
-            else{
-              ans[yCor - 2][xCor - 1] = "x";
-            }
-          }
-        }
-      }
-    }
-    //special cases for castling based on the helper methods that will determine if conditions are rightf
-    //it separates the cases by which side to castle on and which color
-    if(null == blackMoves || null == whiteMoves){
-      inpt.setData(ans);
     }
     else{
-      if(inpt.getType().equals("K")){
-        if(!(canCastleWhite("king"))){
-          if(xCor + 2 < 8){
-            ans[yCor][xCor + 2] = null;
+      // v
+      boolean delete = false;
+      for (int i = 1; yCor + i < 8; i ++){
+        if(!delete){
+          if (ans[yCor + i][xCor]!= null){
+            if (!(data[yCor + i][xCor].isEmpty())){
+              if (data[yCor + i][xCor].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + i][xCor] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor + i][xCor] = "x";
+                delete = true;
+              }
+            }
           }
         }
-        if(!(canCastleWhite("queen"))){
-          if(xCor - 2 > -1){
-            ans[yCor][xCor - 2] = null;
+        else{
+          ans[yCor + i][xCor] = null;
+        }
+      }
+      delete = false;
+      // ^
+      for (int i = 1; yCor - i >= 0; i ++){
+        if(!delete){
+          if (ans[yCor - i][xCor] != null){
+            if (!(data[yCor - i][xCor].isEmpty())){
+              if (data[yCor - i][xCor].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor - i][xCor] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor - i][xCor] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor - i][xCor] = null;
+        }
+      }
+      delete = false;
+      // <
+      for (int i = 1; xCor - i >= 0; i ++){
+        if(!delete){
+          if (ans[yCor][xCor - i] != null){
+            if (!(data[yCor][xCor - i].isEmpty())){
+              if (data[yCor][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor][xCor - i] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor][xCor - i] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor][xCor - i] = null;
+        }
+      }
+      delete = false;
+      // >
+      for (int i = 1; xCor + i < 8; i ++){
+        if(!delete){
+          if (ans[yCor][xCor + i] != null){
+            if (!(data[yCor][xCor + i].isEmpty())){
+              if (data[yCor][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor][xCor + i] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor][xCor + i] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor][xCor + i] = null;
+        }
+      }
+      delete = false;
+      // >/
+      for (int i = 1; xCor + i < 8 && yCor- i >= 0; i ++){
+        if(!delete){
+          if (ans[yCor - i][xCor + i] != null){
+            if (!(data[yCor - i][xCor + i].isEmpty())){
+              if (data[yCor - i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor - i][xCor + i] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor - i][xCor + i] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor - i][xCor + i] = null;
+        }
+      }
+      delete = false;
+      // <\
+      for (int i = 1; xCor- i >= 0 && yCor- i >= 0; i ++){
+        if(!delete){
+          if (ans[yCor - i][xCor - i] != null){
+            //System.out.println("Pass Null");
+            if (!(data[yCor - i][xCor - i].isEmpty())){
+              //System.out.println("Pass isEmpty");
+              if (data[yCor - i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+                //System.out.println("Deletion Working");
+                ans[yCor - i][xCor - i] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor - i][xCor - i] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor - i][xCor - i] = null;
+        }
+      }
+      delete = false;
+      // >\
+      for (int i = 1; xCor+ i < 8 && yCor+ i < 8; i ++){
+        if(!delete){
+          if (ans[yCor + i][xCor + i] != null){
+            if (!(data[yCor + i][xCor + i].isEmpty())){
+              if (data[yCor + i][xCor + i].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + i][xCor + i] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor + i][xCor + i] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor + i][xCor + i] = null;
+        }
+      }
+      delete = false;
+      // </
+      for (int i = 1; xCor- i >= 0 && yCor+ i < 8; i ++){
+        if(!delete){
+          if (ans[yCor + i][xCor - i] != null){
+            if (!(data[yCor + i][xCor - i].isEmpty())){
+              if (data[yCor + i][xCor - i].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + i][xCor - i] = null;
+                delete = true;
+              }
+              else{
+                ans[yCor + i][xCor - i] = "x";
+                delete = true;
+              }
+            }
+          }
+        }
+        else{
+          ans[yCor + i][xCor - i] = null;
+        }
+      }
+      //special knight moves
+      //will check the possible knight moves and limit import junit.framework.TestCase;
+      if (yCor + 1 < 8){
+        if (xCor + 2 < 8){
+          if (ans[yCor + 1][xCor + 2] != null){
+            if (!(data[yCor + 1][xCor + 2].isEmpty())){
+              if (data[yCor + 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + 1][xCor + 2] = null;
+              }
+              else{
+                ans[yCor + 1][xCor + 2] = "x";
+              }
+            }
+          }
+        }
+
+        if(xCor - 2 >= 0){
+          if (ans[yCor + 1][xCor - 2] != null){
+            if (!(data[yCor + 1][xCor - 2].isEmpty())){
+              if (data[yCor + 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + 1][xCor - 2] = null;
+              }
+              else{
+                ans[yCor + 1][xCor - 2] = "x";
+              }
+            }
           }
         }
       }
-      if(inpt.getType().equals("k")){
-        if(!(canCastleBlack("king"))){
-          if(xCor + 2 < 8){
-            ans[yCor][xCor + 2] = null;
+
+      if(yCor + 2 < 8){
+        if (xCor + 1 < 8){
+          if (ans[yCor + 2][xCor + 1] != null){
+            if (!(data[yCor + 2][xCor + 1].isEmpty())){
+              if (data[yCor + 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + 2][xCor + 1] = null;
+              }
+              else{
+                ans[yCor + 2][xCor + 1] = "x";
+              }
+            }
           }
         }
-        if(!(canCastleBlack("queen"))){
-          if(xCor - 2 > -1){
-            ans[yCor][xCor - 2] = null;
+        if (xCor - 1 >= 0){
+          if (ans[yCor + 2][xCor - 1] != null){
+            if (!(data[yCor + 2][xCor - 1].isEmpty())){
+              if (data[yCor + 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor + 2][xCor - 1] = null;
+              }
+              else{
+                ans[yCor + 2][xCor - 1] = "x";
+              }
+            }
+          }
+        }
+      }
+
+      if (yCor - 1 >= 0){
+        if (xCor + 2 < 8){
+          if (ans[yCor - 1][xCor + 2] != null){
+            if (!(data[yCor - 1][xCor + 2].isEmpty())){
+              if (data[yCor - 1][xCor + 2].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor - 1][xCor + 2] = null;
+              }
+              else{
+                ans[yCor - 1][xCor + 2] = "x";
+              }
+            }
+          }
+        }
+
+        if (xCor - 2 >= 0){
+          if (ans[yCor - 1][xCor - 2] != null){
+            if (!(data[yCor - 1][xCor - 2].isEmpty())){
+              if (data[yCor - 1][xCor - 2].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor - 1][xCor - 2] = null;
+              }
+              else{
+                ans[yCor - 1][xCor - 2] = "x";
+              }
+            }
+          }
+        }
+      }
+      if (yCor - 2 >= 0){
+        if (xCor + 1 < 8){
+          if (ans[yCor - 2][xCor + 1] != null){
+            if (!(data[yCor - 2][xCor + 1].isEmpty())){
+              if (data[yCor - 2][xCor + 1].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor - 2][xCor + 1] = null;
+              }
+              else{
+                ans[yCor - 2][xCor + 1] = "x";
+              }
+            }
+          }
+        }
+        if (xCor - 1 >= 0){
+          if (ans[yCor - 2][xCor - 1] != null){
+            if (!(data[yCor - 2][xCor - 1].isEmpty())){
+              if (data[yCor - 2][xCor - 1].getPiece().getColor().equals(inpt.getColor())){
+                ans[yCor - 2][xCor - 1] = null;
+              }
+              else{
+                ans[yCor - 2][xCor - 1] = "x";
+              }
+            }
+          }
+        }
+      }
+      //special cases for castling based on the helper methods that will determine if conditions are rightf
+      //it separates the cases by which side to castle on and which color
+      if(null == blackMoves || null == whiteMoves){
+        inpt.setData(ans);
+      }
+      else{
+        if(inpt.getType().equals("K")){
+          if(!(canCastleWhite("king"))){
+            if(xCor + 2 < 8){
+              ans[yCor][xCor + 2] = null;
+            }
+          }
+          if(!(canCastleWhite("queen"))){
+            if(xCor - 2 > -1){
+              ans[yCor][xCor - 2] = null;
+            }
+          }
+        }
+        if(inpt.getType().equals("k")){
+          if(!(canCastleBlack("king"))){
+            if(xCor + 2 < 8){
+              ans[yCor][xCor + 2] = null;
+            }
+          }
+          if(!(canCastleBlack("queen"))){
+            if(xCor - 2 > -1){
+              ans[yCor][xCor - 2] = null;
+            }
           }
         }
       }
