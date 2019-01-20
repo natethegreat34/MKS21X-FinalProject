@@ -48,6 +48,28 @@ public class Chessboard{
 
 
   //==============================================================================
+  public String printWhiteMoves(){
+    String ans = "";
+    for (int y = 0; y < 8; y++){
+      String line = "";
+      for (int x = 0; x < 8; x++){
+        if(allWhiteMoves[y][x] == null){
+          line += "_ ";
+        }
+        else{
+          line += allWhiteMoves[y][x] + " ";
+        }
+      }
+      line += "\n";
+      ans += line;
+    }
+    return ans;
+  }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
   public void clear(){
     for (int y = 0; y < data.length; y++){
       for (int x = 0; x < data[y].length; x++){
