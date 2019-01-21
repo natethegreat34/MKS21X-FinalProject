@@ -51,11 +51,11 @@ public class Chess{
 
 	public static void printOutBoard(char[][] data){
 		for(int y = 0; y < 8; y++){
-			String line = "";
 			for(int x = 0; x < 8; x++){
-				line += data[y][x] + " ";
+				System.out.print(data[y][x]);
+				System.out.print(' ');
 			}
-			System.out.println(line);
+			System.out.println(' ');
 		}
 	}
 	public static void main(String[] args) {
@@ -79,11 +79,61 @@ public class Chess{
 		while(running){
 			if (turn == 0){
 				System.out.println("White's Turn");
+				Chess.printOutBoard(data);
+				System.out.println("Give x Coordinate of Piece You Want To Move");
+				System.out.println("0 -> 7");
+				Scanner inptCor = new Scanner(System.in);
+				int xCor = inptCor.nextInt();
+				System.out.println("Give y Coordinate of Piece You Want To Move");
+				System.out.println("0");
+				System.out.println("|");
+				System.out.println("V");
+				System.out.println("7");
+				Scanner inptCor = new Scanner(System.in);
+				int yCor = inptCor.nextInt();
+				System.out.println("Give x Coordinate of Where You Want To Move");
+				Scanner inptCor = new Scanner(System.in);
+				int x = inptCor.nextInt();
+				System.out.println("Give y Coordinate of Where You Want To Move");
+				Scanner inptCor = new Scanner(System.in);
+				int y = inptCor.nextInt();
+				if(chess.move(xCor,yCor,x,y)){
+					System.out.println("Move Successfull");
+					turn = 1;
+				}
+				else{
+					System.out.println("Make Sure Movement is Possible");
+				}
 			}
 			if(turn == 1){
 				System.out.println("Black's Turn");
+				Chess.printOutBoard(data);
+				System.out.println("Give x Coordinate of Piece You Want To Move");
+				System.out.println("0 -> 7");
+				Scanner inptCor = new Scanner(System.in);
+				int xCor = inptCor.nextInt();
+				System.out.println("Give y Coordinate of Piece You Want To Move");
+				System.out.println("0");
+				System.out.println("|");
+				System.out.println("V");
+				System.out.println("7");
+				Scanner inptCor = new Scanner(System.in);
+				int yCor = inptCor.nextInt();
+				System.out.println("Give x Coordinate of Where You Want To Move");
+				Scanner inptCor = new Scanner(System.in);
+				int x = inptCor.nextInt();
+				System.out.println("Give y Coordinate of Where You Want To Move");
+				Scanner inptCor = new Scanner(System.in);
+				int y = inptCor.nextInt();
+				if(chess.move(xCor,yCor,x,y)){
+					System.out.println("Move Successfull");
+					turn = 0;
+				}
+				else{
+					System.out.println("Make Sure Movement is Possible");
+				}
 			}
-			Chess.printOutBoard(data);
+
 		}
 	}
 }
