@@ -430,7 +430,45 @@ public class Chessboard{
     }
     return false;
   }
+  //------------------------------------------------------------------------------
 
+
+  //==============================================================================
+
+  public boolean enPassant(Piece pawn, int x, int y){
+    int xCor = pawn.getX();
+    int yCor = pawn.getY();
+    if (pawn.getColor().equals("black")){
+      data[yCor][xCor].removePiece();
+      data[y][x].setPiece(pawn);
+      data[y - 1][x].removePiece();
+      updateAllPieces();
+      limitAllPieces();
+      updateAllBlacksMoves();
+      updateAllWhitesMoves();
+      limitAllPieces();
+      pawn.increaseMoveNumber();
+      return true;
+    }
+    if (pawn.getColor().equals("white")){
+      data[yCor][xCor].removePiece();
+      data[y][x].setPiece(pawn);
+      data[y + 1][x].removePiece();
+      updateAllPieces();
+      limitAllPieces();
+      updateAllBlacksMoves();
+      updateAllWhitesMoves();
+      limitAllPieces();
+      pawn.increaseMoveNumber();
+      return true;
+    }
+    return false;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+  //==============================================================================
   public boolean castle(Piece king, String side){
     if(side.equals("king")){
       Piece rook = data[king.getY()][king.getX() + 3].getPiece();
@@ -618,40 +656,40 @@ public class Chessboard{
       //it then detects if it's  move2 property is True
       //if it is then it will mark it as a take
       if(inpt.getColor().equals("white")){
-        if(xCor + 1 < 8){
+        if(xCor + 1 < 8 && yCor - 1 >= 0){
           if(!(data[yCor][xCor + 1].isEmpty())){
             if(data[yCor][xCor + 1].getPiece().getType().equals("p")){
               if(data[yCor][xCor + 1].getPiece().getMoved2()){
-                ans[yCor][xCor + 1] = "x";
+                ans[yCor - 1][xCor + 1] = "e";
               }
             }
           }
         }
-        if(xCor - 1 >= 0){
+        if(xCor - 1 >= 0 && yCor - 1 >= 0){
           if(!(data[yCor][xCor - 1].isEmpty())){
             if(data[yCor][xCor - 1].getPiece().getType().equals("p")){
               if(data[yCor][xCor - 1].getPiece().getMoved2()){
-                ans[yCor][xCor - 1] = "x";
+                ans[yCor - 1][xCor - 1] = "e";
               }
             }
           }
         }
       }
       if(inpt.getColor().equals("black")){
-        if(xCor + 1 < 8){
+        if(xCor + 1 < 8 && yCor + 1 < 8){
           if(!(data[yCor][xCor + 1].isEmpty())){
             if(data[yCor][xCor + 1].getPiece().getType().equals("P")){
               if(data[yCor][xCor + 1].getPiece().getMoved2()){
-                ans[yCor][xCor + 1] = "x";
+                ans[yCor + 1][xCor + 1] = "e";
               }
             }
           }
         }
-        if(xCor - 1 >= 0){
+        if(xCor - 1 >= 0 && yCor + 1 < 8){
           if(!(data[yCor][xCor - 1].isEmpty())){
             if(data[yCor][xCor - 1].getPiece().getType().equals("P")){
               if(data[yCor][xCor - 1].getPiece().getMoved2()){
-                ans[yCor][xCor - 1] = "x";
+                ans[yCor + 1][xCor - 1] = "e";
               }
             }
           }
@@ -1071,6 +1109,10 @@ public class Chessboard{
         updateAllWhitesMoves();
         limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        return true;
+      }
+      if (possibleMoves[y][x].equals("e")){
+        enPassant(inpt, x, y);
         return true;
       }
     }
