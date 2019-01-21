@@ -70,7 +70,7 @@ public class Chess {
 					terminal.applyBackgroundColor(Terminal.Color.WHITE);
 				}
 				char inpt = Chess.convertIntoPiece(chess[y][x]);
-				terminal.moveCursor(x + 28, y + 28);
+				terminal.moveCursor(x + 28, y);
 				terminal.putCharacter(inpt);
 				color += 1;
 				color = color%2;
