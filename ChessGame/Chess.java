@@ -66,16 +66,17 @@ public class Chess{
 
 
   //==============================================================================
-	public static void printOutBoard(String[][] data){
-		for(int y = 0; y < 9; y++){
-			for(int i = 0; i < 3; i++){
-				System.out.print("\t");
-			}
-			for(int x = 0; x < 9; x++){
-				System.out.print(data[y][x] + " ");
-			}
-			System.out.println(" ");
-		}
+	public static String toString(String[][] data){
+		String ans = "";
+    for (int y = 0; y < data.length; y++){
+      String line = "";
+      for (int x = 0; x < data[y].length; x++){
+        line += data[y][x] + " ";
+      }
+      line += "\n";
+      ans += line;
+    }
+    return ans;
 	}
 	//------------------------------------------------------------------------------
 
@@ -93,6 +94,7 @@ public class Chess{
 		int turn = 0;
 		boolean running = true;
 		String[][] data = new String[9][9];
+		data[0][0] = " ";
 		data[0][1] = "0";
 		data[0][2] = "1";
 		data[0][3] = "2";
@@ -126,11 +128,11 @@ public class Chess{
 			int y = 0;
 			if (turn == 0){
 				System.out.println("White's Turn");
-				System.out.println("Type 'quit' after a move if you want to stop");
+				System.out.println("Type 'quit' anytime if you want to stop");
 				System.out.println("(It will auto save after each move)");
 				System.out.println("White King in Check:" + chess.checkOnWhiteKing());
 				System.out.println("Black King in Check:" + chess.checkOnBlackKing());
-				Chess.printOutBoard(data);
+				System.out.println(Chess.toString(data));
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
@@ -208,7 +210,9 @@ public class Chess{
 					turn = 1;
 				}
 				else{
-					System.out.println("Make Sure Movement is Possible");
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					chess.move(xCor,yCor,x,y);
+					System.out.println("Move Failed");
 				}
 			}
 
@@ -219,7 +223,7 @@ public class Chess{
 				System.out.println("(It will auto save after each move)");
 				System.out.println("White King in Check:" + chess.checkOnWhiteKing());
 				System.out.println("Black King in Check:" + chess.checkOnBlackKing());
-				Chess.printOutBoard(data);
+				System.out.println(Chess.toString(data));
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
@@ -296,7 +300,9 @@ public class Chess{
 					turn = 0;
 				}
 				else{
-					System.out.println("Make Sure Movement is Possible");
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+					chess.move(xCor,yCor,x,y);
+					System.out.println("Move Failed");
 				}
 			}
 

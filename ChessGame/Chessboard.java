@@ -42,11 +42,13 @@ public class Chessboard{
     if (turnnumber == 0){
       for(int y = 0; y < 8; y++){
         for(int x = 0; x < 8; x ++){
-          if(data[y][x].getPiece().getColor().equals("white")){
-            data[y][x].setMoveable(true);
-          }
-          if(data[y][x].getPiece().getColor().equals("black")){
-            data[y][x].setMoveable(false);
+          if(!(data[y][x].isEmpty())){
+            if(data[y][x].getPiece().getColor().equals("white")){
+              data[y][x].setMoveable(true);
+            }
+            if(data[y][x].getPiece().getColor().equals("black")){
+              data[y][x].setMoveable(false);
+            }
           }
         }
       }
@@ -54,11 +56,13 @@ public class Chessboard{
     if (turnnumber == 1){
       for(int y = 0; y < 8; y++){
         for(int x = 0; x < 8; x ++){
-          if(data[y][x].getPiece().getColor().equals("white")){
-            data[y][x].setMoveable(false);
-          }
-          if(data[y][x].getPiece().getColor().equals("black")){
-            data[y][x].setMoveable(true);
+          if(!(data[y][x].isEmpty())){
+            if(data[y][x].getPiece().getColor().equals("white")){
+              data[y][x].setMoveable(false);
+            }
+            if(data[y][x].getPiece().getColor().equals("black")){
+              data[y][x].setMoveable(true);
+            }
           }
         }
       }
