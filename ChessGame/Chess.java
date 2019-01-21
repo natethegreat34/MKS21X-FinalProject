@@ -16,7 +16,7 @@ import com.googlecode.lanterna.screen.*;
 
 
 public class Chess {
-	public Char convertIntoPiece(String piece){
+	public char convertIntoPiece(String piece){
 		if(piece.equals("p")){
 			return '\u265F';
 		}
@@ -64,7 +64,7 @@ public class Chess {
 				if(color == 1){
 					terminal.applyBackgroundColor(Terminal.Color.WHITE);
 				}
-				Char inpt = convertIntoPiece(chess[y][x]);
+				char inpt = convertIntoPiece(chess[y][x]);
 				terminal.moveCursor(x + 28, y + 28);
 				terminal.putCharacter(inpt);
 				color += 1;
