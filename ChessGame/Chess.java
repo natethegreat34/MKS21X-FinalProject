@@ -10,46 +10,46 @@ public class Chess{
 
 
   //==============================================================================
-	public static char convertIntoPiece(String piece){
-		char ans = '_';
+	public static String convertIntoPiece(String piece){
+		String ans = "_";
 		if (piece == null){
 			return ans;
 		}
 		if(piece.equals("p")){
-			ans = '\u265F';
+			ans = '\u265F' + "";
 		}
 		if(piece.equals("P")){
-			ans = '\u2659';
+			ans = '\u2659' + "";
 		}
 		if(piece.equals("k")){
-			ans = '\u265A';
+			ans = '\u265A' + "";
 		}
 		if(piece.equals("K")){
-			ans = '\u2654';
+			ans = '\u2654' + "";
 		}
 		if(piece.equals("q")){
-			ans = '\u265B';
+			ans = '\u265B' + "";
 		}
 		if(piece.equals("Q")){
-			ans = '\u2655';
+			ans = '\u2655' + "";
 		}
 		if(piece.equals("r")){
-			ans = '\u265C';
+			ans = '\u265C' + "";
 		}
 		if(piece.equals("R")){
-			ans = '\u2656';
+			ans = '\u2656' + "";
 		}
 		if(piece.equals("b")){
-			ans = '\u265D';
+			ans = '\u265D' + "";
 		}
 		if(piece.equals("B")){
-			ans = '\u2657';
+			ans = '\u2657' + "";
 		}
 		if(piece.equals("n")){
-			ans = '\u265E';
+			ans = '\u265E' + "";
 		}
 		if(piece.equals("N")){
-			ans = '\u2658';
+			ans = '\u2658' + "";
 		}
 		return ans;
 	}
@@ -58,30 +58,23 @@ public class Chess{
 
 
   //==============================================================================
-	public static void updateData(char[][] data, String[][] other){
-		data = new char[8][8];
-		for(int y = 0; y < 8; y++){
-			for(int x = 0; x < 8; x++){
-				char inpt = Chess.convertIntoPiece(other[y][x]);
-				data[y][x] = inpt;
-			}
-		}
-	}
+
+
+
 	//------------------------------------------------------------------------------
 
 
 
   //==============================================================================
-	public static void printOutBoard(char[][] data){
+	public static void printOutBoard(String[][] data){
 		for(int y = 0; y < 9; y++){
 			for(int i = 0; i < 3; i++){
 				System.out.print("\t");
 			}
 			for(int x = 0; x < 9; x++){
-				System.out.print(data[y][x]);
-				System.out.print(' ');
+				System.out.print(data[y][x] + " ");
 			}
-			System.out.println(' ');
+			System.out.println(" ");
 		}
 	}
 	//------------------------------------------------------------------------------
@@ -99,27 +92,27 @@ public class Chess{
 		chess.loadGame(filename);
 		int turn = 0;
 		boolean running = true;
-		char[][] data = new char[9][9];
-		data[0][1] = '0';
-		data[0][2] = '1';
-		data[0][3] = '2';
-		data[0][4] = '3';
-		data[0][5] = '4';
-		data[0][6] = '5';
-		data[0][7] = '6';
-		data[0][8] = '7';
-		data[1][0] = '0';
-		data[2][0] = '1';
-		data[3][0] = '2';
-		data[4][0] = '3';
-		data[5][0] = '4';
-		data[6][0] = '5';
-		data[7][0] = '6';
-		data[8][0] = '7';
+		String[][] data = new String[9][9];
+		data[0][1] = "0";
+		data[0][2] = "1";
+		data[0][3] = "2";
+		data[0][4] = "3";
+		data[0][5] = "4";
+		data[0][6] = "5";
+		data[0][7] = "6";
+		data[0][8] = "7";
+		data[1][0] = "0";
+		data[2][0] = "1";
+		data[3][0] = "2";
+		data[4][0] = "3";
+		data[5][0] = "4";
+		data[6][0] = "5";
+		data[7][0] = "6";
+		data[8][0] = "7";
 
 		for(int c = 1; c < 9; c++){
 			for(int r = 1; r < 9; r++){
-				char inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
+				String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
 				data[c][r] = inpt;
 			}
 		}
@@ -185,7 +178,7 @@ public class Chess{
 				if(chess.move(xCor,yCor,x,y)){
 					for(int c = 1; c < 9; c++){
 						for(int r = 1; r < 9; r++){
-							char inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
+							String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
 							data[c][r] = inpt;
 						}
 					}
@@ -218,11 +211,14 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
-				if (inpt1.hasNext("exit")){
-					running = false;
+				if (!(inpt1.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt1.nextLine());
+					if (sc.hasNextInt()){
+						xCor = sc.nextInt();
+					}
 				}
 				else{
-					xCor = inpt1.nextInt();
+					running = false;
 				}
 				System.out.println("Give y Coordinate of Piece You Want To Move");
 				System.out.println("0");
@@ -230,33 +226,42 @@ public class Chess{
 				System.out.println("V");
 				System.out.println("7");
 				Scanner inpt2 = new Scanner(System.in);
-				if (inpt2.hasNext("exit")){
-					running = false;
+				if (!(inpt2.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt2.nextLine());
+					if (sc.hasNextInt()){
+						yCor = sc.nextInt();
+					}
 				}
 				else{
-					yCor = inpt2.nextInt();
+					running = false;
 				}
 				System.out.println("Give x Coordinate of Where You Want To Move");
 				Scanner inpt3 = new Scanner(System.in);
-				if (inpt3.hasNext("exit")){
-					running = false;
+				if (!(inpt3.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt3.nextLine());
+					if (sc.hasNextInt()){
+						x = sc.nextInt();
+					}
 				}
 				else{
-					x = inpt3.nextInt();
+					running = false;
 				}
 				System.out.println("Give y Coordinate of Where You Want To Move");
 				Scanner inpt4 = new Scanner(System.in);
-				if (inpt4.hasNext("exit")){
-					running = false;
+				if (!(inpt4.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt4.nextLine());
+					if (sc.hasNextInt()){
+						y = sc.nextInt();
+					}
 				}
 				else{
-					y = inpt4.nextInt();
+					running = false;
 				}
 
 				if(chess.move(xCor,yCor,x,y)){
 					for(int c = 1; c < 9; c++){
 						for(int r = 1; r < 9; r++){
-							char inpt = Chess.convertIntoPiece(chess.getData()[c- 1][r - 1]);
+							String inpt = Chess.convertIntoPiece(chess.getData()[c- 1][r - 1]);
 							data[c][r] = inpt;
 						}
 					}
