@@ -617,34 +617,42 @@ public class Chessboard{
       //it looks for pawns next to the piece
       //it then detects if it's  move2 property is True
       //if it is then it will mark it as a take
-      if(inpt.getType().equals("white")){
+      if(inpt.getColor().equals("white")){
         if(xCor + 1 < 8){
-          if(data[yCor][xCor + 1].getPiece().equals("p")){
-            if(data[yCor][xCor + 1].getPiece().getMoved2()){
-              ans[yCor][xCor + 1] = "x";
+          if(!(data[yCor][xCor + 1].isEmpty())){
+            if(data[yCor][xCor + 1].getPiece().equals("p")){
+              if(data[yCor][xCor + 1].getPiece().getMoved2()){
+                ans[yCor][xCor + 1] = "x";
+              }
             }
           }
         }
         if(xCor - 1 >= 0){
-          if(data[yCor][xCor - 1].getPiece().equals("p")){
-            if(data[yCor][xCor - 1].getPiece().getMoved2()){
-              ans[yCor][xCor - 1] = "x";
+          if(!(data[yCor][xCor - 1].isEmpty())){
+            if(data[yCor][xCor - 1].getPiece().equals("p")){
+              if(data[yCor][xCor - 1].getPiece().getMoved2()){
+                ans[yCor][xCor - 1] = "x";
+              }
             }
           }
         }
       }
-      if(inpt.getType().equals("black")){
+      if(inpt.getColor().equals("black")){
         if(xCor + 1 < 8){
-          if(data[yCor][xCor + 1].getPiece().equals("P")){
-            if(data[yCor][xCor + 1].getPiece().getMoved2()){
-              ans[yCor][xCor + 1] = "x";
+          if(!(data[yCor][xCor + 1].isEmpty())){
+            if(data[yCor][xCor + 1].getPiece().equals("P")){
+              if(data[yCor][xCor + 1].getPiece().getMoved2()){
+                ans[yCor][xCor + 1] = "x";
+              }
             }
           }
         }
         if(xCor - 1 >= 0){
-          if(data[yCor][xCor - 1].getPiece().equals("P")){
-            if(data[yCor][xCor - 1].getPiece().getMoved2()){
-              ans[yCor][xCor - 1] = "x";
+          if(!(data[yCor][xCor - 1].isEmpty())){
+            if(data[yCor][xCor - 1].getPiece().equals("P")){
+              if(data[yCor][xCor - 1].getPiece().getMoved2()){
+                ans[yCor][xCor - 1] = "x";
+              }
             }
           }
         }
