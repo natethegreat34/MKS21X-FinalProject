@@ -14,30 +14,18 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
+import com.googlecode.lanterna.screen.*;
 
 
 public class TerminalDemo {
-
-	public static void putString(int r, int c,Terminal t, String s){
-		t.moveCursor(r,c);
-		for(int i = 0; i < s.length();i++){
-			t.putCharacter(s.charAt(i));
-		}
-	}
 	public static void main(String[] args) {
-
-
 		int x = 10;
 		int y = 10;
-
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
-
 		TerminalSize size = terminal.getTerminalSize();
 		terminal.setCursorVisible(false);
-
 		boolean running = true;
-
 		long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
