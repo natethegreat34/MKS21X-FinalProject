@@ -136,50 +136,29 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
-				if(inpt1.nextLine().equals("exit")){
-					running = false;
-				}
-				else{
-					if(inpt1.hasNextInt()){
-						xCor = inpt1.nextInt();
-					}
+				if(inpt1.hasNextInt()){
+					xCor = inpt1.nextInt();
 					System.out.println("Give y Coordinate of Piece You Want To Move");
 					System.out.println("0");
 					System.out.println("|");
 					System.out.println("V");
 					System.out.println("7");
 					Scanner inpt2 = new Scanner(System.in);
-					if(inpt2.nextLine().equals("exit")){
-						running = false;
-					}
-					else{
-						if(inpt2.hasNextInt()){
-							xCor = inpt2.nextInt();
-						}
+					if(inpt2.hasNextInt()){
+						yCor = inpt2.nextInt();
 						System.out.println("Give x Coordinate of Where You Want To Move");
 						System.out.println("0 -> 7");
 						Scanner inpt3 = new Scanner(System.in);
-						if(inpt3.nextLine().equals("exit")){
-							running = false;
-						}
-						else{
-							if(inpt3.hasNextInt()){
-								xCor = inpt3.nextInt();
-							}
+						if(inpt3.hasNextInt()){
+							x = inpt3.nextInt();
 							System.out.println("Give y Coordinate of Piece You Want To Move");
 							System.out.println("0");
 							System.out.println("|");
 							System.out.println("V");
 							System.out.println("7");
 							Scanner inpt4 = new Scanner(System.in);
-							if(inpt4.nextLine().equals("exit")){
-								running = false;
-							}
-							else{
-								if(inpt4.hasNextInt()){
-									xCor = inpt4.nextInt();
-								}
-
+							if(inpt4.hasNextInt()){
+								y = inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
 									for(int c = 1; c < 9; c++){
 										for(int r = 1; r < 9; r++){
@@ -206,7 +185,27 @@ public class Chess{
 									System.out.println("Move Failed");
 								}
 							}
+							else{
+								if(inpt4.hasNext("exit")){
+									running = false;
+								}
+							}
 						}
+						else{
+							if(inpt3.hasNext("exit")){
+								running = false;
+							}
+						}
+					}
+					else{
+						if(inpt2.hasNext("exit")){
+							running = false;
+						}
+					}
+				}
+				else{
+					if(inpt1.hasNext("exit")){
+						running = false;
 					}
 				}
 			}
@@ -226,9 +225,7 @@ public class Chess{
 					running = false;
 				}
 				else{
-					if(inpt1.hasNextInt()){
-						xCor = inpt1.nextInt();
-					}
+					xCor = inpt1.nextInt();
 					System.out.println("Give y Coordinate of Piece You Want To Move");
 					System.out.println("0");
 					System.out.println("|");
@@ -239,9 +236,7 @@ public class Chess{
 						running = false;
 					}
 					else{
-						if(inpt2.hasNextInt()){
-							xCor = inpt2.nextInt();
-						}
+						yCor = inpt2.nextInt();
 						System.out.println("Give x Coordinate of Where You Want To Move");
 						System.out.println("0 -> 7");
 						Scanner inpt3 = new Scanner(System.in);
@@ -249,9 +244,7 @@ public class Chess{
 							running = false;
 						}
 						else{
-							if(inpt3.hasNextInt()){
-								xCor = inpt3.nextInt();
-							}
+							x = inpt3.nextInt();
 							System.out.println("Give y Coordinate of Piece You Want To Move");
 							System.out.println("0");
 							System.out.println("|");
@@ -262,10 +255,7 @@ public class Chess{
 								running = false;
 							}
 							else{
-								if(inpt4.hasNextInt()){
-									xCor = inpt4.nextInt();
-								}
-
+								y = inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
 									for(int c = 1; c < 9; c++){
 										for(int r = 1; r < 9; r++){
