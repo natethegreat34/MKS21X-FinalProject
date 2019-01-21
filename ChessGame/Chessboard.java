@@ -1102,6 +1102,7 @@ public class Chessboard{
         updateAllBlacksMoves();
         updateAllWhitesMoves();
         limitAllPieces();
+        return true;
       }
       if (possibleMoves[y][x].equals("c")){
         castle(inpt,"queen");
