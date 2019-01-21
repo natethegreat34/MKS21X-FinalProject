@@ -1175,6 +1175,7 @@ public class Chessboard{
        }
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         setTurn(turnnumber + 1);
+        limitSquares();
         return true;
       }
       if (possibleMoves[y][x].equals("P")){
@@ -1188,6 +1189,7 @@ public class Chessboard{
         updateAllWhitesMoves();
         limitAllPieces();
         setTurn(turnnumber + 1);
+        limitSquares();
         return true;
       }
       if (possibleMoves[y][x].equals("c")){
@@ -1199,6 +1201,7 @@ public class Chessboard{
         limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         setTurn(turnnumber + 1);
+        limitSquares();
         return true;
       }
       if (possibleMoves[y][x].equals("C")){
@@ -1210,11 +1213,13 @@ public class Chessboard{
         limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         setTurn(turnnumber + 1);
+        limitSquares();
         return true;
       }
       if (possibleMoves[y][x].equals("e")){
         enPassant(inpt, x, y);
         setTurn(turnnumber + 1);
+        limitSquares();
         return true;
       }
     }
