@@ -283,15 +283,15 @@ public class Chessboard{
     int x = kingW.getX();
     side.toLowerCase();
     if(side.equals("queen")){
-      System.out.println("Checking Queen Side");
+      //System.out.println("Checking Queen Side");
       if(kingW.getMoveNumber() == 0){
-        System.out.println("Passed 1");
+        //System.out.println("Passed 1");
         if(data[y][x - 4].getPiece() != null){
-          System.out.println("Passed 2");
+          //System.out.println("Passed 2");
           if(data[y][x - 4].getPiece().getType().equals("R")){
-            System.out.println("Passed 3");
+            //System.out.println("Passed 3");
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
-              System.out.println("Passed 4");
+              //System.out.println("Passed 4");
               for(int i = x - 1; i > 0; i--){
                 if(data[y][i].getPiece() != null){
                   System.out.println(data[y][i].getPiece().getType());
@@ -299,7 +299,7 @@ public class Chessboard{
                 }
               }
               if(!checkOnWhiteKing()){
-                System.out.println("Passed 5");
+                //System.out.println("Passed 5");
                 for(int i = x - 1; i > 0; i--){
                   if(null != blackMoves[y][i]){
                     if(blackMoves[y][i].equals("o")){
@@ -307,7 +307,7 @@ public class Chessboard{
                     }
                   }
                 }
-                System.out.println("Passed 6");
+                //System.out.println("Passed 6");
                 return true;
               }
             }
@@ -316,18 +316,18 @@ public class Chessboard{
       }
     }
     if(side.equals("king")){
-      System.out.println("Checking King Side");
+      //System.out.println("Checking King Side");
       if(kingW.getMoveNumber() == 0){
-        System.out.println("Passed 1");
+        //System.out.println("Passed 1");
         if(data[y][x + 3].getPiece() != null){
-          System.out.println("Passed 2");
+          //System.out.println("Passed 2");
           if(data[y][x + 3].getPiece().getType().equals("R")){
-            System.out.println("Passed 3");
+            //System.out.println("Passed 3");
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
-              System.out.println("Passed 4");
+              //System.out.println("Passed 4");
               for(int i = x + 1; i < 7; i++){
                 if(data[y][i].getPiece() != null){
-                  System.out.println(data[y][i].getPiece().getType());
+                  //System.out.println(data[y][i].getPiece().getType());
                   return false;
                 }
               }
@@ -340,7 +340,7 @@ public class Chessboard{
                     }
                   }
                 }
-                System.out.println("Passed 6");
+                //System.out.println("Passed 6");
                 return true;
               }
             }
@@ -363,31 +363,31 @@ public class Chessboard{
     int x = kingB.getX();
     side.toLowerCase();
     if(side.equals("queen")){
-      System.out.println("Checking Queen Side");
+      //System.out.println("Checking Queen Side");
       if(kingW.getMoveNumber() == 0){
-        System.out.println("Passed 1");
+        //System.out.println("Passed 1");
         if(data[y][x - 4].getPiece() != null){
-          System.out.println("Passed 2");
-          if(data[y][x - 4].getPiece().getType().equals("R")){
-            System.out.println("Passed 3");
+          //System.out.println("Passed 2");
+          if(data[y][x - 4].getPiece().getType().equals("r")){
+            //System.out.println("Passed 3");
             if(data[y][x - 4].getPiece().getMoveNumber() == 0){
-              System.out.println("Passed 4");
+              //System.out.println("Passed 4");
               for(int i = x - 1; i > 0; i--){
                 if(data[y][i].getPiece() != null){
-                  System.out.println(data[y][i].getPiece().getType());
+                  //System.out.println(data[y][i].getPiece().getType());
                   return false;
                 }
               }
               if(!checkOnWhiteKing()){
-                System.out.println("Passed 5");
-                for(int i = x - 1; i > 0; i++){
+                //System.out.println("Passed 5");
+                for(int i = x - 1; i > 0; i--){
                   if(null != whiteMoves[y][i]){
                     if(whiteMoves[y][i].equals("o")){
                       return false;
                     }
                   }
                 }
-                System.out.println("Passed 6");
+                //System.out.println("Passed 6");
                 return true;
               }
             }
@@ -396,23 +396,23 @@ public class Chessboard{
       }
     }
     if(side.equals("king")){
-      System.out.println("Checking King Side");
+      //System.out.println("Checking King Side");
       if(kingW.getMoveNumber() == 0){
-        System.out.println("Passed 1");
+        //System.out.println("Passed 1");
         if(data[y][x + 3].getPiece() != null){
-          System.out.println("Passed 2");
-          if(data[y][x + 3].getPiece().getType().equals("R")){
-            System.out.println("Passed 3");
+          //System.out.println("Passed 2");
+          if(data[y][x + 3].getPiece().getType().equals("r")){
+            //System.out.println("Passed 3");
             if(data[y][x + 3].getPiece().getMoveNumber() == 0){
-              System.out.println("Passed 4");
+              //System.out.println("Passed 4");
               for(int i = x + 1; i < 7; i++){
                 if(data[y][i].getPiece() != null){
-                  System.out.println(data[y][i].getPiece().getType());
+                  //System.out.println(data[y][i].getPiece().getType());
                   return false;
                 }
               }
               if(!checkOnWhiteKing()){
-                System.out.println("Passed 5");
+                //System.out.println("Passed 5");
                 for(int i = x + 1; i < 7; i++){
                   if(null != whiteMoves[y][i]){
                     if(whiteMoves[y][i].equals("o")){
@@ -420,7 +420,7 @@ public class Chessboard{
                     }
                   }
                 }
-                System.out.println("Passed 6");
+                //System.out.println("Passed 6");
                 return true;
               }
             }

@@ -9,6 +9,10 @@ public class ChessDriver{
     Chessboard chess = new Chessboard();
     chess.loadGame("file1");
     System.out.println(chess);
+    chess.returnData(4,7);
+    chess.returnData(4,0);
+    /*
+    System.out.println(chess);
     chess.move(2,1,2,3);
     System.out.println(chess);
     chess.move(2,3,2,4);
