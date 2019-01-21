@@ -620,7 +620,7 @@ public class Chessboard{
       if(inpt.getColor().equals("white")){
         if(xCor + 1 < 8){
           if(!(data[yCor][xCor + 1].isEmpty())){
-            if(data[yCor][xCor + 1].getPiece().equals("p")){
+            if(data[yCor][xCor + 1].getPiece().getType().equals("p")){
               if(data[yCor][xCor + 1].getPiece().getMoved2()){
                 ans[yCor][xCor + 1] = "x";
               }
@@ -629,7 +629,7 @@ public class Chessboard{
         }
         if(xCor - 1 >= 0){
           if(!(data[yCor][xCor - 1].isEmpty())){
-            if(data[yCor][xCor - 1].getPiece().equals("p")){
+            if(data[yCor][xCor - 1].getPiece().getType().equals("p")){
               if(data[yCor][xCor - 1].getPiece().getMoved2()){
                 ans[yCor][xCor - 1] = "x";
               }
@@ -640,7 +640,7 @@ public class Chessboard{
       if(inpt.getColor().equals("black")){
         if(xCor + 1 < 8){
           if(!(data[yCor][xCor + 1].isEmpty())){
-            if(data[yCor][xCor + 1].getPiece().equals("P")){
+            if(data[yCor][xCor + 1].getPiece().getType().equals("P")){
               if(data[yCor][xCor + 1].getPiece().getMoved2()){
                 ans[yCor][xCor + 1] = "x";
               }
@@ -649,7 +649,7 @@ public class Chessboard{
         }
         if(xCor - 1 >= 0){
           if(!(data[yCor][xCor - 1].isEmpty())){
-            if(data[yCor][xCor - 1].getPiece().equals("P")){
+            if(data[yCor][xCor - 1].getPiece().getType().equals("P")){
               if(data[yCor][xCor - 1].getPiece().getMoved2()){
                 ans[yCor][xCor - 1] = "x";
               }
