@@ -1204,6 +1204,7 @@ public class Chessboard{
     Rook piece32 = new Rook (7, 7, "white");
     data[7][7].setPiece(piece32);
     updateAllPieces();
+    limitAllPieces();
     updateAllBlacksMoves();
     updateAllWhitesMoves();
     limitAllPieces();
