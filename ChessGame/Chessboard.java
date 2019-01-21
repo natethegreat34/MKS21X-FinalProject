@@ -1063,26 +1063,6 @@ public class Chessboard{
     //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
     if (possibleMoves[y][x]!=null){
       if (possibleMoves[y][x].equals("o") || possibleMoves[y][x].equals("x")){
-        if(inpt.getType().equals("P") || inpt.getType().equals("p")){
-           if (inpt.getMoved2()) {
-             inpt.setMoved2(false);
-           }
-           if (inpt.getColor().equals("white")){
-             if (y == 0){
-               data[yCor][xCor].removePiece();
-               Queen newlywed = new Queen(x, 0, "white");
-               data[y][x].setPiece(newlywed);
-             }
-           }
-           if (inpt.getColor().equals("black")){
-             if (y == 7){
-               data[yCor][xCor].removePiece();
-               Queen newlywed = new Queen(x, 7, "black");
-               data[y][x].setPiece(newlywed);
-             }
-           }
-        }
-        inpt.increaseMoveNumber();
         data[inpt.getY()][inpt.getX()].removePiece();
         data[y][x].setPiece(inpt);
         updateAllPieces();
@@ -1091,6 +1071,23 @@ public class Chessboard{
         updateAllWhitesMoves();
         limitAllPieces();
         inpt.increaseMoveNumber();
+        if(inpt.getType().equals("P") || inpt.getType().equals("p")){
+         if (inpt.getMoved2()) {
+           inpt.setMoved2(false);
+         }
+         if (inpt.getColor().equals("white")){
+           if(inpt.getY() == 0){
+             Queen newlywed = new Queen(x, y, "white");
+             data[inpt.getY()][inpt.getX()].setPiece(newlywed);
+           }
+         }
+         if (inpt.getColor().equals("black")){
+           if(inpt.getY() == 7){
+             Queen newlywed = new Queen(x, y, "black");
+             data[inpt.getY()][inpt.getX()].setPiece(newlywed);
+           }
+         }
+       }
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         return true;
       }
