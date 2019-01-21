@@ -198,6 +198,14 @@ public class Chess{
 							if(inpt4.hasNextInt()){
 								y = 8 - inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
+									if(chess.checkOnWhiteKing()){
+										System.out.println("BLACK WINS!!!");
+										running = false;
+									}
+									if(chess.checkOnBlackKing()){
+										System.out.println("WHITE WINS!!!");
+										running = false;
+									}
 									for(int c = 1; c < 9; c++){
 										for(int r = 1; r < 9; r++){
 											String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
@@ -207,14 +215,6 @@ public class Chess{
 									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 									System.out.println("Move Successfull");
 									chess.saveGame();
-									if(chess.checkOnWhiteKing()){
-										System.out.println("BLACK WINS!!!");
-										running = false;
-									}
-									if(chess.checkOnBlackKing()){
-										System.out.println("WHITE WINS!!!");
-										running = false;
-									}
 									turn = 1;
 								}
 								else{
@@ -301,6 +301,14 @@ public class Chess{
 							if(inpt4.hasNextInt()){
 								y = 8 - inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
+									if(chess.checkOnWhiteKing()){
+										System.out.println("BLACK WINS!!!");
+										running = false;
+									}
+									if(chess.checkOnBlackKing()){
+										System.out.println("WHITE WINS!!!");
+										running = false;
+									}
 									for(int c = 1; c < 9; c++){
 										for(int r = 1; r < 9; r++){
 											String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
@@ -310,14 +318,7 @@ public class Chess{
 									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 									System.out.println("Move Successfull");
 									chess.saveGame();
-									if(chess.checkOnWhiteKing()){
-										System.out.println("BLACK WINS!!!");
-										running = false;
-									}
-									if(chess.checkOnBlackKing()){
-										System.out.println("WHITE WINS!!!");
-										running = false;
-									}
+
 									turn = 0;
 								}
 								else{
