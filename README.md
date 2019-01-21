@@ -90,27 +90,29 @@ allowed us to finally make somewhat of a working game in our driver.
 
 Connor:
 Coded the saveGame, newGame, and loadGame methods which successfully made the
-save system as promised in our proposal. 
+save system as promised in our proposal.
 --------------------------------------------------------------------------------
 January 13, 2018
 Both: We set up our demo presentation and planned how we would present.
-We did a practice presentation and assigned parts of the presentation to each 
-other.  Realized that the limit function wasn't working properly so we fixed 
+We did a practice presentation and assigned parts of the presentation to each
+other.  Realized that the limit function wasn't working properly so we fixed
 that.
 --------------------------------------------------------------------------------
 January 14, 2018
-Nathan: Fixed the way the pawns moved and fixed their limits.  Made it so pawn 
+Nathan: Fixed the way the pawns moved and fixed their limits.  Made it so pawn
 can only move two spaces forward if it was its first move, else it can't.
 --------------------------------------------------------------------------------
 January 16, 2018
-Nathan: Made the castling possible and made it so that if the king moves, it 
-can't castle, and if a rook moves, it can't take part in a castle (if both move 
+Nathan: Made the castling possible and made it so that if the king moves, it
+can't castle, and if a rook moves, it can't take part in a castle (if both move
 castle cannot occur).
 --------------------------------------------------------------------------------
 January 17, 2018
-Both: Going over prototype, improving it, and reprinting some parts.  Discussed 
-what steps we have to take next. Decided pawn chess will be easy to do, we need 
+Both: Going over prototype, improving it, and reprinting some parts.  Discussed
+what steps we have to take next. Decided pawn chess will be easy to do, we need
 en passant, and checkmate would be great to have.  Everything else, can be extra.
 --------------------------------------------------------------------------------
-
+January 19, 2018
+Both: We started visualizing how all the special moves will be done with minimal
+progress on them. We also discussed the work arounds of lanterna
 --------------------------------------------------------------------------------
