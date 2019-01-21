@@ -91,6 +91,7 @@ public class Chess {
 			if (mode == 1){
 				s.clear();
 				Chessboard chess = new Chessboard();
+        chess.newGame("lanternatest");
 				makeBoard(chess.getData(), terminal);
         s.refresh();
 			}
