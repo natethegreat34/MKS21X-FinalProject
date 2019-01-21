@@ -613,7 +613,45 @@ public class Chessboard{
         }
         delete = false;
       }
+      //special moves for en passant
+      //it looks for pawns next to the piece
+      //it then detects if it's  move2 property is True
+      //if it is then it will mark it as a take
+      if(inpt.getType().equals("white")){
+        if(xCor + 1 < 8){
+          if(data[yCor][xCor + 1].getPiece().equals("p")){
+            if(data[yCor][xCor + 1].getPiece().getMoved2() == true){
+              ans[yCor][xCor + 1] = "x";
+            }
+          }
+        }
+        if(xCor - 1 >= 0){
+          if(data[yCor][xCor - 1].getPiece().equals("p")){
+            if(data[yCor][xCor - 1].getPiece().getMoved2() == true){
+              ans[yCor][xCor - 1] = "x";
+            }
+          }
+        }
+      }
+      if(inpt.getType().equals("black")){
+        if(xCor + 1 < 8){
+          if(data[yCor][xCor + 1].getPiece().equals("P")){
+            if(data[yCor][xCor + 1].getPiece().getMoved2() == true){
+              ans[yCor][xCor + 1] = "x";
+            }
+          }
+        }
+        if(xCor - 1 >= 0){
+          if(data[yCor][xCor - 1].getPiece().equals("P")){
+            if(data[yCor][xCor - 1].getPiece().getMoved2() == true){
+              ans[yCor][xCor - 1] = "x";
+            }
+          }
+        }
+      }
     }
+
+    //For every other piece
     else{
       // v
       boolean delete = false;
@@ -928,12 +966,6 @@ public class Chessboard{
         }
       }
     }
-    //this sets the piece up for an en passant
-    /*
-    if(data[yCor][xCor + 1].getPiece() != null){
-
-    }
-    */
     inpt.setData(ans);
   }
   //------------------------------------------------------------------------------
@@ -1115,11 +1147,13 @@ public class Chessboard{
     limitAllPieces();
   }
 
+
   //------------------------------------------------------------------------------
 
 
 
   //==============================================================================
+
 
   public void newGame(String filename){
     fill();
