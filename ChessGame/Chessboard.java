@@ -1318,9 +1318,10 @@ public class Chessboard{
 
   //==============================================================================
   public String toString(){
-    String ans = "";
+    String ans = "  0 1 2 3 4 5 6 7\n";
+    int linenum = 0;
     for (int y = 0; y < data.length; y++){
-      String line = "";
+      String line = "" + linenum + " ";
       for (int x = 0; x < data[y].length; x++){
         if(data[y][x].isEmpty()){
           line += "_ ";
@@ -1331,6 +1332,7 @@ public class Chessboard{
       }
       line += "\n";
       ans += line;
+      linenum ++;
     }
     return ans;
   }
