@@ -128,7 +128,7 @@ public class Chess{
 			int y = 0;
 			if (turn == 0){
 				System.out.println("White's Turn");
-				System.out.println("Type 'quit' anytime if you want to stop");
+				System.out.println("Type 'exit' anytime if you want to stop");
 				System.out.println("(It will auto save after each move)");
 				System.out.println("White King in Check:" + chess.checkOnWhiteKing());
 				System.out.println("Black King in Check:" + chess.checkOnBlackKing());
@@ -136,90 +136,85 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
-				if (!(inpt1.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt1.nextLine());
-					if (sc.hasNextInt()){
-						xCor = sc.nextInt();
-					}
-				}
-				else{
+				if(inpt1.nextLine().equals("exit")){
 					running = false;
 				}
-				System.out.println("Give y Coordinate of Piece You Want To Move");
-				System.out.println("0");
-				System.out.println("|");
-				System.out.println("V");
-				System.out.println("7");
-				Scanner inpt2 = new Scanner(System.in);
-				if (!(inpt2.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt2.nextLine());
-					if (sc.hasNextInt()){
-						yCor = sc.nextInt();
-					}
-				}
 				else{
-					running = false;
-				}
-				System.out.println("Give x Coordinate of Where You Want To Move");
-				System.out.println("0 -> 7");
-				Scanner inpt3 = new Scanner(System.in);
-				if (!(inpt3.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt3.nextLine());
-					if (sc.hasNextInt()){
-						x = sc.nextInt();
+					if(inpt1.hasNextInt()){
+						xCor = inpt1.nextInt();
 					}
-				}
-				else{
-					running = false;
-				}
-				System.out.println("Give y Coordinate of Where You Want To Move");
-				System.out.println("Give y Coordinate of Piece You Want To Move");
-				System.out.println("0");
-				System.out.println("|");
-				System.out.println("V");
-				System.out.println("7");
-				Scanner inpt4 = new Scanner(System.in);
-				if (!(inpt4.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt4.nextLine());
-					if (sc.hasNextInt()){
-						y = sc.nextInt();
+					System.out.println("Give y Coordinate of Piece You Want To Move");
+					System.out.println("0");
+					System.out.println("|");
+					System.out.println("V");
+					System.out.println("7");
+					Scanner inpt2 = new Scanner(System.in);
+					if(inpt2.nextLine().equals("exit")){
+						running = false;
 					}
-				}
-				else{
-					running = false;
-				}
+					else{
+						if(inpt2.hasNextInt()){
+							xCor = inpt2.nextInt();
+						}
+						System.out.println("Give x Coordinate of Where You Want To Move");
+						System.out.println("0 -> 7");
+						Scanner inpt3 = new Scanner(System.in);
+						if(inpt3.nextLine().equals("exit")){
+							running = false;
+						}
+						else{
+							if(inpt3.hasNextInt()){
+								xCor = inpt3.nextInt();
+							}
+							System.out.println("Give y Coordinate of Piece You Want To Move");
+							System.out.println("0");
+							System.out.println("|");
+							System.out.println("V");
+							System.out.println("7");
+							Scanner inpt4 = new Scanner(System.in);
+							if(inpt4.nextLine().equals("exit")){
+								running = false;
+							}
+							else{
+								if(inpt4.hasNextInt()){
+									xCor = inpt4.nextInt();
+								}
 
-				if(chess.move(xCor,yCor,x,y)){
-					for(int c = 1; c < 9; c++){
-						for(int r = 1; r < 9; r++){
-							String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
-							data[c][r] = inpt;
+								if(chess.move(xCor,yCor,x,y)){
+									for(int c = 1; c < 9; c++){
+										for(int r = 1; r < 9; r++){
+											String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
+											data[c][r] = inpt;
+										}
+									}
+									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+									System.out.println("Move Successfull");
+									chess.saveGame();
+									if(chess.checkOnWhiteKing()){
+										System.out.println("BLACK WINS!!!");
+										running = false;
+									}
+									if(chess.checkOnBlackKing()){
+										System.out.println("WHITE WINS!!!");
+										running = false;
+									}
+									turn = 1;
+								}
+								else{
+									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+									chess.move(xCor,yCor,x,y);
+									System.out.println("Move Failed");
+								}
+							}
 						}
 					}
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					System.out.println("Move Successfull");
-					chess.saveGame();
-					if(chess.checkOnWhiteKing()){
-						System.out.println("BLACK WINS!!!");
-						running = false;
-					}
-					if(chess.checkOnBlackKing()){
-						System.out.println("WHITE WINS!!!");
-						running = false;
-					}
-					turn = 1;
-				}
-				else{
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					chess.move(xCor,yCor,x,y);
-					System.out.println("Move Failed");
 				}
 			}
 
 
 			if(turn == 1){
-				System.out.println("Black's Turn");
-				System.out.println("Type 'quit' after a move if you want to stop");
+				System.out.println("Blacks's Turn");
+				System.out.println("Type 'exit' anytime if you want to stop");
 				System.out.println("(It will auto save after each move)");
 				System.out.println("White King in Check:" + chess.checkOnWhiteKing());
 				System.out.println("Black King in Check:" + chess.checkOnBlackKing());
@@ -227,85 +222,80 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
-				if (!(inpt1.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt1.nextLine());
-					if (sc.hasNextInt()){
-						xCor = sc.nextInt();
-					}
-				}
-				else{
+				if(inpt1.nextLine().equals("exit")){
 					running = false;
 				}
-				System.out.println("Give y Coordinate of Piece You Want To Move");
-				System.out.println("0");
-				System.out.println("|");
-				System.out.println("V");
-				System.out.println("7");
-				Scanner inpt2 = new Scanner(System.in);
-				if (!(inpt2.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt2.nextLine());
-					if (sc.hasNextInt()){
-						yCor = sc.nextInt();
-					}
-				}
 				else{
-					running = false;
-				}
-				System.out.println("Give x Coordinate of Where You Want To Move");
-				System.out.println("0 -> 7");
-				Scanner inpt3 = new Scanner(System.in);
-				if (!(inpt3.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt3.nextLine());
-					if (sc.hasNextInt()){
-						x = sc.nextInt();
+					if(inpt1.hasNextInt()){
+						xCor = inpt1.nextInt();
 					}
-				}
-				else{
-					running = false;
-				}
-				System.out.println("Give y Coordinate of Where You Want To Move");
-				System.out.println("0");
-				System.out.println("|");
-				System.out.println("V");
-				System.out.println("7");
-				Scanner inpt4 = new Scanner(System.in);
-				if (!(inpt4.hasNext("exit"))){
-					Scanner sc = new Scanner(inpt4.nextLine());
-					if (sc.hasNextInt()){
-						y = sc.nextInt();
+					System.out.println("Give y Coordinate of Piece You Want To Move");
+					System.out.println("0");
+					System.out.println("|");
+					System.out.println("V");
+					System.out.println("7");
+					Scanner inpt2 = new Scanner(System.in);
+					if(inpt2.nextLine().equals("exit")){
+						running = false;
 					}
-				}
-				else{
-					running = false;
-				}
+					else{
+						if(inpt2.hasNextInt()){
+							xCor = inpt2.nextInt();
+						}
+						System.out.println("Give x Coordinate of Where You Want To Move");
+						System.out.println("0 -> 7");
+						Scanner inpt3 = new Scanner(System.in);
+						if(inpt3.nextLine().equals("exit")){
+							running = false;
+						}
+						else{
+							if(inpt3.hasNextInt()){
+								xCor = inpt3.nextInt();
+							}
+							System.out.println("Give y Coordinate of Piece You Want To Move");
+							System.out.println("0");
+							System.out.println("|");
+							System.out.println("V");
+							System.out.println("7");
+							Scanner inpt4 = new Scanner(System.in);
+							if(inpt4.nextLine().equals("exit")){
+								running = false;
+							}
+							else{
+								if(inpt4.hasNextInt()){
+									xCor = inpt4.nextInt();
+								}
 
-				if(chess.move(xCor,yCor,x,y)){
-					for(int c = 1; c < 9; c++){
-						for(int r = 1; r < 9; r++){
-							String inpt = Chess.convertIntoPiece(chess.getData()[c- 1][r - 1]);
-							data[c][r] = inpt;
+								if(chess.move(xCor,yCor,x,y)){
+									for(int c = 1; c < 9; c++){
+										for(int r = 1; r < 9; r++){
+											String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
+											data[c][r] = inpt;
+										}
+									}
+									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+									System.out.println("Move Successfull");
+									chess.saveGame();
+									if(chess.checkOnWhiteKing()){
+										System.out.println("BLACK WINS!!!");
+										running = false;
+									}
+									if(chess.checkOnBlackKing()){
+										System.out.println("WHITE WINS!!!");
+										running = false;
+									}
+									turn = 0;
+								}
+								else{
+									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+									chess.move(xCor,yCor,x,y);
+									System.out.println("Move Failed");
+								}
+							}
 						}
 					}
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					System.out.println("Move Successfull");
-					chess.saveGame();
-					if(chess.checkOnWhiteKing()){
-						System.out.println("BLACK WINS!!!");
-						running = false;
-					}
-					if(chess.checkOnBlackKing()){
-						System.out.println("WHITE WINS!!!");
-						running = false;
-					}
-					turn = 0;
-				}
-				else{
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					chess.move(xCor,yCor,x,y);
-					System.out.println("Move Failed");
 				}
 			}
-
 		}
 	}
 }
