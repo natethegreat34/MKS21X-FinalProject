@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileWriter;
+import java.util.HashSet;
+import java.util.Set;
 public class Chess{
 	//------------------------------------------------------------------------------
 
@@ -156,13 +158,25 @@ public class Chess{
   //==============================================================================
 
 	public static void main(String[] args) {
+		HashSet<String> modes = new HashSet<String>();
+		modes.add("Blitz");
+		modes.add("Pawn");
+		System.out.println("Please Select A Mode");
+		System.out.println("Blitz	/	Pawn");
+		Scanner inptMode = new Scanner(System.in);
+		while(!inptMode.hasNext("Blitz|Pawn")){
+			System.out.println("Not a mode");
+			inptMode.next();
+		}
+		String mode = inptMode.next();
 		System.out.println("Enter Filename");
 		System.out.println("(If The File Does Not Exist It Will Create a New File For You)");
 		Scanner inptFileName = new Scanner(System.in);
 		Chessboard chess =  new Chessboard();
 		String filename = inptFileName.nextLine();
-		String mode = "Blitz";
-		chess.loadGame(filename);
+		if(mode.equals("Blitz")){
+			chess.loadGame(filename);
+		}
 		int turn = 0;
 		boolean running = true;
 		String[][] data = new String[10][10];
