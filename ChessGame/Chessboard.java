@@ -109,8 +109,8 @@ public class Chessboard{
       file = new File("../SaveFiles/"+filename+".txt");
       Scanner in = new Scanner(file);
       clear();
-      for (int y = 0; y < data.length; y++){
-        for (int x = 0; x < data[y].length; x++){
+      for (int y = 0; y < 8; y++){
+        for (int x = 0; x < 8; x++){
           //read the next letter from the file
           String piece = in.next();
           //if it is a black Pawn
@@ -307,29 +307,31 @@ public class Chessboard{
       //System.out.println("Checking Queen Side");
       if(kingW.getMoveNumber() == 0){
         //System.out.println("Passed 1");
-        if(data[y][x - 4].getPiece() != null){
-          //System.out.println("Passed 2");
-          if(data[y][x - 4].getPiece().getType().equals("R")){
-            //System.out.println("Passed 3");
-            if(data[y][x - 4].getPiece().getMoveNumber() == 0){
-              //System.out.println("Passed 4");
-              for(int i = x - 1; i > 0; i--){
-                if(data[y][i].getPiece() != null){
-                  System.out.println(data[y][i].getPiece().getType());
-                  return false;
-                }
-              }
-              if(!checkOnWhiteKing()){
-                //System.out.println("Passed 5");
+        if(x - 4 >= 0){
+          if(data[y][x - 4].getPiece() != null){
+            //System.out.println("Passed 2");
+            if(data[y][x - 4].getPiece().getType().equals("R")){
+              //System.out.println("Passed 3");
+              if(data[y][x - 4].getPiece().getMoveNumber() == 0){
+                //System.out.println("Passed 4");
                 for(int i = x - 1; i > 0; i--){
-                  if(null != blackMoves[y][i]){
-                    if(blackMoves[y][i].equals("o")){
-                      return false;
-                    }
+                  if(data[y][i].getPiece() != null){
+                    System.out.println(data[y][i].getPiece().getType());
+                    return false;
                   }
                 }
-                //System.out.println("Passed 6");
-                return true;
+                if(!checkOnWhiteKing()){
+                  //System.out.println("Passed 5");
+                  for(int i = x - 1; i > 0; i--){
+                    if(null != blackMoves[y][i]){
+                      if(blackMoves[y][i].equals("o")){
+                        return false;
+                      }
+                    }
+                  }
+                  //System.out.println("Passed 6");
+                  return true;
+                }
               }
             }
           }
@@ -340,29 +342,31 @@ public class Chessboard{
       //System.out.println("Checking King Side");
       if(kingW.getMoveNumber() == 0){
         //System.out.println("Passed 1");
-        if(data[y][x + 3].getPiece() != null){
-          //System.out.println("Passed 2");
-          if(data[y][x + 3].getPiece().getType().equals("R")){
-            //System.out.println("Passed 3");
-            if(data[y][x + 3].getPiece().getMoveNumber() == 0){
-              //System.out.println("Passed 4");
-              for(int i = x + 1; i < 7; i++){
-                if(data[y][i].getPiece() != null){
-                  //System.out.println(data[y][i].getPiece().getType());
-                  return false;
-                }
-              }
-              if(!checkOnWhiteKing()){
-                //System.out.println("Passed 5");
+        if(x + 3 < 8){
+          if(data[y][x + 3].getPiece() != null){
+            //System.out.println("Passed 2");
+            if(data[y][x + 3].getPiece().getType().equals("R")){
+              //System.out.println("Passed 3");
+              if(data[y][x + 3].getPiece().getMoveNumber() == 0){
+                //System.out.println("Passed 4");
                 for(int i = x + 1; i < 7; i++){
-                  if(null != blackMoves[y][i]){
-                    if(blackMoves[y][i].equals("o")){
-                      return false;
-                    }
+                  if(data[y][i].getPiece() != null){
+                    //System.out.println(data[y][i].getPiece().getType());
+                    return false;
                   }
                 }
-                //System.out.println("Passed 6");
-                return true;
+                if(!checkOnWhiteKing()){
+                  //System.out.println("Passed 5");
+                  for(int i = x + 1; i < 7; i++){
+                    if(null != blackMoves[y][i]){
+                      if(blackMoves[y][i].equals("o")){
+                        return false;
+                      }
+                    }
+                  }
+                  //System.out.println("Passed 6");
+                  return true;
+                }
               }
             }
           }
@@ -387,29 +391,31 @@ public class Chessboard{
       //System.out.println("Checking Queen Side");
       if(kingB.getMoveNumber() == 0){
         //System.out.println("Passed 1");
-        if(data[y][x - 4].getPiece() != null){
-          //System.out.println("Passed 2");
-          if(data[y][x - 4].getPiece().getType().equals("r")){
-            //System.out.println("Passed 3");
-            if(data[y][x - 4].getPiece().getMoveNumber() == 0){
-              //System.out.println("Passed 4");
-              for(int i = x - 1; i > 0; i--){
-                if(data[y][i].getPiece() != null){
-                  //System.out.println(data[y][i].getPiece().getType());
-                  return false;
-                }
-              }
-              if(!checkOnBlackKing()){
-                //System.out.println("Passed 5");
+        if(x - 4 >=0){
+          if(data[y][x - 4].getPiece() != null){
+            //System.out.println("Passed 2");
+            if(data[y][x - 4].getPiece().getType().equals("r")){
+              //System.out.println("Passed 3");
+              if(data[y][x - 4].getPiece().getMoveNumber() == 0){
+                //System.out.println("Passed 4");
                 for(int i = x - 1; i > 0; i--){
-                  if(null != whiteMoves[y][i]){
-                    if(whiteMoves[y][i].equals("o")){
-                      return false;
-                    }
+                  if(data[y][i].getPiece() != null){
+                    //System.out.println(data[y][i].getPiece().getType());
+                    return false;
                   }
                 }
-                //System.out.println("Passed 6");
-                return true;
+                if(!checkOnBlackKing()){
+                  //System.out.println("Passed 5");
+                  for(int i = x - 1; i > 0; i--){
+                    if(null != whiteMoves[y][i]){
+                      if(whiteMoves[y][i].equals("o")){
+                        return false;
+                      }
+                    }
+                  }
+                  //System.out.println("Passed 6");
+                  return true;
+                }
               }
             }
           }
@@ -420,37 +426,39 @@ public class Chessboard{
       //System.out.println("Checking King Side");
       if(kingB.getMoveNumber() == 0){
         //System.out.println("Passed 1");
-        if(data[y][x + 3].getPiece() != null){
-          //System.out.println("Passed 2");
-          if(data[y][x + 3].getPiece().getType().equals("r")){
-            //System.out.println("Passed 3");
-            if(data[y][x + 3].getPiece().getMoveNumber() == 0){
-              //System.out.println("Passed 4");
-              for(int i = x + 1; i < 7; i++){
-                if(data[y][i].getPiece() != null){
-                  //System.out.println(data[y][i].getPiece().getType());
-                  return false;
-                }
-              }
-              if(!checkOnBlackKing()){
-                //System.out.println("Passed 5");
+        if(x + 3 < 8){
+          if(data[y][x + 3].getPiece() != null){
+            //System.out.println("Passed 2");
+            if(data[y][x + 3].getPiece().getType().equals("r")){
+              //System.out.println("Passed 3");
+              if(data[y][x + 3].getPiece().getMoveNumber() == 0){
+                //System.out.println("Passed 4");
                 for(int i = x + 1; i < 7; i++){
-                  if(null != whiteMoves[y][i]){
-                    if(whiteMoves[y][i].equals("o")){
-                      return false;
+                  if(data[y][i].getPiece() != null){
+                    //System.out.println(data[y][i].getPiece().getType());
+                    return false;
                     }
                   }
+                  if(!checkOnBlackKing()){
+                    //System.out.println("Passed 5");
+                    for(int i = x + 1; i < 7; i++){
+                      if(null != whiteMoves[y][i]){
+                        if(whiteMoves[y][i].equals("o")){
+                          return false;
+                        }
+                      }
+                    }
+                    //System.out.println("Passed 6");
+                    return true;
+                  }
                 }
-                //System.out.println("Passed 6");
-                return true;
               }
             }
           }
         }
       }
+      return false;
     }
-    return false;
-  }
   //------------------------------------------------------------------------------
 
 
@@ -1345,10 +1353,9 @@ public class Chessboard{
 
   //==============================================================================
   public String toString(){
-    String ans = "  0 1 2 3 4 5 6 7\n";
-    int linenum = 0;
+    String ans = "";
     for (int y = 0; y < data.length; y++){
-      String line = "" + linenum + " ";
+      String line = "";
       for (int x = 0; x < data[y].length; x++){
         if(data[y][x].isEmpty()){
           line += "_ ";
@@ -1359,7 +1366,6 @@ public class Chessboard{
       }
       line += "\n";
       ans += line;
-      linenum ++;
     }
     return ans;
   }

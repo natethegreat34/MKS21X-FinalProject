@@ -7,13 +7,10 @@ public class ChessDriver{
   public static void main(String[] args) throws FileNotFoundException{
 
     Chessboard chess = new Chessboard();
-    chess.loadGame("file5");
+    chess.loadGame("file3");
     System.out.println(chess);
-    chess.returnData(4,6);
-    //queen side
-    chess.move(4,6,4,4);
+    chess.loadGame("file3");
     System.out.println(chess);
-    System.out.println(Piece.movesString(chess.getData()));
     /*
     System.out.println(chess);
     chess.move(2,1,2,3);
