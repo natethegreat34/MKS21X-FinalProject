@@ -10,7 +10,37 @@ public class Chess{
 
 
   //==============================================================================
-	public static String convertIntoPiece(String piece){
+	private static boolean noBlackKing(String[][] data){
+		for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].equals("k")){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+	private static boolean noWhiteKing(String[][] data){
+		for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].equals("K")){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+	private static String convertIntoPiece(String piece){
 		String ans = "_";
 		if (piece == null){
 			return ans;
@@ -90,6 +120,7 @@ public class Chess{
 		Scanner inptFileName = new Scanner(System.in);
 		Chessboard chess =  new Chessboard();
 		String filename = inptFileName.nextLine();
+		String mode = "Blitz";
 		chess.loadGame(filename);
 		int turn = 0;
 		boolean running = true;
@@ -198,13 +229,15 @@ public class Chess{
 							if(inpt4.hasNextInt()){
 								y = 8 - inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
-									if(chess.checkOnWhiteKing()){
-										System.out.println("BLACK WINS!!!");
-										running = false;
-									}
-									if(chess.checkOnBlackKing()){
-										System.out.println("WHITE WINS!!!");
-										running = false;
+									if(mode.equals("Blitz")){
+										if(Chess.noWhiteKing(chess.getData())){
+											System.out.println("BLACK WINS!!!");
+											running = false;
+										}
+										if(Chess.noBlackKing(chess.getData())){
+											System.out.println("WHITE WINS!!!");
+											running = false;
+										}
 									}
 									for(int c = 1; c < 9; c++){
 										for(int r = 1; r < 9; r++){
@@ -301,13 +334,15 @@ public class Chess{
 							if(inpt4.hasNextInt()){
 								y = 8 - inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
-									if(chess.checkOnWhiteKing()){
-										System.out.println("BLACK WINS!!!");
-										running = false;
-									}
-									if(chess.checkOnBlackKing()){
-										System.out.println("WHITE WINS!!!");
-										running = false;
+									if(mode.equals("Blitz")){
+										if(Chess.noWhiteKing(chess.getData())){
+											System.out.println("BLACK WINS!!!");
+											running = false;
+										}
+										if(Chess.noBlackKing(chess.getData())){
+											System.out.println("WHITE WINS!!!");
+											running = false;
+										}
 									}
 									for(int c = 1; c < 9; c++){
 										for(int r = 1; r < 9; r++){
