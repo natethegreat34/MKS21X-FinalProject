@@ -54,7 +54,7 @@ public class Chess {
 			return '\u2658';
 		}
 	}
-	public void makeBoard(String[][] chess, Terminal terminal){
+	public static void makeBoard(String[][] chess, Terminal terminal){
 		int color = 0;
 		for(int y = 0; y < chess.length; y++){
 			for(int x = 0; x < chess[y].length; x++){
@@ -92,7 +92,7 @@ public class Chess {
 				s.clear();
 				Chessboard chess = new Chessboard();
         chess.newGame("lanternatest");
-				makeBoard(chess.getData(), terminal);
+				Chess.makeBoard(chess.getData(), terminal);
         s.refresh();
 			}
       if (key.getKind() == Key.Kind.Escape) {
