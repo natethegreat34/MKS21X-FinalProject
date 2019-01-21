@@ -61,18 +61,21 @@ public class Chess {
 	}
 	public static void makeBoard(String[][] chess, Terminal terminal){
 		int color = 0;
+		terminal.applyForegroundColor(Terminal.Color.WHITE);
 		for(int y = 0; y < chess.length; y++){
 			for(int x = 0; x < chess[y].length; x++){
 				if(color == 0){
-					terminal.applyBackgroundColor(Terminal.Color.BLACK);
+					terminal.applyBackgroundColor(Terminal.Color.GREEN);
 				}
 				if(color == 1){
-					terminal.applyBackgroundColor(Terminal.Color.WHITE);
+					terminal.applyBackgroundColor(Terminal.Color.BLUE);
 				}
 				char inpt = Chess.convertIntoPiece(chess[y][x]);
 				terminal.moveCursor(x, y);
 				terminal.putCharacter(inpt);
-				terminal.moveCursor(x+5,y);
+				terminal.moveCursor(x,y);
+				terminal.applyBackgroundColor(Terminal.Color.BLACK);
+				terminal.putCharacter('|');
 				color += 1;
 				color = color%2;
 			}
