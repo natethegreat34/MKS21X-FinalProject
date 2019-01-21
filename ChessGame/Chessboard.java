@@ -333,7 +333,7 @@ public class Chessboard{
                 }
               }
               if(!checkOnWhiteKing()){
-                System.out.println("Passed 5");
+                //System.out.println("Passed 5");
                 for(int i = x + 1; i < 7; i++){
                   if(null != blackMoves[y][i]){
                     if(blackMoves[y][i].equals("o")){
