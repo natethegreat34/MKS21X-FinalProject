@@ -13,8 +13,10 @@ public class Chess{
 	private static boolean noBlackKing(String[][] data){
 		for (int y = 0; y < data.length; y++){
       for (int x = 0; x < data[y].length; x++){
-				if(data[y][x].equals("k")){
-					return false;
+				if(data[y][x] != null){
+					if(data[y][x].equals("k")){
+						return false;
+					}
 				}
 			}
 		}
@@ -28,8 +30,10 @@ public class Chess{
 	private static boolean noWhiteKing(String[][] data){
 		for (int y = 0; y < data.length; y++){
       for (int x = 0; x < data[y].length; x++){
-				if(data[y][x].equals("K")){
-					return false;
+				if(data[y][x] != null){
+					if(data[y][x].equals("K")){
+						return false;
+					}
 				}
 			}
 		}
