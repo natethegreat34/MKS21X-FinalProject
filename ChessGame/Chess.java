@@ -86,6 +86,7 @@ public class Chess{
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		while(running){
 			if (turn == 0){
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				System.out.println("White's Turn");
 				Chess.printOutBoard(data);
 				System.out.println("Give x Coordinate of Piece You Want To Move");
@@ -107,14 +108,15 @@ public class Chess{
 				int y = inpty.nextInt();
 				if(chess.move(xCor,yCor,x,y)){
 					System.out.println("Move Successfull");
-					turn = 1;
 					Chess.updateData(data,board);
+					turn = 1;
 				}
 				else{
 					System.out.println("Make Sure Movement is Possible");
 				}
 			}
 			if(turn == 1){
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				System.out.println("Black's Turn");
 				Chess.printOutBoard(data);
 				System.out.println("Give x Coordinate of Piece You Want To Move");
@@ -136,8 +138,8 @@ public class Chess{
 				int y = inpty.nextInt();
 				if(chess.move(xCor,yCor,x,y)){
 					System.out.println("Move Successfull");
-					turn = 0;
 					Chess.updateData(data,board);
+					turn = 0;
 				}
 				else{
 					System.out.println("Make Sure Movement is Possible");
