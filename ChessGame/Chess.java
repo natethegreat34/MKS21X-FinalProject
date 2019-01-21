@@ -72,7 +72,7 @@ public class Chess {
 				char inpt = Chess.convertIntoPiece(chess[y][x]);
 				terminal.moveCursor(x, y);
 				terminal.putCharacter(inpt);
-				terminal.moveCursor(x+1,y);
+				terminal.moveCursor(x+5,y);
 				color += 1;
 				color = color%2;
 			}
