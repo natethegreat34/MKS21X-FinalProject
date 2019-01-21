@@ -156,11 +156,12 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("a -> h");
 				Scanner inpt1 = new Scanner(System.in);
-				if(inpt1.hasNext("a") || inpt1.hasNext("b") || inpt1.hasNext("c") || inpt1.hasNext("d") || inpt1.hasNext("e") || inpt1.hasNext("f") || inpt1.hasNext("g") || inpt1.hasNext("h")){
+				if(inpt1.hasNext("[abcdefgh]")){
+					String letter = inpt1.next();
 					int num = -1;
 					boolean found = false;
 					for(int i = 0; !found && i < 7; i++){
-						if(letters.substring(i,i+1).equals(inpt1.next())) {
+						if(letters.substring(i,i+1).equals(letter)) {
 							num = i;
 							found = true;
 						}
@@ -173,15 +174,16 @@ public class Chess{
 					System.out.println("1");
 					Scanner inpt2 = new Scanner(System.in);
 					if(inpt2.hasNextInt()){
-						yCor = 8 - inpt2.nextInt() ;
+						yCor = 8 - inpt2.nextInt();
 						System.out.println("Give x Coordinate of Where You Want To Move");
 						System.out.println("a -> h");
 						Scanner inpt3 = new Scanner(System.in);
-						if(inpt3.hasNext("a") || inpt3.hasNext("b") || inpt3.hasNext("c") || inpt3.hasNext("d") || inpt3.hasNext("e") || inpt3.hasNext("f") || inpt3.hasNext("g") || inpt3.hasNext("h")){
+						if(inpt3.hasNext("[abcdefgh]")){
+							String letter1 = inpt3.next();
 							int num1 = -1;
 							boolean found1 = false;
 							for(int i = 0; !found1 && i < 7; i++){
-								if(letters.substring(i, i+1).equals(inpt3.next())){
+								if(letters.substring(i, i+1).equals(letter1)){
 									num1 = i;
 									found1 = true;
 								}
@@ -257,11 +259,12 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("a -> h");
 				Scanner inpt1 = new Scanner(System.in);
-				if(inpt1.hasNext("a") || inpt1.hasNext("b") || inpt1.hasNext("c") || inpt1.hasNext("d") || inpt1.hasNext("e") || inpt1.hasNext("f") || inpt1.hasNext("g") || inpt1.hasNext("h")){
+				if(inpt1.hasNext("[abcdefgh]")){
+					String letter = inpt1.next();
 					int num = -1;
 					boolean found = false;
 					for(int i = 0; !found && i < 7; i++){
-						if(letters.substring(i, i+1).equals(inpt1.next())){
+						if(letters.substring(i, i+1).equals(letter)){
 							num = i;
 							found = true;
 						}
@@ -278,11 +281,12 @@ public class Chess{
 						System.out.println("Give x Coordinate of Where You Want To Move");
 						System.out.println("a -> h");
 						Scanner inpt3 = new Scanner(System.in);
-						if(inpt3.hasNext("a") || inpt3.hasNext("b") || inpt3.hasNext("c") || inpt3.hasNext("d") || inpt3.hasNext("e") || inpt3.hasNext("f") || inpt3.hasNext("g") || inpt3.hasNext("h")){
+						if(inpt3.hasNext("[abcdefgh]")){
+							String letter1 = inpt3.next();
 							int num1 = -1;
 							boolean found1 = false;
 							for(int i = 0; !found1 && i < 7; i++){
-								if(letters.substring(i, i+1).equals(inpt3.next())){
+								if(letters.substring(i, i+1).equals(letter1)){
 									num1 = i;
 									found1 = true;
 								}
