@@ -17,42 +17,44 @@ import com.googlecode.lanterna.screen.*;
 
 public class Chess {
 	public static char convertIntoPiece(String piece){
+		char ans = ' ';
 		if(piece.equals("p")){
-			return '\u265F';
+			ans = '\u265F';
 		}
 		if(piece.equals("P")){
-			return '\u2659';
+			ans = '\u2659';
 		}
 		if(piece.equals("k")){
-			return '\u265A';
+			ans = '\u265A';
 		}
 		if(piece.equals("K")){
-			return '\u2654';
+			ans = '\u2654';
 		}
 		if(piece.equals("q")){
-			return '\u265B';
+			ans = '\u265B';
 		}
 		if(piece.equals("Q")){
-			return '\u2655';
+			ans = '\u2655';
 		}
 		if(piece.equals("r")){
-			return '\u265C';
+			ans = '\u265C';
 		}
 		if(piece.equals("R")){
-			return '\u2656';
+			ans = '\u2656';
 		}
 		if(piece.equals("b")){
-			return '\u265D';
+			ans = '\u265D';
 		}
 		if(piece.equals("B")){
-			return '\u2657';
+			ans = '\u2657';
 		}
 		if(piece.equals("n")){
-			return '\u265E';
+			ans = '\u265E';
 		}
 		if(piece.equals("N")){
-			return '\u2658';
+			ans = '\u2658';
 		}
+		return ans;
 	}
 	public static void makeBoard(String[][] chess, Terminal terminal){
 		int color = 0;
