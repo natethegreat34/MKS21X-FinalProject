@@ -14,7 +14,11 @@ public class ChessDriver{
     chess.move(1,3,1,4);
     System.out.println(chess);
     chess.returnData(1,4);
-    chess.move(2,6,2,4);
+    chess.move(2,6,2,5);
+    System.out.println(chess);
+    chess.returnData(1,4);
+    System.out.println(chess.getSquare(2,5).getPiece().getMoved2());
+    chess.move(2,5,2,4);
     System.out.println(chess);
     chess.returnData(1,4);
     System.out.println(chess.getSquare(2,4).getPiece().getMoved2());
