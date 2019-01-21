@@ -1093,6 +1093,14 @@ public class Chessboard{
 
   //==============================================================================
   public boolean move(int xCor, int yCor, int x, int y){
+    if(data[yCor][xCor].getPiece() == null){
+      System.out.println("No Piece There");
+      return false;
+    }
+    if(!(data[yCor][xCor].isMovable())){
+      System.out.println("Not Your Piece");
+      return false;
+    }
     Piece inpt = getSquare(xCor, yCor).getPiece();
     String[][] possibleMoves = inpt.getData();
     //System.out.println(Piece.movesString(data[yCor][xCor].getPiece().getData()));
@@ -1163,6 +1171,7 @@ public class Chessboard{
         return true;
       }
     }
+    System.out.println("Not a Vaild Move");
     return false;
   }
   //------------------------------------------------------------------------------

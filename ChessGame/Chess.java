@@ -134,11 +134,14 @@ public class Chess{
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt1 = new Scanner(System.in);
-				if (inpt1.hasNext("exit")){
-					running = false;
+				if (!(inpt1.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt1.nextLine());
+					if (sc.hasNextInt()){
+						xCor = sc.nextInt();
+					}
 				}
 				else{
-					xCor = inpt1.nextInt();
+					running = false;
 				}
 				System.out.println("Give y Coordinate of Piece You Want To Move");
 				System.out.println("0");
@@ -146,20 +149,26 @@ public class Chess{
 				System.out.println("V");
 				System.out.println("7");
 				Scanner inpt2 = new Scanner(System.in);
-				if (inpt2.hasNext("exit")){
-					running = false;
+				if (!(inpt2.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt2.nextLine());
+					if (sc.hasNextInt()){
+						yCor = sc.nextInt();
+					}
 				}
 				else{
-					yCor = inpt2.nextInt();
+					running = false;
 				}
 				System.out.println("Give x Coordinate of Where You Want To Move");
 				System.out.println("0 -> 7");
 				Scanner inpt3 = new Scanner(System.in);
-				if (inpt3.hasNext("exit")){
-					running = false;
+				if (!(inpt3.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt3.nextLine());
+					if (sc.hasNextInt()){
+						x = sc.nextInt();
+					}
 				}
 				else{
-					x = inpt3.nextInt();
+					running = false;
 				}
 				System.out.println("Give y Coordinate of Where You Want To Move");
 				System.out.println("Give y Coordinate of Piece You Want To Move");
@@ -168,11 +177,14 @@ public class Chess{
 				System.out.println("V");
 				System.out.println("7");
 				Scanner inpt4 = new Scanner(System.in);
-				if (inpt4.hasNext("exit")){
-					running = false;
+				if (!(inpt4.hasNext("exit"))){
+					Scanner sc = new Scanner(inpt4.nextLine());
+					if (sc.hasNextInt()){
+						y = sc.nextInt();
+					}
 				}
 				else{
-					y = inpt4.nextInt();
+					running = false;
 				}
 
 				if(chess.move(xCor,yCor,x,y)){
@@ -236,6 +248,7 @@ public class Chess{
 					running = false;
 				}
 				System.out.println("Give x Coordinate of Where You Want To Move");
+				System.out.println("0 -> 7");
 				Scanner inpt3 = new Scanner(System.in);
 				if (!(inpt3.hasNext("exit"))){
 					Scanner sc = new Scanner(inpt3.nextLine());
@@ -247,6 +260,10 @@ public class Chess{
 					running = false;
 				}
 				System.out.println("Give y Coordinate of Where You Want To Move");
+				System.out.println("0");
+				System.out.println("|");
+				System.out.println("V");
+				System.out.println("7");
 				Scanner inpt4 = new Scanner(System.in);
 				if (!(inpt4.hasNext("exit"))){
 					Scanner sc = new Scanner(inpt4.nextLine());
