@@ -160,7 +160,7 @@ public class Chess{
 					String letter = inpt1.next();
 					int num = -1;
 					boolean found = false;
-					for(int i = 0; !found && i < 7; i++){
+					for(int i = 0; !found && i < 8; i++){
 						if(letters.substring(i,i+1).equals(letter)) {
 							num = i;
 							found = true;
@@ -182,7 +182,7 @@ public class Chess{
 							String letter1 = inpt3.next();
 							int num1 = -1;
 							boolean found1 = false;
-							for(int i = 0; !found1 && i < 7; i++){
+							for(int i = 0; !found1 && i < 8; i++){
 								if(letters.substring(i, i+1).equals(letter1)){
 									num1 = i;
 									found1 = true;
@@ -263,7 +263,7 @@ public class Chess{
 					String letter = inpt1.next();
 					int num = -1;
 					boolean found = false;
-					for(int i = 0; !found && i < 7; i++){
+					for(int i = 0; !found && i < 8; i++){
 						if(letters.substring(i, i+1).equals(letter)){
 							num = i;
 							found = true;
@@ -285,7 +285,7 @@ public class Chess{
 							String letter1 = inpt3.next();
 							int num1 = -1;
 							boolean found1 = false;
-							for(int i = 0; !found1 && i < 7; i++){
+							for(int i = 0; !found1 && i < 8; i++){
 								if(letters.substring(i, i+1).equals(letter1)){
 									num1 = i;
 									found1 = true;
