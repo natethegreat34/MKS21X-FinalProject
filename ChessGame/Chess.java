@@ -18,6 +18,9 @@ import com.googlecode.lanterna.screen.*;
 public class Chess {
 	public static char convertIntoPiece(String piece){
 		char ans = ' ';
+		if (piece == null){
+			return ans;
+		}
 		if(piece.equals("p")){
 			ans = '\u265F';
 		}
