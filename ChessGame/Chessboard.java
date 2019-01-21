@@ -8,8 +8,8 @@ import java.io.FileWriter;
 public class Chessboard{
   private Square[][] data;
   private File file;
-  private King kingW;
-  private King kingB;
+  private King kingW = null;
+  private King kingB = null;
   private String[][] blackMoves;
   private String[][] whiteMoves;
 
@@ -79,6 +79,26 @@ public class Chessboard{
       }
     }
   }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  public boolean isThereAWhiteKing(){
+    return kingW != null;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  public boolean isThereABlackKing(){
+    return kingB != null;
+  }
+
   //------------------------------------------------------------------------------
 
 
@@ -501,6 +521,9 @@ public class Chessboard{
     //possible moves of the piece
     //loops through data and finds an x, which signifies a take, from each piece's data
     //if that piece on data is a king then it is in check
+    if(kingB == null){
+      return false;
+    }
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
         if(!(data[y][x].isEmpty())){
@@ -542,6 +565,9 @@ public class Chessboard{
     //possible moves of the piece
     //loops through data and finds an x, which signifies a take, from each piece's data
     //if that piece on data is a king then it is in check
+    if(kingW == null){
+      return false;
+    }
     for(int y = 0; y < data.length; y++){
       for(int x = 0; x < data[y].length; x++){
         if(!(data[y][x].isEmpty())){

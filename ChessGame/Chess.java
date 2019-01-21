@@ -5,6 +5,11 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileWriter;
 public class Chess{
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
 	public static char convertIntoPiece(String piece){
 		char ans = '_';
 		if (piece == null){
@@ -48,6 +53,11 @@ public class Chess{
 		}
 		return ans;
 	}
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
 	public static void updateData(char[][] data, String[][] other){
 		data = new char[8][8];
 		for(int y = 0; y < 8; y++){
@@ -57,9 +67,14 @@ public class Chess{
 			}
 		}
 	}
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
 	public static void printOutBoard(char[][] data){
 		for(int y = 0; y < 8; y++){
-			for(int i = 0; i < 6; i++){
+			for(int i = 0; i < 3; i++){
 				System.out.print("\t");
 			}
 			for(int x = 0; x < 8; x++){
@@ -69,6 +84,12 @@ public class Chess{
 			System.out.println(' ');
 		}
 	}
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
 	public static void main(String[] args) {
 		System.out.println("Enter Filename");
 		System.out.println("(If The File Does Not Exist It Will Create a New File For You)");
@@ -86,10 +107,13 @@ public class Chess{
 			}
 		}
 
+
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		while(running){
 			if (turn == 0){
 				System.out.println("White's Turn");
+				System.out.println("White King in Check:" + chess.checkOnWhiteKing());
+				System.out.println("Black King in Check:" + chess.checkOnBlackKing());
 				Chess.printOutBoard(data);
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
@@ -103,9 +127,15 @@ public class Chess{
 				Scanner inptyCor = new Scanner(System.in);
 				int yCor = inptyCor.nextInt();
 				System.out.println("Give x Coordinate of Where You Want To Move");
+				System.out.println("0 -> 7");
 				Scanner inptx = new Scanner(System.in);
 				int x = inptx.nextInt();
 				System.out.println("Give y Coordinate of Where You Want To Move");
+				System.out.println("Give y Coordinate of Piece You Want To Move");
+				System.out.println("0");
+				System.out.println("|");
+				System.out.println("V");
+				System.out.println("7");
 				Scanner inpty = new Scanner(System.in);
 				int y = inpty.nextInt();
 				if(chess.move(xCor,yCor,x,y)){
@@ -117,6 +147,14 @@ public class Chess{
 					}
 					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					System.out.println("Move Successfull");
+					if(chess.checkOnWhiteKing()){
+						System.out.println("BLACK WINS!!!");
+						running = false;
+					}
+					if(chess.checkOnBlackKing()){
+						System.out.println("WHITE WINS!!!");
+						running = false;
+					}
 					turn = 1;
 				}
 				else{
@@ -124,8 +162,9 @@ public class Chess{
 				}
 			}
 			if(turn == 1){
-
 				System.out.println("Black's Turn");
+				System.out.println("White King in Check:" + chess.checkOnWhiteKing());
+				System.out.println("Black King in Check:" + chess.checkOnBlackKing());
 				Chess.printOutBoard(data);
 				System.out.println("Give x Coordinate of Piece You Want To Move");
 				System.out.println("0 -> 7");
@@ -153,6 +192,14 @@ public class Chess{
 					}
 					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 					System.out.println("Move Successfull");
+					if(chess.checkOnWhiteKing()){
+						System.out.println("BLACK WINS!!!");
+						running = false;
+					}
+					if(chess.checkOnBlackKing()){
+						System.out.println("WHITE WINS!!!");
+						running = false;
+					}
 					turn = 0;
 				}
 				else{
