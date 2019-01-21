@@ -8,6 +8,7 @@ public class ChessDriver{
 
     Chessboard chess = new Chessboard();
     chess.loadGame("file1");
+    /*
     System.out.println(chess);
     chess.move(1,1,1,3);
     System.out.println(chess);
@@ -22,7 +23,7 @@ public class ChessDriver{
     System.out.println(chess);
     chess.returnData(1,4);
     System.out.println(chess.getSquare(2,4).getPiece().getMoved2());
-
+    */
 
     /*
     chess.returnData(0,7);
