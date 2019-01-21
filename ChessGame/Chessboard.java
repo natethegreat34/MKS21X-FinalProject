@@ -564,6 +564,21 @@ public class Chessboard{
             }
           }
         }
+        boolean delete = false;
+        for (int i = 1; yCor + i < 8; i ++){
+          if(!delete){
+            if (ans[yCor + i][xCor]!= null){
+              if (!(data[yCor + i][xCor].isEmpty())){
+                ans[yCor + i][xCor] = null;
+                delete = true;
+              }
+            }
+          }
+          else{
+            ans[yCor + i][xCor] = null;
+          }
+        }
+        delete = false;
       }
       if(inpt.getColor().equals("white")){
         if(yCor - 1 >= 0){
@@ -582,6 +597,21 @@ public class Chessboard{
             }
           }
         }
+        boolean delete = false;
+        for (int i = 1; yCor - i >= 0; i ++){
+          if(!delete){
+            if (ans[yCor - i][xCor]!= null){
+              if (!(data[yCor - i][xCor].isEmpty())){
+                ans[yCor - i][xCor] = null;
+                delete = true;
+              }
+            }
+          }
+          else{
+            ans[yCor - i][xCor] = null;
+          }
+        }
+        delete = false;
       }
     }
     else{
