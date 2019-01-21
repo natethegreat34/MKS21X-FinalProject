@@ -11,6 +11,12 @@ public class ChessDriver{
     System.out.println(chess);
     chess.returnData(4,7);
     chess.returnData(4,0);
+    //queen side
+    chess.move(4,7,2,7);
+    chess.returnData(4,0);
+    System.out.println(chess.printWhiteMoves());
+    chess.move(4,0,2,0);
+    System.out.println(chess);
     /*
     System.out.println(chess);
     chess.move(2,1,2,3);

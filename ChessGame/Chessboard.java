@@ -182,6 +182,7 @@ public class Chessboard{
         }
       }
       updateAllPieces();
+      limitAllPieces();
       updateAllBlacksMoves();
       updateAllWhitesMoves();
       limitAllPieces();
@@ -364,7 +365,7 @@ public class Chessboard{
     side.toLowerCase();
     if(side.equals("queen")){
       //System.out.println("Checking Queen Side");
-      if(kingW.getMoveNumber() == 0){
+      if(kingB.getMoveNumber() == 0){
         //System.out.println("Passed 1");
         if(data[y][x - 4].getPiece() != null){
           //System.out.println("Passed 2");
@@ -378,7 +379,7 @@ public class Chessboard{
                   return false;
                 }
               }
-              if(!checkOnWhiteKing()){
+              if(!checkOnBlackKing()){
                 //System.out.println("Passed 5");
                 for(int i = x - 1; i > 0; i--){
                   if(null != whiteMoves[y][i]){
@@ -397,7 +398,7 @@ public class Chessboard{
     }
     if(side.equals("king")){
       //System.out.println("Checking King Side");
-      if(kingW.getMoveNumber() == 0){
+      if(kingB.getMoveNumber() == 0){
         //System.out.println("Passed 1");
         if(data[y][x + 3].getPiece() != null){
           //System.out.println("Passed 2");
@@ -411,7 +412,7 @@ public class Chessboard{
                   return false;
                 }
               }
-              if(!checkOnWhiteKing()){
+              if(!checkOnBlackKing()){
                 //System.out.println("Passed 5");
                 for(int i = x + 1; i < 7; i++){
                   if(null != whiteMoves[y][i]){
