@@ -1,8 +1,8 @@
-r _ _ _ k _ _ r
+r n b q k b n r
 p p p p p p p p
 _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _
 P P P P P P P P
-R _ _ _ K _ _ R
+R N B Q K B N R 

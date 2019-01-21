@@ -13,7 +13,7 @@ public class Knight extends Piece{
     if (color.equals("black")){
       type = "n";
     }
-    if (color.equals("white")){
+    if (color.equals("white")) {
       type = "N";
     }
     xCor = x;
