@@ -79,8 +79,11 @@ public class Chess {
 				color += 1;
 				color = color%2;
 			}
+			color += 1;
+			color = color % 2;
 		}
 	}
+
 	public static void main(String[] args) {
 		int x = 10;
 		int y = 10;
@@ -97,7 +100,7 @@ public class Chess {
 		while(running){
 			s.startScreen();
       Key key = terminal.readInput();
-			if(key != null){
+
 				if (mode == 1){
 					s.clear();
 					Chessboard chess = new Chessboard();
@@ -105,6 +108,7 @@ public class Chess {
 					Chess.makeBoard(chess.getData(), terminal);
 	        s.refresh();
 				}
+			if(key != null){
 	      if (key.getKind() == Key.Kind.Escape) {
 	        s.stopScreen();
 	        terminal.exitPrivateMode();
