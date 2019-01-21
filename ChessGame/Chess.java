@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 public class Chess{
 	public static char convertIntoPiece(String piece){
-		char ans = ' ';
+		char ans = '_';
 		if (piece == null){
 			return ans;
 		}
@@ -49,6 +49,7 @@ public class Chess{
 		return ans;
 	}
 	public static void updateData(char[][] data, String[][] board){
+		data = new char[8][8];
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
 				char inpt = Chess.convertIntoPiece(board[y][x]);
@@ -58,6 +59,9 @@ public class Chess{
 	}
 	public static void printOutBoard(char[][] data){
 		for(int y = 0; y < 8; y++){
+			for(int i = 0; i < 6; i++){
+				System.out.print("\t");
+			}
 			for(int x = 0; x < 8; x++){
 				System.out.print(data[y][x]);
 				System.out.print(' ');
@@ -72,7 +76,6 @@ public class Chess{
 		Chessboard chess =  new Chessboard();
 		String filename = inptFileName.nextLine();
 		chess.loadGame(filename);
-		System.out.println(chess);
 		int turn = 0;
 		boolean running = true;
 		String[][] board = chess.getData();
@@ -86,7 +89,7 @@ public class Chess{
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		while(running){
 			if (turn == 0){
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				System.out.println("White's Turn");
 				Chess.printOutBoard(data);
 				System.out.println("Give x Coordinate of Piece You Want To Move");
@@ -107,8 +110,8 @@ public class Chess{
 				Scanner inpty = new Scanner(System.in);
 				int y = inpty.nextInt();
 				if(chess.move(xCor,yCor,x,y)){
+					Chess.updateData(data,chess.getData());
 					System.out.println("Move Successfull");
-					Chess.updateData(data,board);
 					turn = 1;
 				}
 				else{
@@ -116,7 +119,7 @@ public class Chess{
 				}
 			}
 			if(turn == 1){
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				System.out.println("Black's Turn");
 				Chess.printOutBoard(data);
 				System.out.println("Give x Coordinate of Piece You Want To Move");
@@ -137,8 +140,8 @@ public class Chess{
 				Scanner inpty = new Scanner(System.in);
 				int y = inpty.nextInt();
 				if(chess.move(xCor,yCor,x,y)){
+					Chess.updateData(data,chess.getData());
 					System.out.println("Move Successfull");
-					Chess.updateData(data,board);
 					turn = 0;
 				}
 				else{

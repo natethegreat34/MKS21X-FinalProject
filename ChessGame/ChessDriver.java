@@ -13,6 +13,7 @@ public class ChessDriver{
     //queen side
     chess.move(4,6,4,4);
     System.out.println(chess);
+    System.out.println(Piece.movesString(chess.getData()));
     /*
     System.out.println(chess);
     chess.move(2,1,2,3);
