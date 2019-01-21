@@ -48,7 +48,14 @@ public class Chess{
 		}
 		return ans;
 	}
-
+	public static void updateData(char[][] data, String[][] board){
+		for(int y = 0; y < 8; y++){
+			for(int x = 0; x < 8; x++){
+				char inpt = Chess.convertIntoPiece(board[y][x]);
+				data[y][x] = inpt;
+			}
+		}
+	}
 	public static void printOutBoard(char[][] data){
 		for(int y = 0; y < 8; y++){
 			for(int x = 0; x < 8; x++){
@@ -65,6 +72,7 @@ public class Chess{
 		Chessboard chess =  new Chessboard();
 		String filename = inptFileName.nextLine();
 		chess.loadGame(filename);
+		System.out.println(chess);
 		int turn = 0;
 		boolean running = true;
 		String[][] board = chess.getData();
@@ -100,6 +108,7 @@ public class Chess{
 				if(chess.move(xCor,yCor,x,y)){
 					System.out.println("Move Successfull");
 					turn = 1;
+					Chess.updateData(data,board);
 				}
 				else{
 					System.out.println("Make Sure Movement is Possible");
@@ -128,6 +137,7 @@ public class Chess{
 				if(chess.move(xCor,yCor,x,y)){
 					System.out.println("Move Successfull");
 					turn = 0;
+					Chess.updateData(data,board);
 				}
 				else{
 					System.out.println("Make Sure Movement is Possible");
