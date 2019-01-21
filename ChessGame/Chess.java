@@ -10,7 +10,7 @@ public class Chess{
 		System.out.println("(If The File Does Not Exist It Will Create a New File For You)");
 		Scanner inptFileName = new Scanner(System.in);
 		Chessboard chess =  new Chessboard();
-		String filename = inptFileName.nextString();
+		String filename = inptFileName.nextLine();
 		chess.loadGame(filename);
 		System.out.println(chess);
 	}
