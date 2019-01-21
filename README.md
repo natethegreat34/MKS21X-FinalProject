@@ -120,4 +120,8 @@ January 19, 2018
 Both: Working with check still and finalizing it.  Continuing to plan how to use 
 lanterna.
 --------------------------------------------------------------------------------
-
+January 20, 2018
+Both: Made it so castling fully works.  Made it so that it can't castle through 
+check, and made it so pawns will auto promote to queen.  All we have left is to 
+finish the lanterna code, and then we are done.
+--------------------------------------------------------------------------------
