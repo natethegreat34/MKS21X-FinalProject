@@ -8,18 +8,17 @@ public class ChessDriver{
 
     Chessboard chess = new Chessboard();
     chess.loadGame("file1");
-
     System.out.println(chess);
-    chess.move(1,1,1,3);
-    System.out.println(chess);
-    chess.move(1,3,1,4);
-    System.out.println(chess);
-    chess.returnData(1,4);
     chess.move(2,6,2,4);
     System.out.println(chess);
-    chess.returnData(1,4);
-    System.out.println(chess.getSquare(2,4).getPiece().getMoved2());
-    chess.move(1,4,2,5);
+    chess.move(2,4,2,3);
+    System.out.println(chess);
+    chess.move(2,3,2,2);
+    System.out.println(chess);
+    chess.move(2,2,2,1);
+    System.out.println(chess);
+    chess.move(2,1,2,0);
+    System.out.println(chess);
     System.out.println(chess);
 
 
