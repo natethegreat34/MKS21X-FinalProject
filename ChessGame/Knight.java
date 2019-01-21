@@ -3,6 +3,9 @@ public class Knight extends Piece{
   private int yCor;
   private String color;
   private String type;
+  private int direction;
+  private int moveNumber = 0;
+  private boolean moved2;
   private String[][] data;
 
   public Knight(int x, int y, String colorWB){
@@ -16,6 +19,14 @@ public class Knight extends Piece{
     xCor = x;
     yCor = y;
     possibleMoves();
+  }
+  //if it is a pawn and moves 2 spaces then it will mark if it moved2
+  public boolean getMoved2(){
+    return moved2;
+  }
+  //if it is a pawn and moves 2 spaces then it will mark if it moved2
+  public void setMoved2(boolean inpt){
+    moved2 = inpt;
   }
   //returns the xcoordinate
    public int getX(){
@@ -41,23 +52,44 @@ public class Knight extends Piece{
    public String getColor(){
      return color;
    }
-  public String getType(){
-    return type;
-  }
-
-  public String[][] getData(){
-    return data;
-  }
-
-  public void setData(String[][] inpt){
-    data = inpt;
-  }
-
-  public void updateData(){
-    possibleMoves();
-  }
-
-  private void possibleMoves(){
+   //returns the type
+   public String getType(){
+     return type;
+   }
+   // returns its data which shows all the possible moves
+   public String[][] getData(){
+     return data;
+   }
+   // sets the data, used in limitpiece and move
+   public void setData(String[][] inpt){
+     data = inpt;
+   }
+   //returns the location
+   public String getLocation(){
+     String ans = "";
+     String letters = "abcdefgh";
+     ans += letters.substring(xCor,xCor+1);
+     ans += yCor;
+     return ans;
+   }
+   //tells how many times the piece moved
+   public void increaseMoveNumber(){
+     moveNumber++;
+   }
+   //returns move number it is at
+   public int getMoveNumber(){
+     return moveNumber;
+   }
+   //this will reset its data if it moves its
+   public void updateData(){
+     possibleMoves();
+   }
+   //only really used with pawn to set which direction it can move
+   public void setDir(int dir){
+     direction = dir % 2;
+   }
+   //based on its coordinates it will make the possible moves
+   private void possibleMoves(){
     data = new String[8][8];
     if (yCor + 1 < 8){
       if (xCor + 2 < 8){

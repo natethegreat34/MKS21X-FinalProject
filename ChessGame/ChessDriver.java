@@ -7,8 +7,40 @@ public class ChessDriver{
   public static void main(String[] args) throws FileNotFoundException{
 
     Chessboard chess = new Chessboard();
-    chess.newGame("testing");
+    chess.loadGame("file1");
     System.out.println(chess);
+    chess.move(1,1,1,3);
+    System.out.println(chess);
+    chess.move(1,3,1,4);
+    System.out.println(chess);
+    chess.returnData(1,4);
+    chess.move(2,6,2,5);
+    System.out.println(chess);
+    chess.returnData(1,4);
+    System.out.println(chess.getSquare(2,5).getPiece().getMoved2());
+    chess.move(2,5,2,4);
+    System.out.println(chess);
+    chess.returnData(1,4);
+    System.out.println(chess.getSquare(2,4).getPiece().getMoved2());
+
+
+    /*
+    chess.returnData(0,7);
+    chess.move(0,7,0,5);
+    chess.returnData(0,5);
+    System.out.println(chess.getSquare(0,5).getPiece().getMoved2());
+    chess.move(0,5,0,4);
+    System.out.println(chess);
+    System.out.println(chess.getSquare(0,4).getPiece().getMoved2());
+    /*
+    System.out.println(chess.printBlackMoves());
+    System.out.println(chess.printWhiteMoves());
+    chess.returnData(4,7);
+    System.out.println(chess);
+    chess.move(4,7,6,7);
+    System.out.println(chess);
+    System.out.println(chess.getSquare(6,7).getPiece().getMoveNumber());
+    System.out.println(chess.getSquare(5,7).getPiece().getMoveNumber());
     /*
     chess.newGame("test2");
     System.out.println(chess);
@@ -16,7 +48,7 @@ public class ChessDriver{
     System.out.println(chess);
     chess.printAllData();
     */
-      /*
+    /*
     chess.newGame("save1");
     System.out.println(chess);
     System.out.println("White In Check: " + chess.checkOnWhiteKing());
