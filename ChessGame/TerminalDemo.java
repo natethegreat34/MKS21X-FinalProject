@@ -18,104 +18,83 @@ import com.googlecode.lanterna.screen.*;
 
 
 public class TerminalDemo {
+	public Char convertIntoPiece(String piece){
+		if(piece.equals("p")){
+			return '\u265F';
+		}
+		if(piece.equals("P")){
+			return '\u2659';
+		}
+		if(piece.equals("k")){
+			return '\u265A';
+		}
+		if(piece.equals("K")){
+			return '\u2654';
+		}
+		if(piece.equals("q")){
+			return '\u265B';
+		}
+		if(piece.equals("Q")){
+			return '\u2655';
+		}
+		if(piece.equals("r")){
+			return '\u265C';
+		}
+		if(piece.equals("R")){
+			return '\u2656';
+		}
+		if(piece.equals("b")){
+			return '\u265D';
+		}
+		if(piece.equals("B")){
+			return '\u2657';
+		}
+		if(piece.equals("n")){
+			return '\u265E';
+		}
+		if(piece.equals("N")){
+			return '\u2658';
+		}
+	}
+	public void makeBoard(String[][] chess, Terminal terminal){
+		int color = 0;
+		for(int y = 0; y < chess.length; y++){
+			for(int x = 0; x < chess[y].length; x++){
+				if(color == 0){
+					terminal.applyBackgroundColor(Terminal.Color.BLACK);
+				}
+				if(color == 1){
+					terminal.applyBackgroundColor(Terminal.Color.WHITE);
+				}
+				Char inpt = convertIntoPiece(chess[y][x]);
+				terminal.moveCursor(x + 28, y + 28);
+				terminal.putCharacter(inpt);
+				color += 1;
+				color == color%2;
+			}
+		}
+	}
 	public static void main(String[] args) {
 		int x = 10;
 		int y = 10;
+		int mode = 1;
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
 		TerminalSize size = terminal.getTerminalSize();
 		terminal.setCursorVisible(false);
+		Screen s = new Screen(terminal);
 		boolean running = true;
 		long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
 		while(running){
-
-			terminal.moveCursor(x,y);
-			terminal.applyBackgroundColor(Terminal.Color.WHITE);
-			terminal.applyForegroundColor(Terminal.Color.BLACK);
-			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
-			terminal.applySGR(Terminal.SGR.ENTER_UNDERLINE);
-			terminal.putCharacter('&');
-			//terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-			terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-
-			terminal.moveCursor(size.getColumns()-5,5);
-			terminal.applyBackgroundColor(Terminal.Color.RED);
-			terminal.applyForegroundColor(Terminal.Color.YELLOW);
-			terminal.applySGR(Terminal.SGR.ENTER_BOLD);
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter('A');
-			terminal.putCharacter(' ');
-			terminal.moveCursor(size.getColumns()-5,6);
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-
-			Key key = terminal.readInput();
-
-			if (key != null)
-			{
-
-				if (key.getKind() == Key.Kind.Escape) {
-
-					terminal.exitPrivateMode();
-					running = false;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowLeft) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					x--;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowRight) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					x++;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowUp) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y--;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowDown) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y++;
-				}
-				//space moves it diagonally
-				if (key.getCharacter() == ' ') {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y++;
-					x++;
-				}
-				putString(1,4,terminal,"["+key.getCharacter() +"]");
-				putString(1,1,terminal,key+"        ");//to clear leftover letters pad withspaces
+			s.startScreen();
+			if (mode == 1){
+				s.clear();
+				Chessboard chess = new Chessboard();
+				makeBoard(chess.getData(), terminal);
+				s.refresh();
 			}
-
-			//DO EVEN WHEN NO KEY PRESSED:
-			long tEnd = System.currentTimeMillis();
-			long millis = tEnd - tStart;
-			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
-			if(millis/1000 > lastSecond){
-				lastSecond = millis / 1000;
-				//one second has passed.
-				putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-
-			}
-
-
 		}
 	}
 }
