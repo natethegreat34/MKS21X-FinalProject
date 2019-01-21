@@ -93,18 +93,20 @@ public class Chess {
 		while(running){
 			s.startScreen();
       Key key = terminal.readInput();
-			if (mode == 1){
-				s.clear();
-				Chessboard chess = new Chessboard();
-        chess.newGame("lanternatest");
-				Chess.makeBoard(chess.getData(), terminal);
-        s.refresh();
+			if(key != null){
+				if (mode == 1){
+					s.clear();
+					Chessboard chess = new Chessboard();
+	        chess.newGame("lanternatest");
+					Chess.makeBoard(chess.getData(), terminal);
+	        s.refresh();
+				}
+	      if (key.getKind() == Key.Kind.Escape) {
+	        s.stopScreen();
+	        terminal.exitPrivateMode();
+	        running = false;
+	      }
 			}
-      if (key.getKind() == Key.Kind.Escape) {
-        s.stopScreen();
-        terminal.exitPrivateMode();
-        running = false;
-      }
 		}
 	}
 }
