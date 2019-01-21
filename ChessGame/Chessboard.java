@@ -620,14 +620,14 @@ public class Chessboard{
       if(inpt.getType().equals("white")){
         if(xCor + 1 < 8){
           if(data[yCor][xCor + 1].getPiece().equals("p")){
-            if(data[yCor][xCor + 1].getPiece().getMoved2() == true){
+            if(data[yCor][xCor + 1].getPiece().getMoved2()){
               ans[yCor][xCor + 1] = "x";
             }
           }
         }
         if(xCor - 1 >= 0){
           if(data[yCor][xCor - 1].getPiece().equals("p")){
-            if(data[yCor][xCor - 1].getPiece().getMoved2() == true){
+            if(data[yCor][xCor - 1].getPiece().getMoved2()){
               ans[yCor][xCor - 1] = "x";
             }
           }
@@ -636,14 +636,14 @@ public class Chessboard{
       if(inpt.getType().equals("black")){
         if(xCor + 1 < 8){
           if(data[yCor][xCor + 1].getPiece().equals("P")){
-            if(data[yCor][xCor + 1].getPiece().getMoved2() == true){
+            if(data[yCor][xCor + 1].getPiece().getMoved2()){
               ans[yCor][xCor + 1] = "x";
             }
           }
         }
         if(xCor - 1 >= 0){
           if(data[yCor][xCor - 1].getPiece().equals("P")){
-            if(data[yCor][xCor - 1].getPiece().getMoved2() == true){
+            if(data[yCor][xCor - 1].getPiece().getMoved2()){
               ans[yCor][xCor - 1] = "x";
             }
           }
