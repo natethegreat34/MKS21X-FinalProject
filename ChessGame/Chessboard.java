@@ -1067,6 +1067,20 @@ public class Chessboard{
            if (inpt.getMoved2()) {
              inpt.setMoved2(false);
            }
+           if (inpt.getColor().equals("white")){
+             if (y == 0){
+               data[yCor][xCor].removePiece();
+               Queen newlywed = new Queen(x, 0, "white");
+               data[y][x].setPiece(newlywed);
+             }
+           }
+           if (inpt.getColor().equals("black")){
+             if (y == 7){
+               data[yCor][xCor].removePiece();
+               Queen newlywed = new Queen(x, 7, "black");
+               data[y][x].setPiece(newlywed);
+             }
+           }
         }
         inpt.increaseMoveNumber();
         data[inpt.getY()][inpt.getX()].removePiece();
