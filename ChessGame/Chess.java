@@ -243,16 +243,18 @@ public class Chess{
 											running = false;
 										}
 									}
-									for(int c = 1; c < 9; c++){
-										for(int r = 1; r < 9; r++){
-											String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
-											data[c][r] = inpt;
+									if(running){
+										for(int c = 1; c < 9; c++){
+											for(int r = 1; r < 9; r++){
+												String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
+												data[c][r] = inpt;
+											}
 										}
+										System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+										System.out.println("Move Successful");
+										chess.saveGame();
+										turn = 1;
 									}
-									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-									System.out.println("Move Successfull");
-									chess.saveGame();
-									turn = 1;
 								}
 								else{
 									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -348,17 +350,18 @@ public class Chess{
 											running = false;
 										}
 									}
-									for(int c = 1; c < 9; c++){
-										for(int r = 1; r < 9; r++){
-											String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
-											data[c][r] = inpt;
+									if(running){
+										for(int c = 1; c < 9; c++){
+											for(int r = 1; r < 9; r++){
+												String inpt = Chess.convertIntoPiece(chess.getData()[c - 1][r - 1]);
+												data[c][r] = inpt;
+											}
 										}
+										System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+										System.out.println("Move Successful");
+										chess.saveGame();
+										turn = 0;
 									}
-									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-									System.out.println("Move Successfull");
-									chess.saveGame();
-
-									turn = 0;
 								}
 								else{
 									System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
