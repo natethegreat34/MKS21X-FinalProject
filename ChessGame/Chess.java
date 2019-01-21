@@ -10,6 +10,43 @@ public class Chess{
 
 
   //==============================================================================
+
+	private static boolean noBlacks(Square[][] data){
+		for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].getPiece() != null){
+					if(data[y][x].getPiece().getColor().equals("black")){
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+	private static boolean noWhites(Square[][] data){
+		for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].getPiece() != null){
+					if(data[y][x].getPiece().getColor().equals("white")){
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
 	private static boolean noBlackKing(String[][] data){
 		for (int y = 0; y < data.length; y++){
       for (int x = 0; x < data[y].length; x++){
