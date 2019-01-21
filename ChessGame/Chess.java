@@ -96,7 +96,7 @@ public class Chess {
         s.refresh();
 			}
       if (key.getKind() == Key.Kind.Escape) {
-        s.endScreen();
+        s.stopScreen();
         terminal.exitPrivateMode();
         running = false;
       }
