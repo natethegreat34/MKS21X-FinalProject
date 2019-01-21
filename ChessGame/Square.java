@@ -4,6 +4,7 @@ public class Square {
   private boolean taken;
   private int xCor;
   private int yCor;
+  private boolean isMoveable;
 
   public Square(int x, int y){
       stored = null;
@@ -11,6 +12,15 @@ public class Square {
       xCor = x;
       yCor = y;
   }
+
+  public boolean isMoveable(){
+    return isMoveable;
+  }
+
+  public void setMoveable(boolean inpt){
+    isMoveable = inpt;
+  }
+
   public boolean isEmpty(){
       return !taken;
   }

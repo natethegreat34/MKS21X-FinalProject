@@ -12,6 +12,7 @@ public class Chessboard{
   private King kingB = null;
   private String[][] blackMoves;
   private String[][] whiteMoves;
+  private int turnnumber = 0;
 
   public Chessboard(){
     data = new Square[8][8];
@@ -19,6 +20,47 @@ public class Chessboard{
       for (int x = 0; x < data[y].length; x++){
         Square empty = new Square (x,y);
         data[y][x] = empty;
+      }
+    }
+  }
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  public void setTurn(int turn){
+    turnnumber = turn %  2;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+  public void limitSquares(){
+    if (turnnumber == 0){
+      for(int y = 0; y < 8; y++){
+        for(int x = 0; x < 8; x ++){
+          if(data[y][x].getPiece().getColor().equals("white")){
+            data[y][x].setMoveable(true);
+          }
+          if(data[y][x].getPiece().getColor().equals("black")){
+            data[y][x].setMoveable(false);
+          }
+        }
+      }
+    }
+    if (turnnumber == 1){
+      for(int y = 0; y < 8; y++){
+        for(int x = 0; x < 8; x ++){
+          if(data[y][x].getPiece().getColor().equals("white")){
+            data[y][x].setMoveable(false);
+          }
+          if(data[y][x].getPiece().getColor().equals("black")){
+            data[y][x].setMoveable(true);
+          }
+        }
       }
     }
   }
@@ -206,7 +248,7 @@ public class Chessboard{
       updateAllBlacksMoves();
       updateAllWhitesMoves();
       limitAllPieces();
-
+      limitSquares();
     } catch(FileNotFoundException e){
       newGame(filename);
     }
@@ -1097,7 +1139,7 @@ public class Chessboard{
       System.out.println("No Piece There");
       return false;
     }
-    if(!(data[yCor][xCor].isMovable())){
+    if(!(data[yCor][xCor].isMoveable())){
       System.out.println("Not Your Piece");
       return false;
     }
@@ -1132,6 +1174,7 @@ public class Chessboard{
          }
        }
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        setTurn(turnnumber + 1);
         return true;
       }
       if (possibleMoves[y][x].equals("P")){
@@ -1144,6 +1187,7 @@ public class Chessboard{
         updateAllBlacksMoves();
         updateAllWhitesMoves();
         limitAllPieces();
+        setTurn(turnnumber + 1);
         return true;
       }
       if (possibleMoves[y][x].equals("c")){
@@ -1154,6 +1198,7 @@ public class Chessboard{
         updateAllWhitesMoves();
         limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        setTurn(turnnumber + 1);
         return true;
       }
       if (possibleMoves[y][x].equals("C")){
@@ -1164,10 +1209,12 @@ public class Chessboard{
         updateAllWhitesMoves();
         limitAllPieces();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
+        setTurn(turnnumber + 1);
         return true;
       }
       if (possibleMoves[y][x].equals("e")){
         enPassant(inpt, x, y);
+        setTurn(turnnumber + 1);
         return true;
       }
     }
@@ -1252,6 +1299,7 @@ public class Chessboard{
     updateAllBlacksMoves();
     updateAllWhitesMoves();
     limitAllPieces();
+    limitSquares();
   }
 
 
