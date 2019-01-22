@@ -237,6 +237,16 @@ public class Chess{
 					}
 				}
 				if(running){
+					if (chess.getMode().equals("Pawn")){
+						if(chess.noWhites()){
+							System.out.println("BLACK WINS!!!");
+							running = false;
+						}
+						if(chess.noBlacks()){
+							System.out.println("WHITE WINS!!!");
+							running = false;
+						}
+					}
 					System.out.println("White's Turn");
 					System.out.println("Type 'exit' anytime if you want to stop");
 					System.out.println("(It will auto save after each move)");
