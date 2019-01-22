@@ -143,7 +143,7 @@ public class Chess{
 		modes.add("Pawn");
 		System.out.println("It is Recommended to Zoom in Using Ctrl + Shift + '+'");
 		System.out.println("Please Select A Mode");
-		System.out.println("Blitz	/	Pawn");
+		System.out.println("Blitz / Pawn");
 		Scanner inptMode = new Scanner(System.in);
 		while(!inptMode.hasNext("Blitz|Pawn")){
 			System.out.println("Not a mode");
