@@ -227,7 +227,7 @@ public class Chess{
 					}
 				}
 				if(mode.equals("Pawn")){
-					System.out.println("Checking WIn");
+					//System.out.println("Checking WIn");
 					if(chess.getNumWhites() == 0){
 						System.out.println("BLACK WINS!!!");
 						running = false;
@@ -303,7 +303,7 @@ public class Chess{
 											}
 										}
 										if(mode.equals("Pawn")){
-											System.out.println("Checking WIn");
+											//System.out.println("Checking WIn");
 											if(chess.getNumWhites() == 0){
 												System.out.println("BLACK WINS!!!");
 												running = false;
@@ -372,7 +372,7 @@ public class Chess{
 				}
 				if(mode.equals("Pawn")){
 
-					System.out.println("Checking WIn");
+					//System.out.println("Checking WIn");
 					if(chess.getNumWhites() == 0){
 						System.out.println("BLACK WINS!!!");
 						running = false;
@@ -448,7 +448,7 @@ public class Chess{
 											}
 										}
 										if(mode.equals("Pawn")){
-											System.out.println("checking for win");
+											//System.out.println("checking for win");
 											if(chess.getNumWhites() == 0){
 												System.out.println("BLACK WINS!!!");
 												running = false;
