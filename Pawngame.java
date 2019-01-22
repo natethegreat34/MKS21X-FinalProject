@@ -1,0 +1,42 @@
+public class Pawngame{private void fillemup (){
+  clear();
+  Pawn piece1 = new Pawn (0,1, "black", 0);
+  data[1][0].setPiece(piece1);
+  Pawn piece2 = new Pawn (1,1, "black", 0);
+  data[1][1].setPiece(piece2);
+  Pawn piece3 = new Pawn (2,1, "black", 0);
+  data[1][2].setPiece(piece3);
+  Pawn piece4 = new Pawn (3,1, "black", 0);
+  data[1][3].setPiece(piece4);
+  Pawn piece5 = new Pawn (4,1, "black", 0);
+  data[1][4].setPiece(piece5);
+  Pawn piece6 = new Pawn (5,1, "black", 0);
+  data[1][5].setPiece(piece6);
+  Pawn piece7 = new Pawn (6,1, "black", 0);
+  data[1][6].setPiece(piece7);
+  Pawn piece8 = new Pawn (7,1, "black", 0);
+  data[1][7].setPiece(piece8);
+  Pawn piece9 = new Pawn (0,6, "white", 1);
+  data[6][0].setPiece(piece9);
+  Pawn piece10 = new Pawn (1,6, "white", 1);
+  data[6][1].setPiece(piece10);
+  Pawn piece11 = new Pawn (2,6, "white", 1);
+  data[6][2].setPiece(piece11);
+  Pawn piece12 = new Pawn (3,6, "white", 1);
+  data[6][3].setPiece(piece12);
+  Pawn piece13 = new Pawn (4,6, "white", 1);
+  data[6][4].setPiece(piece13);
+  Pawn piece14 = new Pawn (5,6, "white", 1);
+  data[6][5].setPiece(piece14);
+  Pawn piece15 = new Pawn (6,6, "white", 1);
+  data[6][6].setPiece(piece15);
+  Pawn piece16 = new Pawn (7,6, "white", 1);
+  data[6][7].setPiece(piece16);
+  updateAllPieces();
+  limitAllPieces();
+  updateAllBlacksMoves();
+  updateAllWhitesMoves();
+  limitAllPieces();
+  limitSquares();
+
+}
