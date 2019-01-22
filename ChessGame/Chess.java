@@ -106,40 +106,40 @@ public class Chess{
 			return ans;
 		}
 		if(piece.equals("p")){
-			ans = ANSI_WHITE_BACKGROUND + '\u265F' + "" + ANSI_RESET;
+			ans = ANSI_BLACK + '\u265F' + "" + ANSI_RESET;
 		}
 		if(piece.equals("P")){
-			ans = ANSI_WHITE_BACKGROUND + '\u2659' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2659' + "" + ANSI_RESET;
 		}
 		if(piece.equals("k")){
-			ans = ANSI_WHITE_BACKGROUND + '\u265A' + "" + ANSI_RESET;
+			ans = ANSI_BLACK + '\u265A' + "" + ANSI_RESET;
 		}
 		if(piece.equals("K")){
-			ans = ANSI_WHITE_BACKGROUND + '\u2654' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2654' + "" + ANSI_RESET;
 		}
 		if(piece.equals("q")){
-			ans = ANSI_WHITE_BACKGROUND + '\u265B' + "" + ANSI_RESET;
+			ans = ANSI_BLACK + '\u265B' + "" + ANSI_RESET;
 		}
 		if(piece.equals("Q")){
-			ans = ANSI_WHITE_BACKGROUND + '\u2655' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2655' + "" + ANSI_RESET;
 		}
 		if(piece.equals("r")){
-			ans = ANSI_WHITE_BACKGROUND + '\u265C' + "" + ANSI_RESET;
+			ans = ANSI_BLACK + '\u265C' + "" + ANSI_RESET;
 		}
 		if(piece.equals("R")){
-			ans = ANSI_WHITE_BACKGROUND + '\u2656' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2656' + "" + ANSI_RESET;
 		}
 		if(piece.equals("b")){
-			ans = ANSI_WHITE_BACKGROUND + '\u265D' + "" + ANSI_RESET;
+			ans = ANSI_BLACK + '\u265D' + "" + ANSI_RESET;
 		}
 		if(piece.equals("B")){
-			ans = ANSI_WHITE_BACKGROUND + '\u2657' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2657' + "" + ANSI_RESET;
 		}
 		if(piece.equals("n")){
-			ans = ANSI_WHITE_BACKGROUND + '\u265E' + "" + ANSI_RESET;
+			ans = ANSI_BLACK + '\u265E' + "" + ANSI_RESET;
 		}
 		if(piece.equals("N")){
-			ans = ANSI_WHITE_BACKGROUND + '\u2658' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2658' + "" + ANSI_RESET;
 		}
 		return ans;
 	}
