@@ -216,7 +216,7 @@ public class Chess{
 			int x = 0;
 			int y = 0;
 			if (turn == 0){
-				if(chess.getMode().equals("Blitz")){
+				if(mode.equals("Blitz")){
 					if(Chess.noWhiteKing(chess.getData())){
 						System.out.println("BLACK WINS!!!");
 						running = false;
@@ -226,7 +226,7 @@ public class Chess{
 						running = false;
 					}
 				}
-				if (chess.getMode().equals("Pawn")){
+				if (mode.equals("Pawn")){
 					if(chess.noWhites()){
 						System.out.println("BLACK WINS!!!");
 						running = false;
@@ -298,6 +298,7 @@ public class Chess{
 								if(inpt4.hasNextInt()){
 									y = 8 - inpt4.nextInt();
 									if(chess.move(xCor,yCor,x,y)){
+										System.out.println(chess.getMode());
 										if(chess.getMode().equals("Blitz")){
 											if(Chess.noWhiteKing(chess.getData())){
 												System.out.println("BLACK WINS!!!");
