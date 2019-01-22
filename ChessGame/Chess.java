@@ -239,6 +239,13 @@ public class Chess{
 					}
 				}
 				if(running){
+					System.out.println("Mode: " + mode);
+					if(mode.equals("Blitz")){
+						System.out.println("Goal: Take Opponent's King");
+					}
+					if(mode.equals("Pawn")){
+						System.out.println("Goal: Take All of Opponent's Pawns");
+					}
 					System.out.println("White's Turn");
 					System.out.println("Type 'exit' anytime if you want to stop");
 					System.out.println("(It will auto save after each move)");
@@ -384,6 +391,13 @@ public class Chess{
 					}
 				}
 				if(running){
+					System.out.println("Mode: " + mode);
+					if(mode.equals("Blitz")){
+						System.out.println("Goal: Take Opponent's King");
+					}
+					if(mode.equals("Pawn")){
+						System.out.println("Goal: Take All of Opponent's Pawns");
+					}
 					System.out.println("Black's Turn");
 					System.out.println("Type 'exit' anytime if you want to stop");
 					System.out.println("(It will auto save after each move)");
