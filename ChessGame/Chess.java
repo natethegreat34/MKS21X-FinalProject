@@ -194,6 +194,9 @@ public class Chess{
 		if(mode.equals("Blitz")){
 			chess.loadGame(filename);
 		}
+		if(mode.equals("Pawn")){
+			chess.loadGame(filename);
+		}
 		int turn = 0;
 		boolean running = true;
 		String[][] data = new String[10][10];
@@ -301,12 +304,22 @@ public class Chess{
 							if(inpt4.hasNextInt()){
 								y = 8 - inpt4.nextInt();
 								if(chess.move(xCor,yCor,x,y)){
-									if(mode.equals("Blitz")){
+									if(chess.getMode().equals("Blitz")){
 										if(Chess.noWhiteKing(chess.getData())){
 											System.out.println("BLACK WINS!!!");
 											running = false;
 										}
 										if(Chess.noBlackKing(chess.getData())){
+											System.out.println("WHITE WINS!!!");
+											running = false;
+										}
+									}
+									if (chess.getMode().equals("Pawn")){
+										if(Chess.noWhites(chess.getSquares())){
+											System.out.println("BLACK WINS!!!");
+											running = false;
+										}
+										if(Chess.noBlacks(chess.getSquares())){
 											System.out.println("WHITE WINS!!!");
 											running = false;
 										}
@@ -414,6 +427,16 @@ public class Chess{
 											running = false;
 										}
 										if(Chess.noBlackKing(chess.getData())){
+											System.out.println("WHITE WINS!!!");
+											running = false;
+										}
+									}
+									if (chess.getMode().equals("Pawn")){
+										if(Chess.noWhites(chess.getSquares())){
+											System.out.println("BLACK WINS!!!");
+											running = false;
+										}
+										if(Chess.noBlacks(chess.getSquares())){
 											System.out.println("WHITE WINS!!!");
 											running = false;
 										}
