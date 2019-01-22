@@ -141,6 +141,7 @@ public class Chess{
 		HashSet<String> modes = new HashSet<String>();
 		modes.add("Blitz");
 		modes.add("Pawn");
+		System.out.println("It is Recommended to Zoom in Using Ctrl + Shift + '+'");
 		System.out.println("Please Select A Mode");
 		System.out.println("Blitz	/	Pawn");
 		Scanner inptMode = new Scanner(System.in);
