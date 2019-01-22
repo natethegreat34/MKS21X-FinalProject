@@ -226,7 +226,7 @@ public class Chess{
 						running = false;
 					}
 				}
-				if(chess.getMode().equals("Pawn")){
+				if(mode.equals("Pawn")){
 					System.out.println("Checking WIn");
 					if(chess.getNumWhites() == 0){
 						System.out.println("BLACK WINS!!!");
@@ -292,7 +292,7 @@ public class Chess{
 									y = 8 - inpt4.nextInt();
 									if(chess.move(xCor,yCor,x,y)){
 										System.out.println(chess.getMode());
-										if(chess.getMode().equals("Blitz")){
+										if(mode.equals("Blitz")){
 											if(Chess.noWhiteKing(chess.getData())){
 												System.out.println("BLACK WINS!!!");
 												running = false;
@@ -302,7 +302,7 @@ public class Chess{
 												running = false;
 											}
 										}
-										if(chess.getMode().equals("Pawn")){
+										if(mode.equals("Pawn")){
 											System.out.println("Checking WIn");
 											if(chess.getNumWhites() == 0){
 												System.out.println("BLACK WINS!!!");
@@ -360,7 +360,7 @@ public class Chess{
 
 
 			if(turn == 1){
-				if(chess.getMode().equals("Blitz")){
+				if(mode.equals("Blitz")){
 					if(Chess.noWhiteKing(chess.getData())){
 						System.out.println("BLACK WINS!!!");
 						running = false;
@@ -370,7 +370,7 @@ public class Chess{
 						running = false;
 					}
 				}
-				if(chess.getMode().equals("Pawn")){
+				if(mode.equals("Pawn")){
 
 					System.out.println("Checking WIn");
 					if(chess.getNumWhites() == 0){
@@ -437,7 +437,7 @@ public class Chess{
 								if(inpt4.hasNextInt()){
 									y = 8 - inpt4.nextInt();
 									if(chess.move(xCor,yCor,x,y)){
-										if(chess.getMode().equals("Blitz")){
+										if(mode.equals("Blitz")){
 											if(Chess.noWhiteKing(chess.getData())){
 												System.out.println("BLACK WINS!!!");
 												running = false;
@@ -447,7 +447,7 @@ public class Chess{
 												running = false;
 											}
 										}
-										if(chess.getMode().equals("Pawn")){
+										if(mode.equals("Pawn")){
 											System.out.println("checking for win");
 											if(chess.getNumWhites() == 0){
 												System.out.println("BLACK WINS!!!");
