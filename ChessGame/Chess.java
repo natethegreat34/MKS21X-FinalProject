@@ -139,7 +139,7 @@ public class Chess{
 			ans = ANSI_BLACK + '\u265E' + "" + ANSI_RESET;
 		}
 		if(piece.equals("N")){
-			ans = ANSI_BLACK + '\u2658' + "" + ANSI_RESET;
+			ans = ANSI_WHITE + '\u2658' + "" + ANSI_RESET;
 		}
 		return ans;
 	}
