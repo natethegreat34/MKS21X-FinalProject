@@ -161,7 +161,7 @@ public class Chess{
     for (int y = 0; y < data.length; y++){
       String line = "";
       for (int x = 0; x < data[y].length; x++){
-        line += data[y][x] + " ";
+        line += data[y][x];
       }
       line += "\n";
       ans += line;
