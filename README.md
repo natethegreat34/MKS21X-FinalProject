@@ -125,3 +125,8 @@ Both: Made it so castling fully works.  Made it so that it can't castle through
 check, and made it so pawns will auto promote to queen.  All we have left is to 
 finish the lanterna code, and then we are done.
 --------------------------------------------------------------------------------
+January 21, 2018
+Both: Finished the project.  We added the different moves, and made the game 
+user-friendly with a scanner. We perfected the lay out.  We are all good to go
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
