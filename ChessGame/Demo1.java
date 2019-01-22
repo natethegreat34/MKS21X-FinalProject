@@ -1,6 +1,6 @@
 public class Demo1{
   public static void main(String[] args) {
-    Chessboard chess = new Chessboard();
+    Chessboard chess = new Chessboard("Blitz");
     System.out.println("=====================================================================");
     System.out.println("Check/Save Game/New Game/Load Game Demo");
 

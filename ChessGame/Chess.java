@@ -189,7 +189,7 @@ public class Chess{
 		System.out.println("Enter Filename");
 		System.out.println("(If The File Does Not Exist It Will Create a New File For You)");
 		Scanner inptFileName = new Scanner(System.in);
-		Chessboard chess =  new Chessboard();
+		Chessboard chess =  new Chessboard(mode);
 		String filename = inptFileName.nextLine();
 		if(mode.equals("Blitz")){
 			chess.loadGame(filename);

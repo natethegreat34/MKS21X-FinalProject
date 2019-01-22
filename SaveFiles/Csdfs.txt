@@ -1,8 +1,0 @@
-r n b _ k b n r 
-p p p p _ Q p p 
-_ _ _ _ _ _ _ _ 
-_ _ _ _ p _ _ _ 
-_ _ _ _ P _ _ _ 
-_ _ _ _ _ _ _ _ 
-P P P P _ q P P 
-R N B _ K B N R 

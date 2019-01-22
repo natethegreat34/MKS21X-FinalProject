@@ -2,7 +2,7 @@ public class Demo2{
   public static void main(String[] args) {
     System.out.println("=====================================================================");
     System.out.println("ILLEGAL MOVES DEMO\n");
-    Chessboard chess = new Chessboard();
+    Chessboard chess = new Chessboard("Blitz");
     chess.loadGame("demo2");
     System.out.println("Original Board");
     System.out.println("This board is filled with pieces of the same color");
