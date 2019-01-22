@@ -226,32 +226,24 @@ public class Chess{
 						running = false;
 					}
 				}
-				if (mode.equals("Pawn")){
-					if(chess.noWhites()){
+				if(chess.getMode().equals("Pawn")){
+					if(chess.getNumWhites() == 0){
 						System.out.println("BLACK WINS!!!");
 						running = false;
 					}
-					if(chess.noBlacks()){
+					if(chess.getNumBlacks() == 0){
 						System.out.println("WHITE WINS!!!");
 						running = false;
 					}
 				}
 				if(running){
-					if (chess.getMode().equals("Pawn")){
-						if(chess.noWhites()){
-							System.out.println("BLACK WINS!!!");
-							running = false;
-						}
-						if(chess.noBlacks()){
-							System.out.println("WHITE WINS!!!");
-							running = false;
-						}
-					}
 					System.out.println("White's Turn");
 					System.out.println("Type 'exit' anytime if you want to stop");
 					System.out.println("(It will auto save after each move)");
-					System.out.println("White King in Check:" + chess.checkOnWhiteKing());
-					System.out.println("Black King in Check:" + chess.checkOnBlackKing());
+					System.out.println("White King in Check: " + chess.checkOnWhiteKing());
+					System.out.println("Black King in Check: " + chess.checkOnBlackKing());
+					System.out.println("Number of White Pieces: " + chess.getNumWhites());
+					System.out.println("Number of Black Pieces: " + chess.getNumBlacks());
 					System.out.println(Chess.toString(data));
 					System.out.println("Give x Coordinate of Piece You Want To Move");
 					System.out.println("a -> h");
@@ -309,12 +301,12 @@ public class Chess{
 												running = false;
 											}
 										}
-										if (chess.getMode().equals("Pawn")){
-											if(chess.noWhites()){
+										if(chess.getMode().equals("Pawn")){
+											if(chess.getNumWhites() == 0){
 												System.out.println("BLACK WINS!!!");
 												running = false;
 											}
-											if(chess.noBlacks()){
+											if(chess.getNumBlacks() == 0){
 												System.out.println("WHITE WINS!!!");
 												running = false;
 											}
@@ -376,12 +368,12 @@ public class Chess{
 						running = false;
 					}
 				}
-				if (chess.getMode().equals("Pawn")){
-					if(chess.noWhites()){
+				if(chess.getMode().equals("Pawn")){
+					if(chess.getNumWhites() == 0){
 						System.out.println("BLACK WINS!!!");
 						running = false;
 					}
-					if(chess.noBlacks()){
+					if(chess.getNumBlacks() == 0){
 						System.out.println("WHITE WINS!!!");
 						running = false;
 					}
@@ -390,8 +382,11 @@ public class Chess{
 					System.out.println("Black's Turn");
 					System.out.println("Type 'exit' anytime if you want to stop");
 					System.out.println("(It will auto save after each move)");
-					System.out.println("White King in Check:" + chess.checkOnWhiteKing());
-					System.out.println("Black King in Check:" + chess.checkOnBlackKing());
+					System.out.println("(It will auto save after each move)");
+					System.out.println("White King in Check: " + chess.checkOnWhiteKing());
+					System.out.println("Black King in Check: " + chess.checkOnBlackKing());
+					System.out.println("Number of White Pieces: " + chess.getNumWhites());
+					System.out.println("Number of Black Pieces: " + chess.getNumBlacks());
 					System.out.println(Chess.toString(data));
 					System.out.println("Give x Coordinate of Piece You Want To Move");
 					System.out.println("a -> h");
@@ -448,12 +443,12 @@ public class Chess{
 												running = false;
 											}
 										}
-										if (chess.getMode().equals("Pawn")){
-											if(chess.noWhites()){
+										if(chess.getMode().equals("Pawn")){
+											if(chess.getNumWhites() == 0){
 												System.out.println("BLACK WINS!!!");
 												running = false;
 											}
-											if(chess.noBlacks()){
+											if(chess.getNumBlacks() == 0){
 												System.out.println("WHITE WINS!!!");
 												running = false;
 											}

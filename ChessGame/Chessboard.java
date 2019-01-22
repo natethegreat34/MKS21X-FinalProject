@@ -14,6 +14,8 @@ public class Chessboard{
   private String[][] whiteMoves;
   private int turnnumber = 0;
   private String mode;
+  private int numBlacks;
+  private int numWhites;
 
   public Chessboard(String newmode){
     data = new Square[8][8];
@@ -42,6 +44,14 @@ public class Chessboard{
   }
 
   //==============================================================================
+  public int getNumBlacks(){
+    return numBlacks;
+  }
+  //------------------------------------------------------------------------------
+  public int getNumWhites(){
+    return numWhites;
+  }
+  //------------------------------------------------------------------------------
   public void limitSquares(){
     if (turnnumber == 0){
       for(int y = 0; y < 8; y++){
@@ -137,6 +147,47 @@ public class Chessboard{
 
   public boolean isThereAWhiteKing(){
     return kingW != null;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+  public void numBlacks(){
+    int num = 0;
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].getPiece() != null){
+					if(data[y][x].getPiece().getColor().equals("black")){
+            num ++;
+          }
+        }
+      }
+    }
+    numBlacks = num;
+  }
+
+  //------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
+
+  public void numWhites(){
+    int num = 0;
+    for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].getPiece() != null){
+					if(data[y][x].getPiece().getColor().equals("white")){
+            num ++;
+          }
+        }
+      }
+    }
+    numWhites = num;
   }
 
   //------------------------------------------------------------------------------
@@ -295,6 +346,8 @@ public class Chessboard{
       updateAllWhitesMoves();
       limitAllPieces();
       limitSquares();
+      numWhites();
+      numBlacks();
     } catch(FileNotFoundException e){
       newGame(filename);
     }
@@ -574,6 +627,8 @@ public class Chessboard{
       updateAllBlacksMoves();
       updateAllWhitesMoves();
       limitAllPieces();
+      numWhites();
+      numBlacks();
       pawn.increaseMoveNumber();
       return true;
     }
@@ -586,6 +641,8 @@ public class Chessboard{
       updateAllBlacksMoves();
       updateAllWhitesMoves();
       limitAllPieces();
+      numWhites();
+      numBlacks();
       pawn.increaseMoveNumber();
       return true;
     }
@@ -1211,6 +1268,8 @@ public class Chessboard{
         updateAllBlacksMoves();
         updateAllWhitesMoves();
         limitAllPieces();
+        numWhites();
+        numBlacks();
         inpt.increaseMoveNumber();
         if(inpt.getType().equals("P") || inpt.getType().equals("p")){
          if (inpt.getMoved2()) {
@@ -1244,8 +1303,12 @@ public class Chessboard{
         updateAllBlacksMoves();
         updateAllWhitesMoves();
         limitAllPieces();
+        numWhites();
+        numBlacks();
         setTurn(turnnumber + 1);
         limitSquares();
+
+
         return true;
       }
       if (possibleMoves[y][x].equals("c")){
@@ -1255,6 +1318,8 @@ public class Chessboard{
         updateAllBlacksMoves();
         updateAllWhitesMoves();
         limitAllPieces();
+        numWhites();
+        numBlacks();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         setTurn(turnnumber + 1);
         limitSquares();
@@ -1267,6 +1332,8 @@ public class Chessboard{
         updateAllBlacksMoves();
         updateAllWhitesMoves();
         limitAllPieces();
+        numWhites();
+        numBlacks();
         //System.out.println(Piece.movesString(data[y][x].getPiece().getData()));
         setTurn(turnnumber + 1);
         limitSquares();
@@ -1275,6 +1342,8 @@ public class Chessboard{
       if (possibleMoves[y][x].equals("e")){
         enPassant(inpt, x, y);
         setTurn(turnnumber + 1);
+        numWhites();
+        numBlacks();
         limitSquares();
         return true;
       }
@@ -1359,6 +1428,8 @@ public class Chessboard{
     limitAllPieces();
     updateAllBlacksMoves();
     updateAllWhitesMoves();
+    numWhites();
+    numBlacks();
     limitAllPieces();
     limitSquares();
   }
@@ -1401,6 +1472,8 @@ public class Chessboard{
     limitAllPieces();
     updateAllBlacksMoves();
     updateAllWhitesMoves();
+    numWhites();
+    numBlacks();
     limitAllPieces();
     limitSquares();
   }

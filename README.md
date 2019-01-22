@@ -112,16 +112,7 @@ Both: Going over prototype, improving it, and reprinting some parts.  Discussed
 what steps we have to take next. Decided pawn chess will be easy to do, we need
 en passant, and checkmate would be great to have.  Everything else, can be extra.
 --------------------------------------------------------------------------------
-January 18, 2018
+January 19, 2018
 Both: We started visualizing how all the special moves will be done with minimal
 progress on them. We also discussed the work arounds of lanterna
---------------------------------------------------------------------------------
-January 19, 2018
-Both: Working with check still and finalizing it.  Continuing to plan how to use 
-lanterna.
---------------------------------------------------------------------------------
-January 20, 2018
-Both: Made it so castling fully works.  Made it so that it can't castle through 
-check, and made it so pawns will auto promote to queen.  All we have left is to 
-finish the lanterna code, and then we are done.
 --------------------------------------------------------------------------------
