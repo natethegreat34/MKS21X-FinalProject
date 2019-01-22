@@ -145,6 +145,43 @@ public class Chessboard{
 
   //==============================================================================
 
+  public boolean noBlacks(){
+		for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].getPiece() != null){
+					if(data[y][x].getPiece().getColor().equals("black")){
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+  public boolean noWhites(){
+		for (int y = 0; y < data.length; y++){
+      for (int x = 0; x < data[y].length; x++){
+				if(data[y][x].getPiece() != null){
+					if(data[y][x].getPiece().getColor().equals("white")){
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	//------------------------------------------------------------------------------
+
+
+
+  //==============================================================================
+
   public boolean isThereABlackKing(){
     return kingB != null;
   }
