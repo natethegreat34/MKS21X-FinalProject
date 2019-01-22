@@ -1,4 +1,10 @@
 # MKS21X-FinalProject
+How To Use:
+cd into ChessGame/d
+run javac Chess.javac
+run java Chess
+
+
 Dev Log
 --------------------------------------------------------------------------------
 January 3, 2018
@@ -117,16 +123,17 @@ Both: We started visualizing how all the special moves will be done with minimal
 progress on them. We also discussed the work arounds of lanterna
 --------------------------------------------------------------------------------
 January 19, 2018
-Both: Working with check still and finalizing it.  Continuing to plan how to use 
+Both: Working with check still and finalizing it.  Continuing to plan how to use
 lanterna.
 --------------------------------------------------------------------------------
 January 20, 2018
-Both: Made it so castling fully works.  Made it so that it can't castle through 
-check, and made it so pawns will auto promote to queen.  All we have left is to 
+Both: Made it so castling fully works.  Made it so that it can't castle through
+check, and made it so pawns will auto promote to queen.  All we have left is to
 finish the lanterna code, and then we are done.
 --------------------------------------------------------------------------------
 January 21, 2018
-Both: Finished the project.  We added the different moves, and made the game 
-user-friendly with a scanner. We perfected the lay out.  We are all good to go
+Both: Finished the project.  We added the different moves, and made the game
+user-friendly with a scanner. We perfected the lay out.  We also added gamemodes.
+We are all good to go
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
